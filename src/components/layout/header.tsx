@@ -42,14 +42,17 @@ export function Header() {
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center space-x-2 no-underline hover:opacity-80 transition-opacity"
+            className="flex items-center no-underline hover:opacity-80 transition-opacity"
           >
             <Image
               src="/logo.png"
-              alt="Ephraim Care - Reliable Homecare Support"
-              width={isScrolled ? 120 : 150}
-              height={isScrolled ? 40 : 50}
-              className="transition-all duration-300 object-contain"
+              alt="Ephraim Care - Your Family Our Care"
+              width={180}
+              height={60}
+              className={cn(
+                "transition-all duration-300 object-contain",
+                isScrolled ? "h-10 w-auto md:h-12" : "h-12 w-auto md:h-14"
+              )}
               priority
             />
           </Link>

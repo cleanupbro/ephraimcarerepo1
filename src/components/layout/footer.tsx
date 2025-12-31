@@ -10,13 +10,13 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand & Contact */}
           <div className="lg:col-span-1">
-            <Link href="/" className="inline-block no-underline bg-white/10 p-3 rounded-xl hover:bg-white/20 transition-colors">
+            <Link href="/" className="inline-block no-underline bg-white p-3 rounded-xl hover:bg-white/90 transition-colors">
               <Image
                 src="/logo.png"
-                alt="Ephraim Care - Reliable Homecare Support"
-                width={160}
-                height={60}
-                className="object-contain"
+                alt="Ephraim Care - Your Family Our Care"
+                width={140}
+                height={50}
+                className="object-contain h-12 w-auto"
               />
             </Link>
 
