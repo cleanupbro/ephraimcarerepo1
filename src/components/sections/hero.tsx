@@ -3,15 +3,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, ArrowRight, Play } from "lucide-react";
+import { CheckCircle, ArrowRight } from "lucide-react";
 import { contactInfo } from "@/data/navigation";
 import { images } from "@/data/images";
 import { FadeIn, Floating, StaggerContainer, StaggerItem } from "@/components/animations";
-import { useState } from "react";
 
 export function Hero() {
-  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
-
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-primary-50 via-white to-secondary-50 min-h-[90vh] flex items-center">
       {/* Animated background elements */}
@@ -163,14 +160,6 @@ export function Hero() {
                 </div>
               </Floating>
 
-              {/* Play button for video */}
-              <button
-                onClick={() => setIsVideoModalOpen(true)}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-white/90 backdrop-blur rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform group"
-                aria-label="Play introduction video"
-              >
-                <Play className="w-8 h-8 text-primary ml-1 group-hover:scale-110 transition-transform" fill="currentColor" />
-              </button>
             </div>
           </FadeIn>
         </div>
@@ -182,26 +171,6 @@ export function Hero() {
           <path fill="#ffffff" d="M0,64L60,58.7C120,53,240,43,360,48C480,53,600,75,720,74.7C840,75,960,53,1080,42.7C1200,32,1320,32,1380,32L1440,32L1440,100L1380,100C1320,100,1200,100,1080,100C960,100,840,100,720,100C600,100,480,100,360,100C240,100,120,100,60,100L0,100Z" />
         </svg>
       </div>
-
-      {/* Video Modal */}
-      {isVideoModalOpen && (
-        <div
-          className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
-          onClick={() => setIsVideoModalOpen(false)}
-        >
-          <div className="bg-white rounded-2xl p-4 max-w-3xl w-full" onClick={(e) => e.stopPropagation()}>
-            <div className="aspect-video bg-neutral-100 rounded-xl flex items-center justify-center">
-              <p className="text-neutral-500">Video coming soon</p>
-            </div>
-            <button
-              onClick={() => setIsVideoModalOpen(false)}
-              className="mt-4 w-full py-3 bg-primary text-white rounded-xl font-medium hover:bg-primary-800 transition-colors"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
     </section>
   );
 }

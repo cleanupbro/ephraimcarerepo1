@@ -1,6 +1,7 @@
 "use client";
 
-import { StaggerContainer, StaggerItem, CountUp } from "@/components/animations";
+import Image from "next/image";
+import { StaggerContainer, StaggerItem, CountUp, FadeIn } from "@/components/animations";
 import { motion } from "motion/react";
 
 const stats = [
@@ -85,6 +86,30 @@ export function TrustSignals() {
             );
           })}
         </StaggerContainer>
+
+        {/* NDIS Badges Row */}
+        <FadeIn delay={0.5} className="mt-12 pt-8 border-t border-white/10">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <div className="bg-white rounded-lg px-4 py-2">
+              <Image
+                src="/images/logos/i-heart-ndis.svg"
+                alt="I Heart NDIS - Supporting people with disability"
+                width={120}
+                height={36}
+                className="object-contain"
+              />
+            </div>
+            <div className="bg-white/10 backdrop-blur rounded-lg px-4 py-2">
+              <Image
+                src="/images/logos/ndis-registered-provider.svg"
+                alt="Registered NDIS Provider"
+                width={150}
+                height={50}
+                className="object-contain"
+              />
+            </div>
+          </div>
+        </FadeIn>
       </div>
 
       {/* Decorative line */}

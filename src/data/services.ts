@@ -68,7 +68,7 @@ export const services: Service[] = [
       "Shopping and errands",
     ],
     color: "secondary",
-    image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&q=80",
   },
   {
     id: "supported-independent-living",

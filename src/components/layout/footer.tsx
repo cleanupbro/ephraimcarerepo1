@@ -20,8 +20,17 @@ export function Footer() {
               />
             </Link>
 
-            {/* NDIS Badge */}
-            <div className="mt-4 space-y-2">
+            {/* NDIS Badges */}
+            <div className="mt-4 space-y-3">
+              <div className="flex items-center gap-3">
+                <Image
+                  src="/images/logos/i-heart-ndis.svg"
+                  alt="I Heart NDIS - Supporting people with disability"
+                  width={100}
+                  height={30}
+                  className="bg-white rounded px-2 py-1"
+                />
+              </div>
               <div className="inline-flex items-center px-3 py-1.5 rounded-full bg-primary/20 border border-primary/30">
                 <span className="text-sm font-medium text-primary-300">
                   Registered NDIS Provider

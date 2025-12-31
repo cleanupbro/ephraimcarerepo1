@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+  <!-- I -->
+  <text x="10" y="45" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#5C2D91">I</text>
+
+  <!-- Heart -->
+  <path d="M45 20 C45 15 50 10 57 10 C64 10 70 15 70 22 C70 35 57 45 57 45 C57 45 44 35 44 22 C44 15 45 15 45 20 Z" fill="#E91E63"/>
+
+  <!-- NDIS text -->
+  <text x="80" y="45" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#5C2D91">NDIS</text>
+</svg>
