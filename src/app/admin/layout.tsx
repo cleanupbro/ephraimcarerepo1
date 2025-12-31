@@ -51,7 +51,7 @@ export default function AdminLayout({
       setIsLoading(false);
 
       // Redirect to login if not authenticated and not on login page
-      if (!loggedIn && pathname !== "/admin/login") {
+      if (!loggedIn && pathname !== "/admin/login" && pathname !== "/admin/login/") {
         router.push("/admin/login");
       }
     };
@@ -67,7 +67,7 @@ export default function AdminLayout({
   };
 
   // If on login page, render children without layout
-  if (pathname === "/admin/login") {
+  if (pathname === "/admin/login" || pathname === "/admin/login/") {
     return <>{children}</>;
   }
 
