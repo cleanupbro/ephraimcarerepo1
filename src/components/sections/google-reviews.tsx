@@ -113,7 +113,7 @@ export function GoogleReviews() {
             </div>
 
             <a
-              href="https://g.page/r/YOUR-GOOGLE-REVIEW-LINK"
+              href="https://search.google.com/local/writereview?placeid=ChIJrTLr-Bk1KWsRKNpGLfaSwxU"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-primary hover:text-primary-800 font-medium text-sm"
@@ -200,7 +200,7 @@ export function GoogleReviews() {
         {/* Write a Review CTA */}
         <FadeIn delay={0.3} className="text-center mt-12">
           <a
-            href="https://g.page/r/YOUR-GOOGLE-REVIEW-LINK/review"
+            href="https://search.google.com/local/writereview?placeid=ChIJrTLr-Bk1KWsRKNpGLfaSwxU"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-yellow-400 to-orange-400 text-neutral-900 font-semibold hover:from-yellow-500 hover:to-orange-500 transition-all shadow-lg"

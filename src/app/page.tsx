@@ -9,6 +9,8 @@ import { FAQ } from "@/components/sections/faq";
 import { GoogleReviews } from "@/components/sections/google-reviews";
 import { ServiceQuiz } from "@/components/sections/service-quiz";
 import { NDISCalculator } from "@/components/sections/ndis-calculator";
+import { ServiceMap } from "@/components/sections/service-map";
+import { VideoWelcome } from "@/components/sections/video-welcome";
 
 export default function HomePage() {
   return (
@@ -17,7 +19,9 @@ export default function HomePage() {
       <TrustSignals />
       <ServicesGrid />
       <HowItWorks />
+      <VideoWelcome />
       <ServiceQuiz />
+      <ServiceMap />
       <AboutPreview />
       <Testimonials />
       <GoogleReviews />

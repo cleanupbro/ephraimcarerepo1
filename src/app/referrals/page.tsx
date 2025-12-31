@@ -1,4 +1,6 @@
-import type { Metadata } from "next";
+"use client";
+
+import { useState, FormEvent } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,13 +12,12 @@ import {
   FileText,
   UserCheck,
   Shield,
+  Loader2,
+  PartyPopper,
 } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 
-export const metadata: Metadata = {
-  title: "Make a Referral",
-  description:
-    "Refer a participant to Ephraim Care for NDIS support services. Simple online referral form for support coordinators, families, and self-referrals.",
-};
+const WEBHOOK_URL = "https://nioctibinu.online/webhook/ephraim/referral";
 
 const steps = [
   {
@@ -37,6 +38,212 @@ const steps = [
 ];
 
 export default function ReferralsPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setError(null);
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      participant: {
+        firstName: formData.get("firstName"),
+        lastName: formData.get("lastName"),
+        dob: formData.get("dob"),
+        ndisNumber: formData.get("ndisNumber"),
+        phone: formData.get("phone"),
+        email: formData.get("email"),
+        suburb: formData.get("suburb"),
+      },
+      services: {
+        fundingType: formData.get("fundingType"),
+        selectedServices: formData.getAll("services"),
+        goals: formData.get("goals"),
+      },
+      referrer: {
+        role: formData.get("referrerRole"),
+        name: formData.get("referrerName"),
+        organisation: formData.get("referrerOrg"),
+        phone: formData.get("referrerPhone"),
+        email: formData.get("referrerEmail"),
+      },
+      consent: formData.get("consent") === "on",
+      submittedAt: new Date().toISOString(),
+    };
+
+    try {
+      // Submit to n8n webhook
+      const webhookPromise = fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      // Submit to internal API (for admin dashboard)
+      const apiData = {
+        participantFirstName: data.participant.firstName,
+        participantLastName: data.participant.lastName,
+        participantPhone: data.participant.phone,
+        participantEmail: data.participant.email,
+        ndisNumber: data.participant.ndisNumber,
+        suburb: data.participant.suburb,
+        selectedServices: data.services.selectedServices,
+        goals: data.services.goals,
+        referrerName: data.referrer.name,
+        referrerRole: data.referrer.role,
+        referrerOrganisation: data.referrer.organisation,
+        referrerPhone: data.referrer.phone,
+        referrerEmail: data.referrer.email,
+        submittedAt: data.submittedAt,
+      };
+
+      const apiPromise = fetch("/api/referrals", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(apiData),
+      });
+
+      // Wait for both
+      await Promise.all([webhookPromise, apiPromise]);
+
+      setIsSubmitted(true);
+    } catch (err) {
+      console.error("Submission error:", err);
+      setError("Something went wrong. Please try again or call us directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  // Success state
+  if (isSubmitted) {
+    return (
+      <>
+        {/* Success Hero */}
+        <section className="min-h-[80vh] flex items-center justify-center bg-gradient-to-br from-green-50 via-white to-primary-50">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="text-center max-w-2xl mx-auto px-6"
+          >
+            {/* Success Icon */}
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ type: "spring", delay: 0.2 }}
+              className="w-24 h-24 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center mx-auto mb-8 shadow-2xl shadow-green-500/30"
+            >
+              <CheckCircle className="w-12 h-12 text-white" />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+            >
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <PartyPopper className="w-6 h-6 text-secondary" />
+                <span className="text-lg font-semibold text-secondary">
+                  Referral Submitted!
+                </span>
+                <PartyPopper className="w-6 h-6 text-secondary transform scale-x-[-1]" />
+              </div>
+
+              <h1 className="text-4xl font-bold text-neutral-900 mb-4">
+                Thank You for Your Referral
+              </h1>
+
+              <p className="text-xl text-neutral-600 mb-8">
+                We&apos;ve received your referral and our team will contact you within{" "}
+                <span className="font-semibold text-primary">24-48 hours</span>.
+              </p>
+
+              {/* What happens next */}
+              <div className="bg-white rounded-2xl p-6 border border-neutral-200 shadow-lg mb-8 text-left">
+                <h3 className="font-bold text-neutral-900 mb-4">What Happens Next?</h3>
+                <ol className="space-y-3">
+                  <li className="flex items-start gap-3">
+                    <span className="w-6 h-6 rounded-full bg-primary-100 text-primary font-bold text-sm flex items-center justify-center flex-shrink-0">
+                      1
+                    </span>
+                    <span className="text-neutral-600">
+                      Our team will review your referral and prepare for your consultation
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="w-6 h-6 rounded-full bg-primary-100 text-primary font-bold text-sm flex items-center justify-center flex-shrink-0">
+                      2
+                    </span>
+                    <span className="text-neutral-600">
+                      We&apos;ll call or email to schedule a convenient time to discuss your needs
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="w-6 h-6 rounded-full bg-primary-100 text-primary font-bold text-sm flex items-center justify-center flex-shrink-0">
+                      3
+                    </span>
+                    <span className="text-neutral-600">
+                      Together, we&apos;ll create a personalized support plan
+                    </span>
+                  </li>
+                </ol>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button asChild size="lg">
+                  <Link href="/">Back to Home</Link>
+                </Button>
+                <Button asChild variant="outline" size="lg">
+                  <a href={contactInfo.phoneHref}>
+                    <Phone className="mr-2 h-5 w-5" />
+                    Call Us Now
+                  </a>
+                </Button>
+              </div>
+            </motion.div>
+
+            {/* Confetti animation */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="fixed inset-0 pointer-events-none z-50 overflow-hidden"
+            >
+              {[...Array(30)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  initial={{
+                    y: -20,
+                    x: `${Math.random() * 100}vw`,
+                    opacity: 1,
+                    rotate: 0,
+                    scale: Math.random() * 0.5 + 0.5
+                  }}
+                  animate={{
+                    y: "100vh",
+                    opacity: 0,
+                    rotate: Math.random() * 360
+                  }}
+                  transition={{
+                    duration: 2 + Math.random() * 2,
+                    ease: "linear",
+                    delay: Math.random() * 0.5
+                  }}
+                  className="absolute w-3 h-3 rounded-sm"
+                  style={{
+                    backgroundColor: ["#2E7D6B", "#E8A54B", "#4CAF50", "#2196F3", "#9C27B0"][Math.floor(Math.random() * 5)]
+                  }}
+                />
+              ))}
+            </motion.div>
+          </motion.div>
+        </section>
+      </>
+    );
+  }
+
   return (
     <>
       {/* Hero */}
@@ -113,7 +320,21 @@ export default function ReferralsPage() {
               24-48 hours.
             </p>
 
-            <form className="space-y-8">
+            {/* Error Alert */}
+            <AnimatePresence>
+              {error && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700"
+                >
+                  <p className="font-medium">{error}</p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            <form onSubmit={handleSubmit} className="space-y-8">
               {/* Participant Details */}
               <div>
                 <h3 className="text-lg font-semibold text-neutral-900 mb-4 pb-2 border-b border-neutral-200">
@@ -312,8 +533,23 @@ export default function ReferralsPage() {
 
               {/* Submit */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button type="submit" size="lg" className="flex-1">
-                  Submit Referral
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="flex-1"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                      Submitting...
+                    </>
+                  ) : (
+                    <>
+                      <CheckCircle className="mr-2 h-5 w-5" />
+                      Submit Referral
+                    </>
+                  )}
                 </Button>
                 <Button
                   type="button"

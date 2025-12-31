@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/layout/header";
-import { Footer } from "@/components/layout/footer";
+import { ConditionalLayout } from "@/components/layout/conditional-layout";
 import { SkipLink } from "@/components/accessibility/skip-link";
-import { FloatingButtons } from "@/components/ui/floating-buttons";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -65,12 +63,7 @@ export default function RootLayout({
     <html lang="en-AU" className={inter.variable}>
       <body className="font-sans antialiased">
         <SkipLink />
-        <Header />
-        <main id="main-content" tabIndex={-1}>
-          {children}
-        </main>
-        <Footer />
-        <FloatingButtons />
+        <ConditionalLayout>{children}</ConditionalLayout>
       </body>
     </html>
   );

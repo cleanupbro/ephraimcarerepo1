@@ -1,4 +1,6 @@
-import type { Metadata } from "next";
+"use client";
+
+import { useState, FormEvent } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,15 +12,69 @@ import {
   Clock,
   Calendar,
   MessageSquare,
+  Loader2,
+  CheckCircle,
+  Send,
 } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 
-export const metadata: Metadata = {
-  title: "Contact Us",
-  description:
-    "Get in touch with Ephraim Care. Book a free consultation or make an enquiry about our NDIS support services in Western Sydney.",
-};
+const WEBHOOK_URL = "https://nioctibinu.online/webhook/ephraim/contact";
 
 export default function ContactPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setError(null);
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      firstName: formData.get("firstName"),
+      lastName: formData.get("lastName"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+      subject: formData.get("subject"),
+      message: formData.get("message"),
+      submittedAt: new Date().toISOString(),
+    };
+
+    try {
+      // Submit to n8n webhook
+      const webhookPromise = fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      // Submit to internal API (for admin dashboard)
+      const apiData = {
+        name: `${data.firstName} ${data.lastName}`.trim(),
+        email: data.email,
+        phone: data.phone,
+        message: `${data.subject ? `[${data.subject}] ` : ""}${data.message}`,
+      };
+
+      const apiPromise = fetch("/api/contacts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(apiData),
+      });
+
+      // Wait for both
+      await Promise.all([webhookPromise, apiPromise]);
+
+      setIsSubmitted(true);
+    } catch (err) {
+      console.error("Submission error:", err);
+      setError("Something went wrong. Please try again or call us directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <>
       {/* Hero */}
@@ -130,7 +186,7 @@ export default function ContactPage() {
                     </p>
                     <Button asChild className="mt-4">
                       <a
-                        href="https://calendly.com/theopbros-ai/30min"
+                        href="https://calendly.com/ephraimcare/consultation"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -144,98 +200,162 @@ export default function ContactPage() {
 
             {/* Contact Form */}
             <div className="bg-neutral-50 rounded-3xl p-8 border border-neutral-200">
-              <div className="flex items-center gap-3 mb-6">
-                <MessageSquare className="h-6 w-6 text-primary" aria-hidden="true" />
-                <h2 className="text-2xl font-bold text-neutral-900">
-                  Send us a Message
-                </h2>
-              </div>
-
-              <form className="space-y-6">
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <Input
-                    label="First Name"
-                    name="firstName"
-                    placeholder="Your first name"
-                    required
-                  />
-                  <Input
-                    label="Last Name"
-                    name="lastName"
-                    placeholder="Your last name"
-                    required
-                  />
-                </div>
-
-                <Input
-                  label="Email"
-                  name="email"
-                  type="email"
-                  placeholder="your@email.com"
-                  required
-                />
-
-                <Input
-                  label="Phone"
-                  name="phone"
-                  type="tel"
-                  placeholder="0400 000 000"
-                />
-
-                <div>
-                  <label
-                    htmlFor="subject"
-                    className="mb-2 block text-base font-medium text-neutral-900"
+              <AnimatePresence mode="wait">
+                {isSubmitted ? (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="text-center py-12"
                   >
-                    Subject
-                  </label>
-                  <select
-                    id="subject"
-                    name="subject"
-                    className="flex h-12 w-full rounded-lg border border-neutral-300 bg-white px-4 py-3 text-base text-neutral-900 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary"
-                    defaultValue=""
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ type: "spring", delay: 0.2 }}
+                      className="w-20 h-20 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center mx-auto mb-6 shadow-lg"
+                    >
+                      <CheckCircle className="w-10 h-10 text-white" />
+                    </motion.div>
+
+                    <h3 className="text-2xl font-bold text-neutral-900 mb-2">
+                      Message Sent!
+                    </h3>
+                    <p className="text-neutral-600 mb-6">
+                      Thanks for reaching out. We&apos;ll get back to you within 24 hours.
+                    </p>
+
+                    <Button onClick={() => setIsSubmitted(false)} variant="outline">
+                      Send Another Message
+                    </Button>
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
                   >
-                    <option value="" disabled>
-                      Select a subject
-                    </option>
-                    <option value="general">General Enquiry</option>
-                    <option value="services">Service Information</option>
-                    <option value="referral">Make a Referral</option>
-                    <option value="feedback">Feedback</option>
-                    <option value="complaint">Lodge a Complaint</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
+                    <div className="flex items-center gap-3 mb-6">
+                      <MessageSquare className="h-6 w-6 text-primary" aria-hidden="true" />
+                      <h2 className="text-2xl font-bold text-neutral-900">
+                        Send us a Message
+                      </h2>
+                    </div>
 
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="mb-2 block text-base font-medium text-neutral-900"
-                  >
-                    Message <span className="text-error">*</span>
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={5}
-                    className="flex w-full rounded-lg border border-neutral-300 bg-white px-4 py-3 text-base text-neutral-900 placeholder:text-neutral-500 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary"
-                    placeholder="How can we help you?"
-                    required
-                  />
-                </div>
+                    {/* Error Alert */}
+                    <AnimatePresence>
+                      {error && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700"
+                        >
+                          <p className="font-medium">{error}</p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
 
-                <Button type="submit" className="w-full" size="lg">
-                  Send Message
-                </Button>
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                      <div className="grid sm:grid-cols-2 gap-4">
+                        <Input
+                          label="First Name"
+                          name="firstName"
+                          placeholder="Your first name"
+                          required
+                        />
+                        <Input
+                          label="Last Name"
+                          name="lastName"
+                          placeholder="Your last name"
+                          required
+                        />
+                      </div>
 
-                <p className="text-sm text-neutral-500 text-center">
-                  By submitting this form, you agree to our{" "}
-                  <Link href="/privacy-policy" className="text-primary">
-                    Privacy Policy
-                  </Link>
-                  .
-                </p>
-              </form>
+                      <Input
+                        label="Email"
+                        name="email"
+                        type="email"
+                        placeholder="your@email.com"
+                        required
+                      />
+
+                      <Input
+                        label="Phone"
+                        name="phone"
+                        type="tel"
+                        placeholder="0400 000 000"
+                      />
+
+                      <div>
+                        <label
+                          htmlFor="subject"
+                          className="mb-2 block text-base font-medium text-neutral-900"
+                        >
+                          Subject
+                        </label>
+                        <select
+                          id="subject"
+                          name="subject"
+                          className="flex h-12 w-full rounded-lg border border-neutral-300 bg-white px-4 py-3 text-base text-neutral-900 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary"
+                          defaultValue=""
+                        >
+                          <option value="" disabled>
+                            Select a subject
+                          </option>
+                          <option value="general">General Enquiry</option>
+                          <option value="services">Service Information</option>
+                          <option value="referral">Make a Referral</option>
+                          <option value="feedback">Feedback</option>
+                          <option value="complaint">Lodge a Complaint</option>
+                          <option value="other">Other</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <label
+                          htmlFor="message"
+                          className="mb-2 block text-base font-medium text-neutral-900"
+                        >
+                          Message <span className="text-error">*</span>
+                        </label>
+                        <textarea
+                          id="message"
+                          name="message"
+                          rows={5}
+                          className="flex w-full rounded-lg border border-neutral-300 bg-white px-4 py-3 text-base text-neutral-900 placeholder:text-neutral-500 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary"
+                          placeholder="How can we help you?"
+                          required
+                        />
+                      </div>
+
+                      <Button
+                        type="submit"
+                        className="w-full"
+                        size="lg"
+                        disabled={isSubmitting}
+                      >
+                        {isSubmitting ? (
+                          <>
+                            <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                            Sending...
+                          </>
+                        ) : (
+                          <>
+                            <Send className="mr-2 h-5 w-5" />
+                            Send Message
+                          </>
+                        )}
+                      </Button>
+
+                      <p className="text-sm text-neutral-500 text-center">
+                        By submitting this form, you agree to our{" "}
+                        <Link href="/privacy-policy" className="text-primary">
+                          Privacy Policy
+                        </Link>
+                        .
+                      </p>
+                    </form>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </div>
         </div>
