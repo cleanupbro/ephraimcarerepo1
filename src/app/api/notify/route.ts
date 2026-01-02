@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
-// POST - Send notification (SMS, WhatsApp, or Telegram)
+// POST - Send notification (SMS, WhatsApp, Telegram, or Email)
 export async function POST(request: NextRequest) {
   try {
-    const { type, to, message, chatId } = await request.json();
+    const { type, to, message, chatId, subject, email } = await request.json();
 
     if (!message) {
       return NextResponse.json(
@@ -23,6 +23,9 @@ export async function POST(request: NextRequest) {
     } else if (type === "telegram") {
       await sendTelegram(chatId, message);
       results.push("telegram");
+    } else if (type === "email" && email) {
+      await sendEmail(email, subject || "Ephraim Care Notification", message);
+      results.push("email");
     } else if (type === "all") {
       // Send to all configured channels
       const promises = [];
@@ -30,13 +33,15 @@ export async function POST(request: NextRequest) {
         promises.push(sendSMS(to, message).then(() => results.push("sms")));
         promises.push(sendWhatsApp(to, message).then(() => results.push("whatsapp")));
       }
+      if (email) {
+        promises.push(sendEmail(email, subject || "Ephraim Care Notification", message).then(() => results.push("email")));
+      }
       promises.push(sendTelegram(chatId, message).then(() => results.push("telegram")));
       await Promise.allSettled(promises);
     } else {
-      // Default: send to WhatsApp and Telegram (for testing)
-      if (to) await sendWhatsApp(to, message);
+      // Default: send to Telegram only (most reliable for testing)
       await sendTelegram(chatId, message);
-      results.push("whatsapp", "telegram");
+      results.push("telegram");
     }
 
     return NextResponse.json({ success: true, message: "Notification sent", channels: results });
@@ -149,4 +154,28 @@ async function sendTelegram(chatId: string | undefined, message: string) {
   }
 
   console.log("Telegram sent to chat", targetChatId);
+}
+
+// Send Email via n8n webhook (reliable, no dependencies)
+async function sendEmail(to: string, subject: string, message: string) {
+  // Use n8n webhook to send email (most reliable for serverless)
+  const N8N_EMAIL_WEBHOOK = "https://nioctibinu.online/webhook/ephraim/email";
+
+  const response = await fetch(N8N_EMAIL_WEBHOOK, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      to,
+      subject,
+      message,
+      from: "Ephraim Care <info@ephraimcare.com.au>",
+    }),
+  });
+
+  if (!response.ok) {
+    console.error("Email webhook error:", await response.text());
+    throw new Error(`Email failed: ${response.status}`);
+  }
+
+  console.log("Email sent to", to);
 }
