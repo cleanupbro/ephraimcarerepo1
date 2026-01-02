@@ -9,7 +9,7 @@ import { FadeIn } from "@/components/animations";
 // Placeholder video - replace with actual Meshach welcome video
 // Set VIDEO_URL to YouTube embed URL when ready, e.g., "https://www.youtube.com/embed/VIDEO_ID"
 const VIDEO_URL: string | null = null;
-const THUMBNAIL_URL = "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80";
+const THUMBNAIL_URL = "/images/services/group-activities/NDIS-Disability-Support-Services-scaled.jpg";
 
 export function VideoWelcome() {
   const [isPlaying, setIsPlaying] = useState(false);

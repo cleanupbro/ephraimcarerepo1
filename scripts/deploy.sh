@@ -89,8 +89,23 @@ else
     exit 1
 fi
 
-# Step 7: Generate report
-echo -e "${YELLOW}[7/7] Generating deployment report...${NC}"
+# Step 7: Trigger Vercel Deployment
+echo -e "${YELLOW}[7/8] Triggering Vercel deployment...${NC}"
+VERCEL_TOKEN="h7E9EBfXuCCqxiJF8NpFYt0q"
+DEPLOY_RESPONSE=$(curl -s -X POST "https://api.vercel.com/v13/deployments" \
+  -H "Authorization: Bearer $VERCEL_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"name":"ephraimcarerepo1","project":"ephraimcarerepo1","target":"production","gitSource":{"type":"github","org":"cleanupbro","repo":"ephraimcarerepo1","ref":"main"}}')
+
+DEPLOY_ID=$(echo $DEPLOY_RESPONSE | python3 -c "import sys,json; print(json.load(sys.stdin).get('id',''))" 2>/dev/null || echo "")
+if [ -n "$DEPLOY_ID" ]; then
+    echo -e "${GREEN}✓ Vercel deployment triggered: $DEPLOY_ID${NC}"
+else
+    echo -e "${YELLOW}⚠ Could not trigger Vercel (will auto-deploy from GitHub)${NC}"
+fi
+
+# Step 8: Generate report
+echo -e "${YELLOW}[8/8] Generating deployment report...${NC}"
 
 COMMIT_HASH=$(git rev-parse --short HEAD)
 COMMIT_MSG=$(git log -1 --pretty=%B | head -1)
