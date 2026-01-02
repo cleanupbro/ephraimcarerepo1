@@ -1,27 +1,45 @@
 import { NextRequest, NextResponse } from "next/server";
 
-// POST - Send notification (SMS or WhatsApp)
+// POST - Send notification (SMS, WhatsApp, or Telegram)
 export async function POST(request: NextRequest) {
   try {
-    const { type, to, message } = await request.json();
+    const { type, to, message, chatId } = await request.json();
 
-    if (!to || !message) {
+    if (!message) {
       return NextResponse.json(
-        { success: false, error: "Missing to or message" },
+        { success: false, error: "Missing message" },
         { status: 400 }
       );
     }
 
-    if (type === "sms") {
+    const results: string[] = [];
+
+    if (type === "sms" && to) {
       await sendSMS(to, message);
-    } else if (type === "whatsapp") {
+      results.push("sms");
+    } else if (type === "whatsapp" && to) {
       await sendWhatsApp(to, message);
+      results.push("whatsapp");
+    } else if (type === "telegram") {
+      await sendTelegram(chatId, message);
+      results.push("telegram");
+    } else if (type === "all") {
+      // Send to all configured channels
+      const promises = [];
+      if (to) {
+        promises.push(sendSMS(to, message).then(() => results.push("sms")));
+        promises.push(sendWhatsApp(to, message).then(() => results.push("whatsapp")));
+      }
+      promises.push(sendTelegram(chatId, message).then(() => results.push("telegram")));
+      await Promise.allSettled(promises);
     } else {
-      // Send both
-      await Promise.all([sendSMS(to, message), sendWhatsApp(to, message)]);
+      // Default: send to WhatsApp and Telegram (for testing)
+      if (to) await sendWhatsApp(to, message);
+      await sendTelegram(chatId, message);
+      results.push("whatsapp", "telegram");
     }
 
-    return NextResponse.json({ success: true, message: "Notification sent" });
+    return NextResponse.json({ success: true, message: "Notification sent", channels: results });
   } catch (error) {
     console.error("Notify error:", error);
     return NextResponse.json(
@@ -89,8 +107,46 @@ async function sendWhatsApp(to: string, message: string) {
   );
 
   if (!response.ok) {
+    const errorData = await response.text();
+    console.error("WhatsApp error:", errorData);
     throw new Error(`WhatsApp failed: ${response.status}`);
   }
 
   console.log("WhatsApp sent to", to);
+}
+
+// Send Telegram via Bot API
+async function sendTelegram(chatId: string | undefined, message: string) {
+  const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+  const DEFAULT_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
+
+  const targetChatId = chatId || DEFAULT_CHAT_ID;
+
+  if (!BOT_TOKEN || !targetChatId) {
+    console.log("Telegram not configured (missing BOT_TOKEN or CHAT_ID)");
+    return;
+  }
+
+  const response = await fetch(
+    `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        chat_id: targetChatId,
+        text: message,
+        parse_mode: "HTML",
+      }),
+    }
+  );
+
+  if (!response.ok) {
+    const errorData = await response.text();
+    console.error("Telegram error:", errorData);
+    throw new Error(`Telegram failed: ${response.status}`);
+  }
+
+  console.log("Telegram sent to chat", targetChatId);
 }
