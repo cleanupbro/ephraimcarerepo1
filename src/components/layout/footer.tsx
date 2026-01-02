@@ -12,8 +12,8 @@ export function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block no-underline bg-white p-3 rounded-xl hover:bg-white/90 transition-colors">
               <Image
-                src="/logo.png"
-                alt="Ephraim Care - Your Family Our Care"
+                src="/images/logo/ephraim-care-logo.png"
+                alt="Ephraim Care - NDIS Support Services Liverpool NSW"
                 width={140}
                 height={50}
                 className="object-contain h-12 w-auto"
@@ -24,21 +24,20 @@ export function Footer() {
             <div className="mt-4 space-y-3">
               <div className="flex items-center gap-3">
                 <Image
-                  src="/images/logos/i-heart-ndis.svg"
-                  alt="I Heart NDIS - Supporting people with disability"
+                  src="/images/ndis/I-love-NDIS.webp"
+                  alt="I Love NDIS"
                   width={100}
-                  height={30}
-                  className="bg-white rounded px-2 py-1"
+                  height={40}
+                  className="bg-white rounded-lg px-2 py-1"
+                />
+                <Image
+                  src="/images/ndis/ndis-logo.png"
+                  alt="NDIS Logo"
+                  width={60}
+                  height={40}
+                  className="bg-white rounded-lg px-2 py-1"
                 />
               </div>
-              <div className="inline-flex items-center px-3 py-1.5 rounded-full bg-primary/20 border border-primary/30">
-                <span className="text-sm font-medium text-primary-300">
-                  Registered NDIS Provider
-                </span>
-              </div>
-              <p className="text-xs text-neutral-400">
-                NDIS Registration: {companyInfo.ndisRegistrationId}
-              </p>
             </div>
 
             <div className="mt-6 space-y-3 text-neutral-300">

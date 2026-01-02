@@ -1,0 +1,18 @@
+# Ephraim Care - NDIS Provider Website
+# https://ephraimcare.com.au
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://ephraimcare.com.au/sitemap.xml
+
+# Block admin pages from indexing
+Disallow: /admin/
+Disallow: /api/
+
+# Allow crawlers to index all public content
+Allow: /services/
+Allow: /about
+Allow: /contact
+Allow: /referrals

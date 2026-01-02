@@ -45,8 +45,8 @@ export function Header() {
             className="flex items-center no-underline hover:opacity-80 transition-opacity"
           >
             <Image
-              src="/logo.png"
-              alt="Ephraim Care - Your Family Our Care"
+              src="/images/logo/ephraim-care-logo.png"
+              alt="Ephraim Care - Registered NDIS Provider Liverpool NSW"
               width={180}
               height={60}
               className={cn(

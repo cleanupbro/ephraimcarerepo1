@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, ArrowRight, CheckCircle, Phone, Calendar } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle, Phone, Calendar, Images } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { images } from "@/data/images";
 import { getServiceBySlug, getRelatedServices } from "@/data/services";
@@ -12,6 +12,7 @@ import { FadeIn, StaggerContainer, StaggerItem, ScaleOnHover } from "@/component
 import { motion } from "motion/react";
 import { contactInfo } from "@/data/navigation";
 import { notFound } from "next/navigation";
+import { ImageGallery } from "@/components/ui/image-gallery";
 
 interface ServicePageClientProps {
   slug: string;
@@ -195,6 +196,27 @@ export function ServicePageClient({ slug }: ServicePageClientProps) {
           </div>
         </div>
       </section>
+
+      {/* Gallery Section */}
+      {service.gallery && service.gallery.length > 0 && (
+        <section className="section bg-gradient-to-b from-white to-neutral-50">
+          <div className="container-wide">
+            <FadeIn className="text-center mb-10">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary-100 text-primary mb-4">
+                <Images className="w-8 h-8" />
+              </div>
+              <h2>Gallery</h2>
+              <p className="mt-4 text-lg text-neutral-600 max-w-2xl mx-auto">
+                See how we support our participants with {service.name.toLowerCase()}
+              </p>
+            </FadeIn>
+            <ImageGallery
+              images={[service.image, ...service.gallery]}
+              serviceName={service.name}
+            />
+          </div>
+        </section>
+      )}
 
       {/* Related Services */}
       <section className="section bg-neutral-50">

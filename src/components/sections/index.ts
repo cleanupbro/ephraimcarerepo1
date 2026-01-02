@@ -18,3 +18,4 @@ export { Team } from './team';
 export { GoogleReviews } from './google-reviews';
 export { ServiceQuiz } from './service-quiz';
 export { NDISCalculator } from './ndis-calculator';
+export { ContactCards } from './contact-cards';

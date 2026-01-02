@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
-const WEBHOOK_URL = "https://nioctibinu.online/webhook/ephraim/contact";
+const WEBHOOK_URL = process.env.NEXT_PUBLIC_WEBHOOK_CONTACT || "";
 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);

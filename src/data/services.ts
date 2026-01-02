@@ -22,6 +22,7 @@ export interface Service {
   features: string[];
   color: string;
   image: string;
+  gallery?: string[];
   featured?: boolean;
 }
 
@@ -46,7 +47,13 @@ export const services: Service[] = [
       "Meal preparation and feeding assistance",
     ],
     color: "primary",
-    image: "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=800&q=80",
+    image: "/images/services/personal-care/NDIS-Personal-Care-Gold-Coast-scaled.webp",
+    gallery: [
+      "/images/services/personal-care/ndis-personal-care.jpg",
+      "/images/services/personal-care/Personal-Care-Younified-Care.jpeg",
+      "/images/services/personal-care/Development-of-Daily-Living-Skills.webp",
+      "/images/services/personal-care/black-man-explaining-documents-to-senior-caucasian-woman-disability-wheelchair-both-sitting-table-home-setting-engaging-401462923.webp",
+    ],
   },
   {
     id: "travel-transport",
@@ -68,7 +75,12 @@ export const services: Service[] = [
       "Shopping and errands",
     ],
     color: "secondary",
-    image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&q=80",
+    image: "/images/services/travel-transport/transport1.webp",
+    gallery: [
+      "/images/services/travel-transport/transport2.jpg",
+      "/images/services/travel-transport/disability-travel-and-transport-min.png",
+      "/images/services/travel-transport/person-disability-accesses-van-using-600nw-2668478257.webp",
+    ],
   },
   {
     id: "supported-independent-living",
@@ -92,7 +104,12 @@ export const services: Service[] = [
       "Household management support",
     ],
     color: "primary",
-    image: "https://images.unsplash.com/photo-1516156008625-3a9d6067fab5?w=800&q=80",
+    image: "/images/services/supported-independent-living/supported-independent-living-scaled.jpg",
+    gallery: [
+      "/images/services/supported-independent-living/BLOG+BANNERS+-compress.webp",
+      "/images/services/supported-independent-living/HOW-NDIS-PROVIDERS-AND-SIL-PROVIDERS-WORK-TOGETHER-FOR-YOUR-DISABILITY-SUPPORT-min.jpg",
+      "/images/services/supported-independent-living/NDIS_Occupational_Therapy.jpg",
+    ],
     featured: true,
   },
   {
@@ -115,7 +132,12 @@ export const services: Service[] = [
       "Interest-based group programs",
     ],
     color: "secondary",
-    image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80",
+    image: "/images/services/community-participation/community.webp",
+    gallery: [
+      "/images/services/community-participation/full-household-nw.jpg",
+      "/images/services/community-participation/Support-Community-Auslife-Care.jpg",
+      "/images/services/community-participation/What-is-NDIS-Innovative-Community-Participatio.png",
+    ],
   },
   {
     id: "life-skills",
@@ -137,7 +159,12 @@ export const services: Service[] = [
       "Self-advocacy training",
     ],
     color: "primary",
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80",
+    image: "/images/services/life-skills/Assistance-with-Daily-Life-NDIS_0006-1024x687.webp",
+    gallery: [
+      "/images/services/life-skills/asian-young-woman-amputee-leg-600nw-2580515399.webp",
+      "/images/services/life-skills/at-the-beach-Disability-NDIS.jpg",
+      "/images/services/life-skills/benefits-of-disability-social-support-1153x690.jpg",
+    ],
   },
   {
     id: "household-tasks",
@@ -159,7 +186,12 @@ export const services: Service[] = [
       "Home organisation",
     ],
     color: "secondary",
-    image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80",
+    image: "/images/services/household-tasks/NDIS-Household-Tasks-support-worker-helping-participant-with-home-duties.jpeg",
+    gallery: [
+      "/images/services/household-tasks/istockphoto-1313001485-612x612.jpg",
+      "/images/services/household-tasks/istockphoto-1456237463-612x612.jpg",
+      "/images/services/household-tasks/NDIS-for-autism.jpg",
+    ],
   },
   {
     id: "social-participation",
@@ -181,7 +213,11 @@ export const services: Service[] = [
       "Cultural and recreational outings",
     ],
     color: "primary",
-    image: "https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=800&q=80",
+    image: "/images/services/social-participation/resized-image-32-1024x698.jpeg",
+    gallery: [
+      "/images/services/social-participation/ginger-woman-and-a-woman-with-disability-having-fu-2024-01-19-18-48-34-utc.webp.bv_resized_mobile.webp.bv.webp",
+      "/images/services/social-participation/personal-care-thumb.jpg",
+    ],
   },
   {
     id: "group-activities",
@@ -203,7 +239,13 @@ export const services: Service[] = [
       "Educational workshops",
     ],
     color: "secondary",
-    image: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=800&q=80",
+    image: "/images/services/group-activities/NDIS-Disability-Support-Services-scaled.jpg",
+    gallery: [
+      "/images/services/group-activities/friends-having-fun-together_23-2149329715.avif",
+      "/images/services/group-activities/Life-Skills-Merindah-March-2025-Betty-and-Henry-WEB-image-1024x731.jpg",
+      "/images/services/group-activities/NDIS-Social-and-Community-Participation-Fund-to-Meet-People-with-Similar-Interests.png",
+      "/images/services/group-activities/shutterstock_2127075026-Development-of-Daily-Living-and-Life-Skills.jpg",
+    ],
   },
 ];
 

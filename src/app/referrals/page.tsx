@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
-const WEBHOOK_URL = "https://nioctibinu.online/webhook/ephraim/referral";
+const WEBHOOK_URL = process.env.NEXT_PUBLIC_WEBHOOK_REFERRAL || "";
 
 const steps = [
   {

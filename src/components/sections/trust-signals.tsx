@@ -92,20 +92,20 @@ export function TrustSignals() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <div className="bg-white rounded-lg px-4 py-2">
               <Image
-                src="/images/logos/i-heart-ndis.svg"
-                alt="I Heart NDIS - Supporting people with disability"
+                src="/images/ndis/I-love-NDIS.webp"
+                alt="I Love NDIS - Supporting people with disability in Western Sydney"
                 width={120}
-                height={36}
-                className="object-contain"
+                height={40}
+                className="object-contain h-10 w-auto"
               />
             </div>
-            <div className="bg-white/10 backdrop-blur rounded-lg px-4 py-2">
+            <div className="bg-white rounded-lg px-4 py-2">
               <Image
-                src="/images/logos/ndis-registered-provider.svg"
-                alt="Registered NDIS Provider"
-                width={150}
-                height={50}
-                className="object-contain"
+                src="/images/ndis/ndis-logo.png"
+                alt="NDIS Logo"
+                width={100}
+                height={40}
+                className="object-contain h-10 w-auto"
               />
             </div>
           </div>
