@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { CTABanner } from "@/components/sections/cta-banner";
 import { Team } from "@/components/sections/team";
@@ -121,14 +122,15 @@ export default function AboutPage() {
               </Button>
             </div>
 
-            {/* Placeholder for image */}
-            <div className="bg-neutral-100 rounded-2xl aspect-[4/3] flex items-center justify-center">
-              <div className="text-center p-8">
-                <div className="w-24 h-24 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Heart className="h-12 w-12 text-primary" aria-hidden="true" />
-                </div>
-                <p className="text-neutral-500">Team Photo Coming Soon</p>
-              </div>
+            {/* Team caring image */}
+            <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
+              <Image
+                src="/images/services/community-participation/community.webp"
+                alt="Ephraim Care team providing compassionate support to participants"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
             </div>
           </div>
         </div>

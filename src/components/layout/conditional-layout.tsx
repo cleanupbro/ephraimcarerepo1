@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { Header } from "./header";
 import { Footer } from "./footer";
 import { FloatingButtons } from "@/components/ui/floating-buttons";
+import { AccessibilityToolbar } from "@/components/ui/accessibility-toolbar";
 
 export function ConditionalLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -16,7 +17,7 @@ export function ConditionalLayout({ children }: { children: React.ReactNode }) {
     return <>{children}</>;
   }
 
-  // Public pages get the full layout
+  // Public pages get the full layout with accessibility toolbar
   return (
     <>
       <Header />
@@ -25,6 +26,7 @@ export function ConditionalLayout({ children }: { children: React.ReactNode }) {
       </main>
       <Footer />
       <FloatingButtons />
+      <AccessibilityToolbar />
     </>
   );
 }

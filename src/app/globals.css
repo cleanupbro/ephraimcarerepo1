@@ -259,6 +259,74 @@
 }
 
 /* ============================================
+   ACCESSIBILITY TOOLBAR STYLES
+   ============================================ */
+
+/* Text scaling */
+.text-scale-normal {
+  font-size: 100%;
+}
+
+.text-scale-large {
+  font-size: 115%;
+}
+
+.text-scale-xl {
+  font-size: 130%;
+}
+
+/* High contrast mode */
+.high-contrast {
+  --background: #FFFFFF !important;
+  --foreground: #000000 !important;
+  --text-primary: #000000 !important;
+  --text-secondary: #1A1A1A !important;
+}
+
+.high-contrast body {
+  background: #FFFFFF !important;
+  color: #000000 !important;
+}
+
+.high-contrast a {
+  color: #0000CC !important;
+  text-decoration: underline !important;
+}
+
+.high-contrast button,
+.high-contrast [role="button"] {
+  border: 2px solid currentColor !important;
+}
+
+/* Reduce motion */
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* Dyslexia-friendly font */
+.dyslexia-font,
+.dyslexia-font * {
+  font-family: 'OpenDyslexic', 'Comic Sans MS', 'Arial', sans-serif !important;
+  letter-spacing: 0.05em !important;
+  word-spacing: 0.1em !important;
+  line-height: 1.8 !important;
+}
+
+/* OpenDyslexic font fallback */
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/woff/OpenDyslexic-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================
    PRINT STYLES
    ============================================ */
 

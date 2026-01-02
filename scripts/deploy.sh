@@ -51,6 +51,14 @@ else
     exit 1
 fi
 
+# Step 3.5: Auto-Review (After Build Success)
+echo -e "${YELLOW}[3.5/8] Running AI code review...${NC}"
+if [ -f "$PROJECT_ROOT/scripts/review.sh" ]; then
+    "$PROJECT_ROOT/scripts/review.sh" || echo -e "${YELLOW}⚠ Review skipped (server not running)${NC}"
+else
+    echo -e "${YELLOW}⚠ Review script not found${NC}"
+fi
+
 # Step 4: Commit changes
 if [ "$NEEDS_COMMIT" = true ]; then
     echo -e "${YELLOW}[4/7] Committing changes...${NC}"
