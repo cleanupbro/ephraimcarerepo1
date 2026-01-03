@@ -147,7 +147,7 @@ export function AboutPreview() {
             <FadeIn delay={0.3} className="mt-8">
               <Button asChild size="lg" className="group shadow-lg shadow-primary/20">
                 <Link href="/about">
-                  Learn Our Story
+                  Learn More About Us
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>

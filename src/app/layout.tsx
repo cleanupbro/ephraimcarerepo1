@@ -1,9 +1,18 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Montserrat, Inter } from "next/font/google";
 import "./globals.css";
 import { ConditionalLayout } from "@/components/layout/conditional-layout";
 import { SkipLink } from "@/components/accessibility/skip-link";
 
+// Primary font - Montserrat (In4Care style)
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-montserrat",
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+// Secondary font - Inter (for UI elements)
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
@@ -164,7 +173,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-AU" className={inter.variable}>
+    <html lang="en-AU" className={`${montserrat.variable} ${inter.variable}`}>
       <head>
         <script
           type="application/ld+json"

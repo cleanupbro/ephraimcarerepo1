@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown, Phone } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { ComfortModeToggle } from "@/components/accessibility/comfort-mode-toggle";
 import { mainNavigation, contactInfo } from "@/data/navigation";
 import { cn } from "@/lib/utils";
@@ -13,6 +13,7 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,50 +24,82 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Check if a nav item is active
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
+  };
+
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 transition-all duration-300",
-        isScrolled
-          ? "border-neutral-200 shadow-md"
-          : "border-transparent"
+        "sticky top-0 z-50 w-full bg-white transition-all duration-300",
+        isScrolled && "shadow-sm border-b border-neutral-200"
       )}
     >
-      <div className="container-wide">
+      <div className="container mx-auto px-4 lg:px-8">
         <div
           className={cn(
             "flex items-center justify-between transition-all duration-300",
-            isScrolled ? "h-14" : "h-18"
+            isScrolled ? "h-20" : "h-[100px] lg:h-[120px]"
           )}
         >
-          {/* Logo */}
+          {/* Logo Section - Icon + Text */}
           <Link
             href="/"
-            className="flex items-center no-underline hover:opacity-80 transition-opacity"
+            className="flex items-center gap-3 no-underline hover:opacity-90 transition-opacity"
           >
-            <Image
-              src="/images/logo/ephraim-care-logo.png"
-              alt="Ephraim Care - Registered NDIS Provider Liverpool NSW"
-              width={180}
-              height={60}
-              className={cn(
-                "transition-all duration-300 object-contain",
-                isScrolled ? "h-10 w-auto md:h-12" : "h-12 w-auto md:h-14"
-              )}
-              priority
-            />
+            {/* Circular Icon */}
+            <div className="relative flex-shrink-0">
+              <Image
+                src="/images/logo/ephraim-care-icon.png"
+                alt="Ephraim Care Icon"
+                width={50}
+                height={50}
+                className={cn(
+                  "rounded-full object-contain transition-all duration-300",
+                  isScrolled ? "w-10 h-10" : "w-[50px] h-[50px]"
+                )}
+                priority
+              />
+            </div>
+            {/* Text Logo */}
+            <div className="flex flex-col">
+              <span
+                className={cn(
+                  "font-bold tracking-wide text-black transition-all duration-300",
+                  isScrolled ? "text-lg" : "text-xl lg:text-2xl"
+                )}
+                style={{ fontFamily: "'Montserrat', sans-serif" }}
+              >
+                EPHRAIM CARE
+              </span>
+              <span
+                className={cn(
+                  "text-neutral-600 transition-all duration-300 hidden sm:block",
+                  isScrolled ? "text-xs" : "text-sm"
+                )}
+              >
+                Your Family Our Care
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-1" aria-label="Main navigation">
+          <nav
+            className="hidden lg:flex items-center"
+            aria-label="Main navigation"
+          >
             {mainNavigation.map((item) => (
               <div key={item.label} className="relative group">
                 {item.children ? (
                   <>
                     <button
                       className={cn(
-                        "inline-flex items-center px-4 font-medium text-neutral-700 hover:text-[#1565C0] rounded-lg hover:bg-[#E3F2FD] transition-colors",
-                        isScrolled ? "py-1.5 text-sm" : "py-2 text-base"
+                        "inline-flex items-center px-6 py-2 font-medium transition-colors",
+                        isActive(item.href)
+                          ? "text-[#0088CC]"
+                          : "text-black hover:text-[#0088CC]"
                       )}
                       aria-expanded={servicesOpen}
                       aria-haspopup="true"
@@ -82,20 +115,25 @@ export function Header() {
                         aria-hidden="true"
                       />
                     </button>
-                    {/* Dropdown */}
+                    {/* Dropdown Menu */}
                     <div
                       className={cn(
-                        "absolute left-0 top-full pt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200",
+                        "absolute left-0 top-full pt-2 w-72 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200",
                         servicesOpen && "opacity-100 visible"
                       )}
                       onMouseLeave={() => setServicesOpen(false)}
                     >
-                      <div className="bg-white rounded-xl shadow-lg border border-neutral-200 p-2">
+                      <div className="bg-white rounded-lg shadow-xl border border-neutral-100 py-2">
                         {item.children.map((child) => (
                           <Link
                             key={child.href}
                             href={child.href}
-                            className="block px-4 py-3 text-base text-neutral-700 hover:text-[#1565C0] hover:bg-[#E3F2FD] rounded-lg no-underline transition-colors"
+                            className={cn(
+                              "block px-5 py-3 text-sm no-underline transition-colors",
+                              isActive(child.href)
+                                ? "text-[#0088CC] bg-blue-50"
+                                : "text-black hover:text-[#0088CC] hover:bg-blue-50"
+                            )}
                           >
                             {child.label}
                           </Link>
@@ -107,49 +145,69 @@ export function Header() {
                   <Link
                     href={item.href}
                     className={cn(
-                      "inline-flex items-center px-4 font-medium text-neutral-700 hover:text-[#1565C0] rounded-lg hover:bg-[#E3F2FD] no-underline transition-colors",
-                      isScrolled ? "py-1.5 text-sm" : "py-2 text-base"
+                      "inline-flex items-center px-6 py-2 font-medium no-underline transition-colors relative",
+                      isActive(item.href)
+                        ? "text-[#0088CC]"
+                        : "text-black hover:text-[#0088CC]"
                     )}
                   >
                     {item.label}
+                    {/* Active underline indicator */}
+                    {isActive(item.href) && (
+                      <span className="absolute bottom-0 left-6 right-6 h-0.5 bg-[#0088CC]" />
+                    )}
                   </Link>
                 )}
               </div>
             ))}
           </nav>
 
-          {/* Right side actions */}
-          <div className="flex items-center space-x-3">
-            {/* Phone - visible on larger screens */}
+          {/* Right Side Actions */}
+          <div className="flex items-center gap-4">
+            {/* Phone Number - Desktop */}
             <a
               href={contactInfo.phoneHref}
               className={cn(
-                "hidden md:flex items-center space-x-2 text-[#1565C0] font-medium hover:text-[#0D47A1] no-underline transition-all",
-                isScrolled ? "text-sm" : "text-base"
+                "hidden md:flex items-center gap-2 font-semibold no-underline transition-colors",
+                "text-[#0088CC] hover:text-[#006699]"
               )}
             >
-              <Phone className="h-4 w-4" aria-hidden="true" />
-              <span>{contactInfo.phone}</span>
+              <Phone
+                className={cn(
+                  "transition-all duration-300",
+                  isScrolled ? "h-4 w-4" : "h-5 w-5"
+                )}
+                aria-hidden="true"
+              />
+              <span className={cn(isScrolled ? "text-sm" : "text-base")}>
+                {contactInfo.phone}
+              </span>
             </a>
 
             {/* Comfort Mode Toggle */}
             <ComfortModeToggle />
 
-            {/* CTA Button - visible on larger screens */}
-            <Button
-              asChild
-              size={isScrolled ? "sm" : "default"}
-              className="hidden sm:inline-flex transition-all"
+            {/* Get Started Button - Desktop */}
+            <Link
+              href="/referrals"
+              className={cn(
+                "hidden sm:inline-flex items-center justify-center font-semibold rounded-full no-underline transition-all duration-300",
+                "bg-[#0088CC] text-white hover:bg-black",
+                isScrolled
+                  ? "px-5 py-2 text-sm"
+                  : "px-6 py-2.5 text-base"
+              )}
             >
-              <Link href="/referrals">Make Referral</Link>
-            </Button>
+              Get Started
+            </Link>
 
-            {/* Mobile menu button */}
+            {/* Mobile Menu Button */}
             <button
               type="button"
               className={cn(
-                "lg:hidden inline-flex items-center justify-center rounded-lg border border-neutral-200 text-neutral-700 hover:bg-neutral-50 transition-all",
-                isScrolled ? "h-8 w-8" : "h-10 w-10"
+                "lg:hidden inline-flex items-center justify-center rounded-lg border transition-all",
+                "border-neutral-200 text-black hover:bg-neutral-50",
+                isScrolled ? "h-9 w-9" : "h-10 w-10"
               )}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-expanded={mobileMenuOpen}
@@ -165,9 +223,14 @@ export function Header() {
         </div>
 
         {/* Mobile Navigation */}
-        {mobileMenuOpen && (
+        <div
+          className={cn(
+            "lg:hidden overflow-hidden transition-all duration-300",
+            mobileMenuOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
+          )}
+        >
           <nav
-            className="lg:hidden border-t border-neutral-200 py-4"
+            className="border-t border-neutral-200 py-4"
             aria-label="Mobile navigation"
           >
             <div className="space-y-1">
@@ -182,7 +245,12 @@ export function Header() {
                         <Link
                           key={child.href}
                           href={child.href}
-                          className="block px-4 py-3 text-base text-neutral-700 hover:text-[#1565C0] hover:bg-[#E3F2FD] no-underline"
+                          className={cn(
+                            "block px-4 py-3 text-base no-underline transition-colors",
+                            isActive(child.href)
+                              ? "text-[#0088CC] bg-blue-50 font-medium"
+                              : "text-black hover:text-[#0088CC] hover:bg-blue-50"
+                          )}
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           {child.label}
@@ -192,7 +260,12 @@ export function Header() {
                   ) : (
                     <Link
                       href={item.href}
-                      className="block px-4 py-3 text-base font-medium text-neutral-700 hover:text-[#1565C0] hover:bg-[#E3F2FD] no-underline"
+                      className={cn(
+                        "block px-4 py-3 text-base font-medium no-underline transition-colors",
+                        isActive(item.href)
+                          ? "text-[#0088CC] border-l-4 border-[#0088CC] bg-blue-50"
+                          : "text-black hover:text-[#0088CC] hover:bg-blue-50"
+                      )}
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {item.label}
@@ -201,20 +274,26 @@ export function Header() {
                 </div>
               ))}
             </div>
-            <div className="mt-4 px-4 space-y-3">
+
+            {/* Mobile Footer Actions */}
+            <div className="mt-6 px-4 space-y-4 border-t border-neutral-100 pt-4">
               <a
                 href={contactInfo.phoneHref}
-                className="flex items-center space-x-2 text-primary font-medium"
+                className="flex items-center gap-2 text-[#0088CC] font-semibold no-underline"
               >
-                <Phone className="h-4 w-4" aria-hidden="true" />
+                <Phone className="h-5 w-5" aria-hidden="true" />
                 <span>{contactInfo.phone}</span>
               </a>
-              <Button asChild className="w-full">
-                <Link href="/referrals">Make Referral</Link>
-              </Button>
+              <Link
+                href="/referrals"
+                className="block w-full text-center py-3 px-6 rounded-full font-semibold no-underline transition-colors bg-[#0088CC] text-white hover:bg-black"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Get Started
+              </Link>
             </div>
           </nav>
-        )}
+        </div>
       </div>
     </header>
   );

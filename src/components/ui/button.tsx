@@ -6,28 +6,38 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-lg text-base font-semibold ring-offset-white transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 touch-target",
+  "inline-flex items-center justify-center whitespace-nowrap text-base font-semibold ring-offset-white transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 touch-target",
   {
     variants: {
       variant: {
+        // Primary - Blue pill button (In4Care style)
         default:
-          "bg-primary text-white hover:bg-[#1565C0] hover:text-white active:bg-[#0D47A1] shadow-sm hover:shadow-md",
+          "bg-primary text-white hover:bg-black rounded-pill shadow-button hover:shadow-lg",
+        // Secondary - Green pill button
         secondary:
-          "bg-secondary text-neutral-900 hover:bg-[#1565C0] hover:text-white active:bg-[#0D47A1] shadow-sm",
+          "bg-secondary text-white hover:bg-black rounded-pill shadow-sm hover:shadow-md",
+        // Outline - Blue border
         outline:
-          "border-2 border-primary text-primary bg-transparent hover:bg-[#1565C0] hover:text-white hover:border-[#1565C0] active:bg-[#0D47A1]",
+          "border-2 border-primary text-primary bg-transparent hover:bg-primary hover:text-white rounded-md",
+        // Ghost - Subtle
         ghost:
-          "text-primary hover:bg-[#E3F2FD] hover:text-[#1565C0] active:bg-[#BBDEFB]",
+          "text-primary hover:bg-primary-50 rounded-md",
+        // Link style
         link:
-          "text-primary underline-offset-4 hover:underline hover:text-[#1565C0] p-0 h-auto font-medium",
+          "text-primary underline-offset-4 hover:underline hover:text-primary-700 p-0 h-auto font-medium rounded-none",
+        // Destructive
         destructive:
-          "bg-error text-white hover:bg-red-700 active:bg-red-800",
+          "bg-error text-white hover:bg-red-700 rounded-md",
+        // CTA - Orange accent (for special CTAs)
+        cta:
+          "bg-accent text-white hover:bg-black rounded-pill shadow-sm hover:shadow-md",
       },
       size: {
-        default: "h-12 px-6 py-3",
-        sm: "h-10 px-4 py-2 text-sm",
-        lg: "h-14 px-8 py-4 text-lg",
-        icon: "h-12 w-12",
+        default: "h-12 px-8 py-3",
+        sm: "h-10 px-6 py-2 text-sm",
+        lg: "h-14 px-10 py-4 text-lg",
+        xl: "h-16 px-12 py-5 text-xl",
+        icon: "h-12 w-12 rounded-full",
       },
     },
     defaultVariants: {

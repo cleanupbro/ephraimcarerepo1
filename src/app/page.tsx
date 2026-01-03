@@ -4,14 +4,14 @@ import { ServicesGrid } from "@/components/sections/services-grid";
 import { TrustSignals } from "@/components/sections/trust-signals";
 import { HowItWorks } from "@/components/sections/how-it-works";
 import { AboutPreview } from "@/components/sections/about-preview";
-import { Testimonials } from "@/components/sections/testimonials";
+// import { Testimonials } from "@/components/sections/testimonials"; // Hidden until client has real testimonials
 import { CTABanner } from "@/components/sections/cta-banner";
 import { FAQ } from "@/components/sections/faq";
-import { GoogleReviews } from "@/components/sections/google-reviews";
+// import { GoogleReviews } from "@/components/sections/google-reviews"; // Hidden until client has real reviews
 import { ServiceQuiz } from "@/components/sections/service-quiz";
 import { NDISCalculator } from "@/components/sections/ndis-calculator";
 import { ServiceMap } from "@/components/sections/service-map";
-import { VideoWelcome } from "@/components/sections/video-welcome";
+// import { VideoWelcome } from "@/components/sections/video-welcome"; // Hidden until client provides video
 import { ContactCards } from "@/components/sections/contact-cards";
 
 // SEO Optimized Metadata for Liverpool & Western Sydney
@@ -60,13 +60,13 @@ export default function HomePage() {
       <TrustSignals />
       <ServicesGrid />
       <HowItWorks />
-      <VideoWelcome />
+      {/* <VideoWelcome /> Hidden until client provides video */}
       <ContactCards />
       <ServiceQuiz />
       <ServiceMap />
       <AboutPreview />
-      <Testimonials />
-      <GoogleReviews />
+      {/* <Testimonials /> Hidden until client has real testimonials */}
+      {/* <GoogleReviews /> Hidden until client has real reviews */}
       <FAQ />
       <NDISCalculator />
       <CTABanner />

@@ -4,10 +4,16 @@
 export const images = {
   // Hero images - Main website hero
   hero: {
-    main: "/images/ndis/Hero-Image.png",
+    main: "/images/hero/main-hero.png",
     alt: "Professional NDIS disability support services in Western Sydney",
     secondary: "/images/hero/hero-page-image.webp",
     secondaryAlt: "Ephraim Care - Compassionate NDIS support",
+    ndis: "/images/hero/hero-ndis.jpg",
+    ndisAlt: "NDIS support services in Liverpool",
+    services: "/images/hero/hero-backup-1.jpg",
+    servicesAlt: "NDIS services for community participation",
+    contact: "/images/hero/hero-backup-2.jpg",
+    contactAlt: "Contact Ephraim Care for NDIS support",
     community: "/images/services/community-participation/community.webp",
     communityAlt: "Community participation and social activities",
   },
@@ -51,7 +57,6 @@ export const images = {
   // People gallery - Diverse representation
   people: {
     wheelchair1: "/images/services/personal-care/black-man-explaining-documents-to-senior-caucasian-woman-disability-wheelchair-both-sitting-table-home-setting-engaging-401462923.webp",
-    wheelchair2: "/images/services/life-skills/asian-young-woman-amputee-leg-600nw-2580515399.webp",
     elderly1: "/images/services/personal-care/Development-of-Daily-Living-Skills.webp",
     elderly2: "/images/services/household-tasks/NDIS-for-autism.jpg",
     group1: "/images/services/community-participation/Support-Community-Auslife-Care.jpg",

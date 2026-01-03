@@ -79,7 +79,6 @@ export const services: Service[] = [
     gallery: [
       "/images/services/travel-transport/transport2.jpg",
       "/images/services/travel-transport/disability-travel-and-transport-min.png",
-      "/images/services/travel-transport/person-disability-accesses-van-using-600nw-2668478257.webp",
     ],
   },
   {
@@ -161,7 +160,6 @@ export const services: Service[] = [
     color: "primary",
     image: "/images/services/life-skills/Assistance-with-Daily-Life-NDIS_0006-1024x687.webp",
     gallery: [
-      "/images/services/life-skills/asian-young-woman-amputee-leg-600nw-2580515399.webp",
       "/images/services/life-skills/at-the-beach-Disability-NDIS.jpg",
       "/images/services/life-skills/benefits-of-disability-social-support-1153x690.jpg",
     ],
@@ -188,8 +186,6 @@ export const services: Service[] = [
     color: "secondary",
     image: "/images/services/household-tasks/NDIS-Household-Tasks-support-worker-helping-participant-with-home-duties.jpeg",
     gallery: [
-      "/images/services/household-tasks/istockphoto-1313001485-612x612.jpg",
-      "/images/services/household-tasks/istockphoto-1456237463-612x612.jpg",
       "/images/services/household-tasks/NDIS-for-autism.jpg",
     ],
   },
@@ -241,10 +237,8 @@ export const services: Service[] = [
     color: "secondary",
     image: "/images/services/group-activities/NDIS-Disability-Support-Services-scaled.jpg",
     gallery: [
-      "/images/services/group-activities/friends-having-fun-together_23-2149329715.avif",
       "/images/services/group-activities/Life-Skills-Merindah-March-2025-Betty-and-Henry-WEB-image-1024x731.jpg",
       "/images/services/group-activities/NDIS-Social-and-Community-Participation-Fund-to-Meet-People-with-Similar-Interests.png",
-      "/images/services/group-activities/shutterstock_2127075026-Development-of-Daily-Living-and-Life-Skills.jpg",
     ],
   },
 ];

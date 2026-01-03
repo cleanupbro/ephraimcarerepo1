@@ -14,30 +14,66 @@ export default function ServicesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="section bg-gradient-to-br from-primary-50 via-white to-secondary-50 relative overflow-hidden">
-        {/* Background decoration */}
-        <div className="absolute inset-0" aria-hidden="true">
-          <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary-100 rounded-full opacity-50 blur-3xl" />
-          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-secondary-100 rounded-full opacity-50 blur-3xl" />
+      <section className="relative overflow-hidden" style={{ backgroundColor: "#FDF2E6" }}>
+        <div className="container-wide relative z-10">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[60vh] py-12 md:py-16 lg:py-20">
+            {/* Left Column - Text Content */}
+            <FadeIn className="max-w-xl">
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0088CC] shadow-lg mb-6">
+                <Sparkles className="h-5 w-5 text-white" aria-hidden="true" />
+                <span className="text-sm font-semibold text-white">
+                  8 Core Service Areas
+                </span>
+              </span>
+
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight">
+                <span className="text-neutral-900">Our NDIS</span>
+                <br />
+                <span className="text-[#0088CC]">Support Services</span>
+              </h1>
+
+              <p className="mt-6 text-lg sm:text-xl text-neutral-600">
+                Comprehensive, person-centred support tailored to your individual
+                needs and goals. We work with you to achieve greater independence
+                and quality of life.
+              </p>
+            </FadeIn>
+
+            {/* Right Column - Hero Image with Ken Burns Effect */}
+            <FadeIn direction="right" delay={0.3} className="flex justify-center lg:justify-end">
+              <div
+                className="relative overflow-hidden shadow-2xl"
+                style={{
+                  width: "clamp(280px, 40vw, 450px)",
+                  height: "clamp(280px, 40vw, 450px)",
+                  borderRadius: "350px",
+                }}
+              >
+                <motion.div
+                  initial={{ scale: 1 }}
+                  animate={{ scale: 1.1 }}
+                  transition={{ duration: 20, repeat: Infinity, repeatType: "reverse", ease: "linear" }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src="/images/hero/hero-backup-1.jpg"
+                    alt="NDIS support services in Western Sydney"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </motion.div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0088CC]/10 to-transparent" />
+              </div>
+            </FadeIn>
+          </div>
         </div>
 
-        <div className="container-wide relative z-10">
-          <FadeIn className="max-w-3xl">
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-100 border border-primary-200 mb-6">
-              <Sparkles className="h-5 w-5 text-primary" aria-hidden="true" />
-              <span className="text-sm font-semibold text-primary-800">
-                8 Core Service Areas
-              </span>
-            </span>
-
-            <h1 className="text-balance">Our NDIS Support Services</h1>
-
-            <p className="mt-6 text-xl text-neutral-600">
-              Comprehensive, person-centred support tailored to your individual
-              needs and goals. We work with you to achieve greater independence
-              and quality of life.
-            </p>
-          </FadeIn>
+        {/* Wave Divider */}
+        <div className="absolute bottom-0 left-0 right-0" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" className="w-full h-auto" preserveAspectRatio="none">
+            <path fill="#ffffff" d="M0,40 C150,80 350,0 500,40 C650,80 750,20 900,40 C1050,60 1200,30 1440,60 L1440,120 L0,120 Z" />
+          </svg>
         </div>
       </section>
 

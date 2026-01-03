@@ -19,3 +19,15 @@ export { GoogleReviews } from './google-reviews';
 export { ServiceQuiz } from './service-quiz';
 export { NDISCalculator } from './ndis-calculator';
 export { ContactCards } from './contact-cards';
+export {
+  WaveDivider,
+  WaveDividerWhiteBottom,
+  WaveDividerWhiteTop,
+  WaveDividerCreamBottom,
+  WaveDividerCreamTop,
+  WaveDividerPrimary,
+  WaveDividerGray,
+  type WaveDividerProps,
+  type WaveVariant,
+  type WavePosition,
+} from './wave-divider';
