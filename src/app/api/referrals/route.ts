@@ -1,14 +1,34 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getReferrals, addReferral, updateReferral, type Referral } from "@/lib/db";
+import { createClient } from "@supabase/supabase-js";
+
+// Create Supabase client for API routes (uses service role for full access)
+function getSupabase() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (!url || !key) {
+    throw new Error("Supabase configuration missing");
+  }
+
+  return createClient(url, key);
+}
 
 // GET - Fetch all referrals
 export async function GET() {
   try {
-    const data = await getReferrals();
+    const supabase = getSupabase();
+
+    const { data, error, count } = await supabase
+      .from("referrals")
+      .select("*", { count: "exact" })
+      .order("created_at", { ascending: false });
+
+    if (error) throw error;
+
     return NextResponse.json({
       success: true,
-      data,
-      total: data.length,
+      data: data || [],
+      total: count || 0,
     });
   } catch (error) {
     console.error("Error fetching referrals:", error);
@@ -23,28 +43,37 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
+    const supabase = getSupabase();
 
-    // Map form fields to referral fields
-    const referralData: Partial<Referral> = {
-      participantName: body.participantFirstName
-        ? `${body.participantFirstName} ${body.participantLastName || ""}`.trim()
-        : body.participantName || "Unknown",
-      participantPhone: body.participantPhone || "",
-      participantEmail: body.participantEmail || "",
-      ndisNumber: body.ndisNumber || "",
-      suburb: body.suburb || "",
+    // Map form fields to database columns
+    const referralData = {
+      first_name: body.participantFirstName || body.firstName || "Unknown",
+      last_name: body.participantLastName || body.lastName || "",
+      phone: body.participantPhone || body.phone || null,
+      email: body.participantEmail || body.email || null,
+      ndis_number: body.ndisNumber || null,
+      dob: body.dob || null,
+      suburb: body.suburb || null,
       services: body.selectedServices || body.services || [],
-      referrerName: body.referrerName || "",
-      referrerRole: body.referrerRole || "",
-      referrerOrg: body.referrerOrganisation || body.referrerOrg || "",
-      referrerPhone: body.referrerPhone || "",
-      referrerEmail: body.referrerEmail || "",
-      goals: body.goals || "",
+      funding_type: body.fundingType || null,
+      goals: body.goals || null,
+      referrer_name: body.referrerName || null,
+      referrer_role: body.referrerRole || null,
+      referrer_org: body.referrerOrganisation || body.referrerOrg || null,
+      referrer_phone: body.referrerPhone || null,
+      referrer_email: body.referrerEmail || null,
+      status: "new",
     };
 
-    const newReferral = await addReferral(referralData);
+    const { data: newReferral, error } = await supabase
+      .from("referrals")
+      .insert(referralData)
+      .select()
+      .single();
 
-    // Send notifications to both developer and client
+    if (error) throw error;
+
+    // Send notifications
     sendNotifications(newReferral).catch(console.error);
 
     return NextResponse.json({
@@ -65,8 +94,17 @@ export async function POST(request: NextRequest) {
 export async function PATCH(request: NextRequest) {
   try {
     const { id, ...updates } = await request.json();
+    const supabase = getSupabase();
 
-    const updated = await updateReferral(id, updates);
+    const { data: updated, error } = await supabase
+      .from("referrals")
+      .update(updates)
+      .eq("id", id)
+      .select()
+      .single();
+
+    if (error) throw error;
+
     if (!updated) {
       return NextResponse.json(
         { success: false, error: "Referral not found" },
@@ -87,15 +125,25 @@ export async function PATCH(request: NextRequest) {
   }
 }
 
-// Send notifications to developer AND client
-async function sendNotifications(referral: Referral) {
-  const message = `🆕 New Referral!\n\nName: ${referral.participantName}\nPhone: ${referral.participantPhone}\nSuburb: ${referral.suburb}\nServices: ${referral.services.slice(0, 2).join(", ")}\n\nCheck admin dashboard for details.`;
+// Send notifications to admin
+async function sendNotifications(referral: {
+  first_name: string;
+  last_name: string;
+  phone: string | null;
+  suburb: string | null;
+  services: string[];
+}) {
+  const name = `${referral.first_name} ${referral.last_name}`.trim();
+  const message = `🆕 New Referral!\n\nName: ${name}\nPhone: ${referral.phone || "N/A"}\nSuburb: ${referral.suburb || "N/A"}\nServices: ${referral.services?.slice(0, 2).join(", ") || "N/A"}\n\nCheck admin dashboard for details.`;
 
-  // Notify developer (SMS)
-  await sendSMS(process.env.DEVELOPER_PHONE || "", message);
+  // Send SMS to admin
+  await sendSMS(process.env.ADMIN_NOTIFY_PHONE || "", message);
 
-  // Notify client (WhatsApp)
+  // Send WhatsApp to admin
   await sendWhatsApp(process.env.ADMIN_NOTIFY_PHONE || "", message);
+
+  // Send Telegram notification
+  await sendTelegram(message);
 }
 
 // Send SMS via Twilio
@@ -151,5 +199,31 @@ async function sendWhatsApp(to: string, message: string) {
     console.log("WhatsApp sent to", to);
   } catch (error) {
     console.error("WhatsApp error:", error);
+  }
+}
+
+// Send Telegram notification
+async function sendTelegram(message: string) {
+  const TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+  const CHAT_ID = process.env.TELEGRAM_CHAT_ID;
+
+  if (!TOKEN || !CHAT_ID) {
+    console.log("Telegram not configured");
+    return;
+  }
+
+  try {
+    await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: CHAT_ID,
+        text: message,
+        parse_mode: "HTML",
+      }),
+    });
+    console.log("Telegram sent");
+  } catch (error) {
+    console.error("Telegram error:", error);
   }
 }

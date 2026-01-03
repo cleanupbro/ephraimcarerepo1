@@ -1,13 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Eye, EyeOff, Lock, Mail, ArrowRight, Shield } from "lucide-react";
+import { createClient } from "@/lib/supabase";
 
-export default function AdminLogin() {
+function LoginForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirect = searchParams.get("redirect") || "/admin";
+
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -22,19 +26,62 @@ export default function AdminLogin() {
     setIsLoading(true);
     setError("");
 
-    // Simulate login - Replace with actual authentication
-    setTimeout(() => {
-      // Demo credentials for testing
-      if (formData.email === "admin@ephraimcare.com.au" && formData.password === "admin123") {
-        // Store login state (replace with proper auth later)
-        localStorage.setItem("adminLoggedIn", "true");
-        localStorage.setItem("adminEmail", formData.email);
-        router.push("/admin");
-      } else {
-        setError("Invalid email or password. Try: admin@ephraimcare.com.au / admin123");
+    try {
+      const supabase = createClient();
+
+      const { data, error: authError } = await supabase.auth.signInWithPassword({
+        email: formData.email,
+        password: formData.password,
+      });
+
+      if (authError) {
+        setError(authError.message);
         setIsLoading(false);
+        return;
       }
-    }, 1500);
+
+      if (data.session) {
+        // Successful login - redirect to dashboard or intended page
+        router.push(redirect);
+        router.refresh();
+      }
+    } catch (err) {
+      console.error("Login error:", err);
+      setError("An unexpected error occurred. Please try again.");
+      setIsLoading(false);
+    }
+  };
+
+  const handleForgotPassword = async () => {
+    if (!formData.email) {
+      setError("Please enter your email address first");
+      return;
+    }
+
+    setIsLoading(true);
+    setError("");
+
+    try {
+      const supabase = createClient();
+      const { error: resetError } = await supabase.auth.resetPasswordForEmail(
+        formData.email,
+        {
+          redirectTo: `${window.location.origin}/admin/reset-password`,
+        }
+      );
+
+      if (resetError) {
+        setError(resetError.message);
+      } else {
+        setError(""); // Clear any previous errors
+        alert("Password reset email sent! Check your inbox.");
+      }
+    } catch (err) {
+      console.error("Reset password error:", err);
+      setError("Failed to send reset email. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -186,7 +233,11 @@ export default function AdminLogin() {
                   />
                   <span className="text-sm text-neutral-600">Remember me</span>
                 </label>
-                <button type="button" className="text-sm text-primary hover:text-primary-700 font-medium">
+                <button
+                  type="button"
+                  onClick={handleForgotPassword}
+                  className="text-sm text-primary hover:text-primary-700 font-medium"
+                >
                   Forgot password?
                 </button>
               </div>
@@ -211,15 +262,6 @@ export default function AdminLogin() {
               </button>
             </form>
 
-            {/* Demo credentials */}
-            <div className="mt-6 p-4 rounded-lg bg-neutral-50 border border-neutral-200">
-              <p className="text-xs text-neutral-500 text-center mb-2">Demo Credentials</p>
-              <div className="text-sm text-neutral-700 text-center space-y-1">
-                <p><strong>Email:</strong> admin@ephraimcare.com.au</p>
-                <p><strong>Password:</strong> admin123</p>
-              </div>
-            </div>
-
             {/* Back to website */}
             <div className="mt-6 text-center">
               <Link
@@ -238,5 +280,25 @@ export default function AdminLogin() {
         </div>
       </div>
     </div>
+  );
+}
+
+// Loading fallback for Suspense
+function LoginLoading() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 flex items-center justify-center">
+      <div className="text-center">
+        <div className="w-12 h-12 border-4 border-white/30 border-t-white rounded-full animate-spin mx-auto mb-4" />
+        <p className="text-neutral-300">Loading...</p>
+      </div>
+    </div>
+  );
+}
+
+export default function AdminLogin() {
+  return (
+    <Suspense fallback={<LoginLoading />}>
+      <LoginForm />
+    </Suspense>
   );
 }

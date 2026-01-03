@@ -18,6 +18,8 @@ import {
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import { createClient } from "@/lib/supabase";
+import type { User } from "@supabase/supabase-js";
 
 const navigation = [
   { name: "Dashboard", href: "/admin", icon: LayoutDashboard },
@@ -41,9 +43,8 @@ export default function AdminLayout({
   const isLoginPage = pathname?.includes("/admin/login");
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isLoading, setIsLoading] = useState(!isLoginPage); // Don't show loading on login page
-  const [userEmail, setUserEmail] = useState("");
+  const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(!isLoginPage);
 
   // Check authentication on mount
   useEffect(() => {
@@ -53,30 +54,45 @@ export default function AdminLayout({
       return;
     }
 
-    const checkAuth = () => {
-      const loggedIn = localStorage.getItem("adminLoggedIn") === "true";
-      const email = localStorage.getItem("adminEmail") || "";
-      setIsAuthenticated(loggedIn);
-      setUserEmail(email);
+    const supabase = createClient();
+
+    // Get initial session
+    const checkAuth = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      setUser(session?.user ?? null);
       setIsLoading(false);
 
       // Redirect to login if not authenticated
-      if (!loggedIn) {
+      if (!session) {
         router.push("/admin/login");
       }
     };
 
     checkAuth();
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        setUser(session?.user ?? null);
+        if (!session && !isLoginPage) {
+          router.push("/admin/login");
+        }
+      }
+    );
+
+    return () => {
+      subscription.unsubscribe();
+    };
   }, [pathname, router, isLoginPage]);
 
   // Handle logout
-  const handleLogout = () => {
-    localStorage.removeItem("adminLoggedIn");
-    localStorage.removeItem("adminEmail");
+  const handleLogout = async () => {
+    const supabase = createClient();
+    await supabase.auth.signOut();
     router.push("/admin/login");
   };
 
-  // If on login page, render children without layout - check FIRST
+  // If on login page, render children without layout
   if (isLoginPage) {
     return <>{children}</>;
   }
@@ -94,9 +110,11 @@ export default function AdminLayout({
   }
 
   // If not authenticated, show nothing (will redirect)
-  if (!isAuthenticated) {
+  if (!user) {
     return null;
   }
+
+  const userEmail = user.email || "";
 
   return (
     <div className="min-h-screen bg-neutral-100">
@@ -152,11 +170,6 @@ export default function AdminLayout({
               >
                 <item.icon className="w-5 h-5" />
                 {item.name}
-                {item.name !== "Dashboard" && item.name !== "Settings" && (
-                  <span className="ml-auto text-xs px-2 py-0.5 rounded-full bg-neutral-800 text-neutral-400">
-                    Soon
-                  </span>
-                )}
               </Link>
             );
           })}
