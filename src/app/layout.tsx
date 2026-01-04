@@ -175,6 +175,12 @@ export default function RootLayout({
   return (
     <html lang="en-AU" className={`${montserrat.variable} ${inter.variable}`}>
       <head>
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href="/images/logo/ephraim-care-icon.png" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="Ephraim Admin" />
+        <meta name="theme-color" content="#2E7D6B" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

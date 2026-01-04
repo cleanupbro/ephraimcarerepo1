@@ -1,0 +1,21 @@
+{
+  "name": "Ephraim Care Admin",
+  "short_name": "Ephraim Admin",
+  "description": "Ephraim Care NDIS Provider Admin Dashboard",
+  "start_url": "/admin",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#2E7D6B",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/images/logo/ephraim-care-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "categories": ["business", "productivity"],
+  "lang": "en-AU"
+}
