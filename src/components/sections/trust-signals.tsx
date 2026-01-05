@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { StaggerContainer, StaggerItem, CountUp, FadeIn } from "@/components/animations";
 import { motion } from "motion/react";
-import { Award, Heart, MapPin, Star } from "lucide-react";
+import { Award, Heart, MapPin } from "lucide-react";
 
 const stats = [
   {
@@ -25,14 +25,7 @@ const stats = [
     value: "3",
     suffix: "+",
     label: "Locations",
-    description: "Across Western Sydney",
-  },
-  {
-    icon: Star,
-    value: "5",
-    suffix: ".0",
-    label: "Star Rating",
-    description: "Client satisfaction",
+    description: "Western & Southwestern Sydney",
   },
 ];
 
@@ -48,7 +41,7 @@ export function TrustSignals() {
         </FadeIn>
 
         {/* Stats Grid - In4Care style with circular icons */}
-        <StaggerContainer staggerDelay={0.15} className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+        <StaggerContainer staggerDelay={0.15} className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-12 max-w-4xl mx-auto">
           {stats.map((stat) => {
             const Icon = stat.icon;
             return (

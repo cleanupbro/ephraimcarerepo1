@@ -22,17 +22,17 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://ephraimcare.com.au"),
   title: {
-    default: "NDIS Provider Liverpool & Western Sydney | Ephraim Care",
+    default: "NDIS Provider Liverpool | Western & Southwestern Sydney | Ephraim Care",
     template: "%s | Ephraim Care",
   },
   description:
-    "Quality NDIS support services in Liverpool, Prestons, Fairfield & Western Sydney. Personal care, SIL, community participation, transport & group activities. Call 0451 918 884.",
+    "Quality NDIS support services in Liverpool, Prestons, Fairfield & Western/Southwestern Sydney. Personal care, SIL, community participation, transport & group activities. Call 0451 918 884.",
   keywords: [
     "NDIS provider Liverpool",
-    "NDIS services Western Sydney",
+    "NDIS services Western Southwestern Sydney",
     "disability support Liverpool NSW",
     "NDIS support worker Liverpool",
-    "NDIS personal care Western Sydney",
+    "NDIS personal care Western Southwestern Sydney",
     "supported independent living Liverpool",
     "NDIS community participation Sydney",
     "NDIS transport assistance Liverpool",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     "NDIS Lurnea",
     "24 hour disability support Liverpool",
     "NDIS provider near me",
-    "NDIS plan management Western Sydney",
+    "NDIS plan management Western Southwestern Sydney",
   ],
   authors: [{ name: "Ephraim Care" }],
   creator: "Ephraim Care",
@@ -56,9 +56,9 @@ export const metadata: Metadata = {
     locale: "en_AU",
     url: "https://ephraimcare.com.au",
     siteName: "Ephraim Care",
-    title: "Ephraim Care | NDIS Provider Liverpool & Western Sydney",
+    title: "Ephraim Care | NDIS Provider Liverpool & Western/Southwestern Sydney",
     description:
-      "Quality NDIS support services in Liverpool & Western Sydney. Personal care, SIL, community participation & more. Call 0451 918 884.",
+      "Quality NDIS support services in Liverpool & Western/Southwestern Sydney. Personal care, SIL, community participation & more. Call 0451 918 884.",
     images: [
       {
         url: "/images/ndis/Hero-Image.png",
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Ephraim Care | NDIS Provider Liverpool",
     description:
-      "Quality NDIS support services in Liverpool & Western Sydney. Call 0451 918 884.",
+      "Quality NDIS support services in Liverpool & Western/Southwestern Sydney. Call 0451 918 884.",
   },
   robots: {
     index: true,
@@ -97,7 +97,7 @@ const jsonLd = {
   "@id": "https://ephraimcare.com.au",
   name: "Ephraim Care",
   description:
-    "Quality NDIS support services in Liverpool & Western Sydney. Personal care, supported independent living, community participation, transport & group activities.",
+    "Quality NDIS support services in Liverpool & Western/Southwestern Sydney. Personal care, supported independent living, community participation, transport & group activities.",
   url: "https://ephraimcare.com.au",
   telephone: "+61451918884",
   email: "info@ephraimcare.com.au",
@@ -122,6 +122,7 @@ const jsonLd = {
     { "@type": "City", name: "Cabramatta" },
     { "@type": "City", name: "Wetherill Park" },
     { "@type": "AdministrativeArea", name: "Western Sydney" },
+    { "@type": "AdministrativeArea", name: "Southwestern Sydney" },
   ],
   openingHours: "Mo-Fr 09:00-17:00",
   priceRange: "$$",

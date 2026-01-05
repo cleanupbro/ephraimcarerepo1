@@ -40,7 +40,7 @@ export function Footer() {
             </Link>
             <p className="text-white/60 text-sm leading-relaxed mb-4">
               Compassionate, person-centred disability and mental health support
-              services across Western Sydney.
+              services across Western & Southwestern Sydney.
             </p>
             {/* NDIS Badges */}
             <div className="flex justify-center md:justify-start items-center gap-3">
@@ -129,7 +129,7 @@ export function Footer() {
               </a>
               <div className="flex items-start justify-center md:justify-start gap-3 text-white/60">
                 <MapPin className="h-4 w-4 text-primary mt-0.5" />
-                <span className="text-sm">Western Sydney, NSW</span>
+                <span className="text-sm">Western & SW Sydney, NSW</span>
               </div>
             </div>
 

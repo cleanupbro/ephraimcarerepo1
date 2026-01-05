@@ -47,7 +47,7 @@ export const services: Service[] = [
       "Meal preparation and feeding assistance",
     ],
     color: "primary",
-    image: "/images/services/personal-care/NDIS-Personal-Care-Gold-Coast-scaled.webp",
+    image: "/images/services/personal-care/personal-care-hero.jpg",
     gallery: [
       "/images/services/personal-care/ndis-personal-care.jpg",
       "/images/services/personal-care/Personal-Care-Younified-Care.jpeg",
@@ -103,7 +103,7 @@ export const services: Service[] = [
       "Household management support",
     ],
     color: "primary",
-    image: "/images/services/supported-independent-living/supported-independent-living-scaled.jpg",
+    image: "/images/services/supported-independent-living/sil-hero.jpg",
     gallery: [
       "/images/services/supported-independent-living/BLOG+BANNERS+-compress.webp",
       "/images/services/supported-independent-living/HOW-NDIS-PROVIDERS-AND-SIL-PROVIDERS-WORK-TOGETHER-FOR-YOUR-DISABILITY-SUPPORT-min.jpg",

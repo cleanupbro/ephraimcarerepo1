@@ -15,11 +15,11 @@
   --foreground: #000000;
   --surface: #FFFFFF;
 
-  /* Primary - Blue (from logo) */
-  --primary: #0088CC;
-  --primary-hover: #006FA6;
-  --primary-light: #E6F4FA;
-  --primary-dark: #005680;
+  /* Primary - Teal/Cyan Green (client request) */
+  --primary: #00BFA5;
+  --primary-hover: #008C7D;
+  --primary-light: #E0F7F4;
+  --primary-dark: #007362;
 
   /* Secondary - Green (from logo) */
   --secondary: #66BB6A;
@@ -36,7 +36,7 @@
   --text-muted: #666666;
 
   /* Focus */
-  --focus-ring: #0088CC;
+  --focus-ring: #00BFA5;
   --focus-ring-offset: 2px;
 
   /* Comfort Mode Overrides */

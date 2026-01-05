@@ -9,19 +9,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Primary - Blue (from Ephraim Care logo)
+        // Primary - Teal/Cyan Green (client request)
         primary: {
-          50: '#E6F4FA',
-          100: '#CCE9F5',
-          200: '#99D3EB',
-          300: '#66BDE1',
-          400: '#33A7D7',
-          500: '#0088CC',
-          600: '#006FA6',
-          700: '#005680',
-          800: '#003D5A',
-          900: '#002434',
-          DEFAULT: '#0088CC',
+          50: '#E0F7F4',
+          100: '#B3ECE4',
+          200: '#80E0D0',
+          300: '#4DD4BC',
+          400: '#26CAAC',
+          500: '#00BFA5',
+          600: '#00A68E',
+          700: '#008C78',
+          800: '#007362',
+          900: '#004D45',
+          DEFAULT: '#00BFA5',
         },
         // Secondary - Green (from Ephraim Care logo)
         secondary: {
@@ -153,7 +153,7 @@ const config: Config = {
       boxShadow: {
         'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
         'card-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
-        'button': '0 4px 14px 0 rgba(0, 136, 204, 0.39)',
+        'button': '0 4px 14px 0 rgba(0, 191, 165, 0.39)',
       },
     },
   },

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Phone, ArrowRight, MapPin, Search, Heart, Star, Users, Shield } from "lucide-react";
+import { Phone, ArrowRight, MapPin, Search, Heart, Users, Shield } from "lucide-react";
 import { contactInfo } from "@/data/navigation";
 import { FadeIn, Floating, StaggerContainer, StaggerItem } from "@/components/animations";
 import { motion } from "motion/react";
@@ -88,7 +88,7 @@ export function Hero() {
                 <StaggerItem>
                   <p className="text-xl sm:text-2xl text-white/90 max-w-xl leading-relaxed font-medium drop-shadow">
                     Compassionate, person-centred disability and mental health
-                    support services across Western Sydney.
+                    support services across Western & Southwestern Sydney.
                   </p>
                 </StaggerItem>
 
@@ -115,7 +115,7 @@ export function Hero() {
                       </button>
                     </div>
                     <p className="text-white/70 text-sm mt-3 pl-2">
-                      Servicing Liverpool, Parramatta, Penrith & all of Western Sydney
+                      Servicing Liverpool, Parramatta, Penrith & Western/Southwestern Sydney
                     </p>
                   </form>
                 </StaggerItem>
@@ -161,11 +161,11 @@ export function Hero() {
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center">
-                        <Star className="w-5 h-5 text-secondary" />
+                        <Shield className="w-5 h-5 text-secondary" />
                       </div>
                       <div>
-                        <p className="text-white font-bold text-lg">5-Star</p>
-                        <p className="text-white/70 text-sm">Reviews</p>
+                        <p className="text-white font-bold text-lg">NDIS</p>
+                        <p className="text-white/70 text-sm">Registered</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
@@ -223,7 +223,7 @@ export function Hero() {
                             <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                           </svg>
                         </div>
-                        <span className="text-sm font-medium">Local Western Sydney Team</span>
+                        <span className="text-sm font-medium">Local Sydney Team</span>
                       </div>
                     </div>
                     <div className="mt-6 pt-6 border-t border-neutral-200">

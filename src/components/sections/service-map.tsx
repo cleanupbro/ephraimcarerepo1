@@ -79,9 +79,9 @@ export function ServiceMap() {
             <MapPin className="w-4 h-4" />
             Service Areas
           </span>
-          <h2 className="text-balance">We Serve All of Western Sydney</h2>
+          <h2 className="text-balance">We Serve Western & Southwestern Sydney</h2>
           <p className="mt-4 text-lg text-neutral-600">
-            From our base in Prestons, we provide support services across the greater Western Sydney region.
+            From our base in Prestons, we provide support services across Western & Southwestern Sydney.
           </p>
         </FadeIn>
 
@@ -142,7 +142,7 @@ export function ServiceMap() {
 
               {/* Sydney label */}
               <div className="absolute top-4 left-4 text-xs font-medium text-primary-600 bg-white/80 px-2 py-1 rounded">
-                Western Sydney Region
+                Western & SW Sydney
               </div>
             </div>
           </FadeIn>

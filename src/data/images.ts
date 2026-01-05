@@ -21,7 +21,7 @@ export const images = {
   // Service images - Local paths
   services: {
     "personal-care": {
-      image: "/images/services/personal-care/NDIS-Personal-Care-Gold-Coast-scaled.webp",
+      image: "/images/services/personal-care/personal-care-hero.jpg",
       alt: "Personal care support worker helping NDIS participant in Liverpool",
     },
     "travel-transport": {
@@ -29,7 +29,7 @@ export const images = {
       alt: "NDIS transport assistance in Western Sydney",
     },
     "supported-independent-living": {
-      image: "/images/services/supported-independent-living/supported-independent-living-scaled.jpg",
+      image: "/images/services/supported-independent-living/sil-hero.jpg",
       alt: "Supported Independent Living accommodation in Liverpool NSW",
     },
     "community-participation": {

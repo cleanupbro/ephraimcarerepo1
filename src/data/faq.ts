@@ -39,7 +39,7 @@ export const faqItems: FAQItem[] = [
     emoji: "📍",
     question: "What areas do you service?",
     answer:
-      "We proudly serve the Western Sydney region including Liverpool, Parramatta, Penrith, Blacktown, Campbelltown, Fairfield, and surrounding areas. If you are unsure whether we service your location, please contact us and we will do our best to accommodate you.",
+      "We proudly serve Western & Southwestern Sydney including Liverpool, Parramatta, Penrith, Blacktown, Campbelltown, Fairfield, and surrounding areas. If you are unsure whether we service your location, please contact us and we will do our best to accommodate you.",
   },
   {
     emoji: "📝",
