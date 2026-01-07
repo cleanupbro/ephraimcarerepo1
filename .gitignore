@@ -43,3 +43,10 @@ API_REFERENCE.md
 CHANGELOG.md
 BUILD_STATE.md
 LAST_DEPLOY.md
+
+# Sensitive files
+api.md
+api.md.SENSITIVE_BACKUP
+.env.client
+*.SENSITIVE*
+
