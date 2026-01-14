@@ -18,6 +18,7 @@ import {
   PartyPopper,
   Send,
 } from "lucide-react";
+import { HowItWorks } from "@/components/sections/how-it-works";
 import { motion, AnimatePresence } from "motion/react";
 
 const WEBHOOK_URL = process.env.NEXT_PUBLIC_WEBHOOK_REFERRAL || "";
@@ -250,12 +251,12 @@ export default function ReferralsPage() {
   return (
     <>
       {/* Hero - In4Care Style */}
-      <section className="relative overflow-hidden" style={{ backgroundColor: "#FDF2E6" }}>
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#E8F5F3] to-[#F5FAFA]">
         <div className="container-wide relative z-10">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[50vh] py-12 md:py-16">
             {/* Left Column - Text Content */}
             <FadeIn className="max-w-xl">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0088CC] shadow-lg mb-6">
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary shadow-lg mb-6">
                 <Send className="h-5 w-5 text-white" aria-hidden="true" />
                 <span className="text-sm font-semibold text-white">
                   Simple Referral Process
@@ -265,7 +266,7 @@ export default function ReferralsPage() {
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight">
                 <span className="text-neutral-900">Make a</span>
                 <br />
-                <span className="text-[#0088CC]">Referral</span>
+                <span className="text-secondary">Referral</span>
               </h1>
 
               <p className="mt-6 text-lg sm:text-xl text-neutral-600">
@@ -303,14 +304,14 @@ export default function ReferralsPage() {
                   className="absolute inset-0"
                 >
                   <Image
-                    src="/images/hero/hero-referrals.jpeg"
+                    src="/images/services/community-participation/Support-Community-Auslife-Care.jpg"
                     alt="NDIS support worker helping participant"
                     fill
                     className="object-cover"
                     priority
                   />
                 </motion.div>
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0088CC]/10 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-secondary/10 to-transparent" />
               </div>
             </FadeIn>
           </div>
@@ -319,13 +320,13 @@ export default function ReferralsPage() {
         {/* Wave Divider */}
         <div className="absolute bottom-0 left-0 right-0" aria-hidden="true">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" className="w-full h-auto" preserveAspectRatio="none">
-            <path fill="#ffffff" d="M0,40 C150,80 350,0 500,40 C650,80 750,20 900,40 C1050,60 1200,30 1440,60 L1440,120 L0,120 Z" />
+            <path fill="#F5FAFA" d="M0,40 C150,80 350,0 500,40 C650,80 750,20 900,40 C1050,60 1200,30 1440,60 L1440,120 L0,120 Z" />
           </svg>
         </div>
       </section>
 
       {/* Steps */}
-      <section className="py-12 bg-white border-b border-neutral-200">
+      <section className="py-12 bg-gradient-to-b from-[#F5FAFA] to-white border-b border-neutral-200">
         <div className="container-wide">
           <div className="grid md:grid-cols-3 gap-8">
             {steps.map((step, index) => {
@@ -612,6 +613,9 @@ export default function ReferralsPage() {
           </div>
         </div>
       </section>
+
+      {/* How It Works - Moved from Homepage */}
+      <HowItWorks />
     </>
   );
 }

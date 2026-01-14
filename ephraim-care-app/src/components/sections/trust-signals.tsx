@@ -31,7 +31,7 @@ const stats = [
 
 export function TrustSignals() {
   return (
-    <section className="py-20 bg-cream relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-b from-[#E8F5F3] to-[#F5FAFA] relative overflow-hidden">
       <div className="container-wide relative z-10">
         {/* Section Header */}
         <FadeIn className="text-center mb-16">

@@ -4,6 +4,7 @@
 import Image from "next/image";
 // import { Button } from "@/components/ui/button"; // Hidden with Our Story section
 import { CTABanner } from "@/components/sections/cta-banner";
+import { TrustSignals } from "@/components/sections/trust-signals";
 // import { Team } from "@/components/sections/team"; // Hidden until client provides team info
 import { FadeIn } from "@/components/animations";
 import { motion } from "motion/react";
@@ -69,12 +70,12 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero - In4Care Style */}
-      <section className="relative overflow-hidden" style={{ backgroundColor: "#FDF2E6" }}>
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#E8F5F3] to-[#F5FAFA]">
         <div className="container-wide relative z-10">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[50vh] py-12 md:py-16">
             {/* Left Column - Text Content */}
             <FadeIn className="max-w-xl">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0088CC] shadow-lg mb-6">
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary shadow-lg mb-6">
                 <Heart className="h-5 w-5 text-white" aria-hidden="true" />
                 <span className="text-sm font-semibold text-white">
                   Registered NDIS Provider
@@ -84,7 +85,7 @@ export default function AboutPage() {
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight">
                 <span className="text-neutral-900">About</span>
                 <br />
-                <span className="text-[#0088CC]">Ephraim Care</span>
+                <span className="text-secondary">Ephraim Care</span>
               </h1>
 
               <p className="mt-6 text-lg sm:text-xl text-neutral-600">
@@ -112,14 +113,14 @@ export default function AboutPage() {
                   className="absolute inset-0"
                 >
                   <Image
-                    src="/images/hero/hero-about.jpg"
+                    src="/images/hero/hero-ndis.jpg"
                     alt="Caring NDIS support workers with participants"
                     fill
                     className="object-cover"
                     priority
                   />
                 </motion.div>
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0088CC]/10 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-secondary/10 to-transparent" />
               </div>
             </FadeIn>
           </div>
@@ -128,13 +129,16 @@ export default function AboutPage() {
         {/* Wave Divider */}
         <div className="absolute bottom-0 left-0 right-0" aria-hidden="true">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" className="w-full h-auto" preserveAspectRatio="none">
-            <path fill="#F5F5F5" d="M0,40 C150,80 350,0 500,40 C650,80 750,20 900,40 C1050,60 1200,30 1440,60 L1440,120 L0,120 Z" />
+            <path fill="#F5FAFA" d="M0,40 C150,80 350,0 500,40 C650,80 750,20 900,40 C1050,60 1200,30 1440,60 L1440,120 L0,120 Z" />
           </svg>
         </div>
       </section>
 
+      {/* Why Choose Ephraim Care - Moved from Homepage */}
+      <TrustSignals />
+
       {/* Our Story - Hidden until client provides story content
-      <section className="section bg-white">
+      <section className="section bg-gradient-to-b from-[#F0FAF8] to-white">
         <div className="container-wide">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -176,7 +180,7 @@ export default function AboutPage() {
       */}
 
       {/* Our Values */}
-      <section className="section bg-neutral-50">
+      <section className="section bg-gradient-to-b from-[#F5FAFA] to-[#F0FAF8]">
         <div className="container-wide">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <h2>Our Values</h2>
@@ -213,7 +217,7 @@ export default function AboutPage() {
       */}
 
       {/* Our Commitment */}
-      <section className="section bg-white">
+      <section className="section bg-gradient-to-b from-[#F0FAF8] to-white">
         <div className="container-wide">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>

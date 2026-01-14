@@ -3,32 +3,32 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight, CheckCircle, Heart, Shield, Users, Award, Target } from "lucide-react";
 import { images } from "@/data/images";
 import { FadeIn, StaggerContainer, StaggerItem, ScaleOnHover } from "@/components/animations";
 import { motion } from "motion/react";
 
 const values = [
   {
-    emoji: "❤️",
+    icon: Heart,
     title: "Compassion",
     description: "Every interaction is guided by genuine care and empathy.",
     gradient: "from-red-400 to-rose-500",
   },
   {
-    emoji: "🛡️",
+    icon: Shield,
     title: "Integrity",
     description: "We uphold the highest ethical standards in all we do.",
-    gradient: "from-blue-400 to-indigo-500",
+    gradient: "from-secondary-400 to-secondary-600",
   },
   {
-    emoji: "🤝",
+    icon: Users,
     title: "Community",
     description: "Building meaningful connections and social inclusion.",
     gradient: "from-green-400 to-emerald-500",
   },
   {
-    emoji: "🏆",
+    icon: Award,
     title: "Excellence",
     description: "Committed to delivering quality support every day.",
     gradient: "from-yellow-400 to-orange-500",
@@ -46,7 +46,7 @@ const highlights = [
 
 export function AboutPreview() {
   return (
-    <section className="section bg-neutral-50 relative overflow-hidden">
+    <section className="section bg-gradient-to-b from-[#F0FAF8] to-[#F5FAFA] relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-full">
         <div className="absolute top-20 right-20 w-72 h-72 bg-primary-100 rounded-full opacity-40 blur-3xl" />
@@ -80,7 +80,7 @@ export function AboutPreview() {
               >
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-full bg-gradient-to-br from-pink-400 to-rose-500 flex items-center justify-center shadow-md">
-                    <span className="text-xl">💖</span>
+                    <Heart className="w-5 h-5 text-white" aria-hidden="true" />
                   </div>
                   <div className="font-bold text-neutral-900">Our Promise</div>
                 </div>
@@ -98,7 +98,7 @@ export function AboutPreview() {
                 className="absolute -top-4 -left-4 bg-gradient-to-br from-purple-500 to-violet-600 text-white rounded-2xl shadow-xl p-4"
               >
                 <div className="flex items-center gap-2">
-                  <span className="text-2xl">🎯</span>
+                  <Target className="w-6 h-6 text-white" aria-hidden="true" />
                   <div>
                     <div className="text-2xl font-bold">5+</div>
                     <div className="text-xs text-purple-100">Years Experience</div>
@@ -163,7 +163,7 @@ export function AboutPreview() {
                 <ScaleOnHover scale={1.03}>
                   <div className="bg-white rounded-2xl p-6 border border-neutral-200 shadow-sm hover:shadow-lg transition-shadow h-full">
                     <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${value.gradient} flex items-center justify-center mb-4 shadow-lg`}>
-                      <span className="text-2xl" role="img" aria-hidden="true">{value.emoji}</span>
+                      <value.icon className="w-6 h-6 text-white" aria-hidden="true" />
                     </div>
                     <h3 className="text-lg font-semibold text-neutral-900">
                       {value.title}

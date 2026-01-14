@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion } from "motion/react";
-import { Calculator, ArrowRight, Info } from "lucide-react";
+import { Calculator, ArrowRight, Info, Home, TrendingUp, Wrench } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FadeIn } from "@/components/animations";
 
@@ -11,21 +11,21 @@ const fundingCategories = [
   {
     id: "core",
     name: "Core Supports",
-    emoji: "🏠",
+    icon: Home,
     description: "Daily activities, transport, consumables",
     hourlyRate: 65.47,
   },
   {
     id: "capacity",
     name: "Capacity Building",
-    emoji: "📈",
+    icon: TrendingUp,
     description: "Skills development, therapy, training",
     hourlyRate: 75.82,
   },
   {
     id: "capital",
     name: "Capital Supports",
-    emoji: "🛠️",
+    icon: Wrench,
     description: "Equipment, home modifications",
     hourlyRate: 0, // Not hourly
   },
@@ -45,7 +45,7 @@ export function NDISCalculator() {
   };
 
   return (
-    <section className="section bg-gradient-to-b from-white to-primary-50 relative overflow-hidden">
+    <section className="section bg-gradient-to-b from-[#F0FAF8] to-[#E8F5F3] relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0" aria-hidden="true">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary-100 rounded-full opacity-30 blur-3xl" />
@@ -87,7 +87,7 @@ export function NDISCalculator() {
                           : "border-neutral-200 hover:border-primary-300"
                       }`}
                     >
-                      <span className="text-2xl mb-2 block">{cat.emoji}</span>
+                      <cat.icon className="w-6 h-6 text-primary mb-2" aria-hidden="true" />
                       <span className="font-medium text-neutral-900 text-sm block">
                         {cat.name}
                       </span>

@@ -53,7 +53,9 @@ export function FAQ() {
                     aria-expanded={openIndex === index}
                   >
                     <div className="flex items-center gap-4">
-                      <span className="text-2xl">{item.emoji}</span>
+                      <div className="w-10 h-10 rounded-lg bg-primary-100 flex items-center justify-center flex-shrink-0">
+                        <item.icon className="w-5 h-5 text-primary" aria-hidden="true" />
+                      </div>
                       <span className="font-semibold text-neutral-900 text-base md:text-lg pr-4">
                         {item.question}
                       </span>
@@ -107,7 +109,7 @@ export function FAQ() {
             href="/contact"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-white font-semibold hover:bg-primary-800 transition-colors shadow-lg shadow-primary/20"
           >
-            <span>💬</span>
+            <HelpCircle className="w-5 h-5" aria-hidden="true" />
             Contact Us
           </a>
         </FadeIn>

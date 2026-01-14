@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/sections/hero";
 import { ServicesGrid } from "@/components/sections/services-grid";
-import { TrustSignals } from "@/components/sections/trust-signals";
-import { HowItWorks } from "@/components/sections/how-it-works";
+// import { TrustSignals } from "@/components/sections/trust-signals"; // Moved to About page
+// import { HowItWorks } from "@/components/sections/how-it-works"; // Moved to Referrals page
 import { AboutPreview } from "@/components/sections/about-preview";
 // import { Testimonials } from "@/components/sections/testimonials"; // Hidden until client has real testimonials
 import { CTABanner } from "@/components/sections/cta-banner";
-import { FAQ } from "@/components/sections/faq";
+// import { FAQ } from "@/components/sections/faq"; // Moved to dedicated /faq page
 // import { GoogleReviews } from "@/components/sections/google-reviews"; // Hidden until client has real reviews
-import { ServiceQuiz } from "@/components/sections/service-quiz";
+// import { ServiceQuiz } from "@/components/sections/service-quiz"; // Removed per client feedback
 import { NDISCalculator } from "@/components/sections/ndis-calculator";
 import { ServiceMap } from "@/components/sections/service-map";
 // import { VideoWelcome } from "@/components/sections/video-welcome"; // Hidden until client provides video
-import { ContactCards } from "@/components/sections/contact-cards";
+// import { ContactCards } from "@/components/sections/contact-cards"; // Contact info is on Contact page
 
 // SEO Optimized Metadata for Liverpool & Western Sydney
 export const metadata: Metadata = {
@@ -57,17 +57,9 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <TrustSignals />
       <ServicesGrid />
-      <HowItWorks />
-      {/* <VideoWelcome /> Hidden until client provides video */}
-      <ContactCards />
-      <ServiceQuiz />
       <ServiceMap />
       <AboutPreview />
-      {/* <Testimonials /> Hidden until client has real testimonials */}
-      {/* <GoogleReviews /> Hidden until client has real reviews */}
-      <FAQ />
       <NDISCalculator />
       <CTABanner />
     </>

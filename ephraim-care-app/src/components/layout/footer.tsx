@@ -9,7 +9,7 @@ const quickLinks = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
   { label: "About Us", href: "/about" },
-  { label: "NDIS Info", href: "/ndis" },
+  { label: "FAQ", href: "/faq" },
 ];
 
 const supportLinks = [
@@ -30,11 +30,11 @@ export function Footer() {
             <Link href="/" className="inline-block no-underline mb-4">
               <div className="bg-white rounded-lg p-3 inline-block transition-transform duration-300 hover:scale-105">
                 <Image
-                  src="/images/logo/ephraim-care-logo-full.png"
+                  src="/images/logo/ephraim-care-new-logo.png"
                   alt="Ephraim Care"
                   width={160}
                   height={50}
-                  className="h-10 w-auto object-contain"
+                  className="h-12 w-auto object-contain"
                 />
               </div>
             </Link>

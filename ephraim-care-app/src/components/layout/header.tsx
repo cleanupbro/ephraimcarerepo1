@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown, Phone } from "lucide-react";
-import { ComfortModeToggle } from "@/components/accessibility/comfort-mode-toggle";
 import { mainNavigation, contactInfo } from "@/data/navigation";
 import { cn } from "@/lib/utils";
 
@@ -49,15 +48,15 @@ export function Header() {
             href="/"
             className="flex items-center gap-3 no-underline hover:opacity-90 transition-opacity"
           >
-            {/* Circular Icon */}
+            {/* Logo Icon */}
             <div className="relative flex-shrink-0">
               <Image
-                src="/images/logo/ephraim-care-icon.png"
-                alt="Ephraim Care Icon"
+                src="/images/logo/ephraim-care-new-logo.png"
+                alt="Ephraim Care"
                 width={50}
                 height={50}
                 className={cn(
-                  "rounded-full object-contain transition-all duration-300",
+                  "object-contain transition-all duration-300",
                   isScrolled ? "w-10 h-10" : "w-[50px] h-[50px]"
                 )}
                 priority
@@ -98,8 +97,8 @@ export function Header() {
                       className={cn(
                         "inline-flex items-center px-6 py-2 font-medium transition-colors",
                         isActive(item.href)
-                          ? "text-[#0088CC]"
-                          : "text-black hover:text-[#0088CC]"
+                          ? "text-secondary"
+                          : "text-black hover:text-secondary"
                       )}
                       aria-expanded={servicesOpen}
                       aria-haspopup="true"
@@ -131,8 +130,8 @@ export function Header() {
                             className={cn(
                               "block px-5 py-3 text-sm no-underline transition-colors",
                               isActive(child.href)
-                                ? "text-[#0088CC] bg-blue-50"
-                                : "text-black hover:text-[#0088CC] hover:bg-blue-50"
+                                ? "text-secondary bg-secondary-50"
+                                : "text-black hover:text-secondary hover:bg-secondary-50"
                             )}
                           >
                             {child.label}
@@ -147,14 +146,14 @@ export function Header() {
                     className={cn(
                       "inline-flex items-center px-6 py-2 font-medium no-underline transition-colors relative",
                       isActive(item.href)
-                        ? "text-[#0088CC]"
-                        : "text-black hover:text-[#0088CC]"
+                        ? "text-secondary"
+                        : "text-black hover:text-secondary"
                     )}
                   >
                     {item.label}
                     {/* Active underline indicator */}
                     {isActive(item.href) && (
-                      <span className="absolute bottom-0 left-6 right-6 h-0.5 bg-[#0088CC]" />
+                      <span className="absolute bottom-0 left-6 right-6 h-0.5 bg-secondary" />
                     )}
                   </Link>
                 )}
@@ -169,7 +168,7 @@ export function Header() {
               href={contactInfo.phoneHref}
               className={cn(
                 "hidden md:flex items-center gap-2 font-semibold no-underline transition-colors",
-                "text-[#0088CC] hover:text-[#006699]"
+                "text-secondary hover:text-secondary-600"
               )}
             >
               <Phone
@@ -184,15 +183,13 @@ export function Header() {
               </span>
             </a>
 
-            {/* Comfort Mode Toggle */}
-            <ComfortModeToggle />
 
             {/* Get Started Button - Desktop */}
             <Link
               href="/referrals"
               className={cn(
                 "hidden sm:inline-flex items-center justify-center font-semibold rounded-full no-underline transition-all duration-300",
-                "bg-[#0088CC] text-white hover:bg-black",
+                "bg-secondary text-white hover:bg-black",
                 isScrolled
                   ? "px-5 py-2 text-sm"
                   : "px-6 py-2.5 text-base"
@@ -248,8 +245,8 @@ export function Header() {
                           className={cn(
                             "block px-4 py-3 text-base no-underline transition-colors",
                             isActive(child.href)
-                              ? "text-[#0088CC] bg-blue-50 font-medium"
-                              : "text-black hover:text-[#0088CC] hover:bg-blue-50"
+                              ? "text-secondary bg-secondary-50 font-medium"
+                              : "text-black hover:text-secondary hover:bg-secondary-50"
                           )}
                           onClick={() => setMobileMenuOpen(false)}
                         >
@@ -263,8 +260,8 @@ export function Header() {
                       className={cn(
                         "block px-4 py-3 text-base font-medium no-underline transition-colors",
                         isActive(item.href)
-                          ? "text-[#0088CC] border-l-4 border-[#0088CC] bg-blue-50"
-                          : "text-black hover:text-[#0088CC] hover:bg-blue-50"
+                          ? "text-secondary border-l-4 border-secondary bg-secondary-50"
+                          : "text-black hover:text-secondary hover:bg-secondary-50"
                       )}
                       onClick={() => setMobileMenuOpen(false)}
                     >
@@ -279,14 +276,14 @@ export function Header() {
             <div className="mt-6 px-4 space-y-4 border-t border-neutral-100 pt-4">
               <a
                 href={contactInfo.phoneHref}
-                className="flex items-center gap-2 text-[#0088CC] font-semibold no-underline"
+                className="flex items-center gap-2 text-secondary font-semibold no-underline"
               >
                 <Phone className="h-5 w-5" aria-hidden="true" />
                 <span>{contactInfo.phone}</span>
               </a>
               <Link
                 href="/referrals"
-                className="block w-full text-center py-3 px-6 rounded-full font-semibold no-underline transition-colors bg-[#0088CC] text-white hover:bg-black"
+                className="block w-full text-center py-3 px-6 rounded-full font-semibold no-underline transition-colors bg-secondary text-white hover:bg-black"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Get Started

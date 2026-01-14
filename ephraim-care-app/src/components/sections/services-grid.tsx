@@ -12,7 +12,7 @@ export function ServicesGrid() {
   const [hoveredService, setHoveredService] = useState<string | null>(null);
 
   return (
-    <section className="section bg-white relative overflow-hidden">
+    <section className="section bg-gradient-to-b from-[#F5FAFA] to-[#F0FAF8] relative overflow-hidden">
       <div className="container-wide relative z-10">
         {/* Section header - In4Care style */}
         <FadeIn className="text-center max-w-3xl mx-auto mb-16">
@@ -59,11 +59,11 @@ export function ServicesGrid() {
                         "w-[100px] h-[100px] rounded-full mx-auto mb-6",
                         "flex items-center justify-center",
                         "transition-colors duration-300",
-                        isHovered ? "bg-secondary" : "bg-primary"
+                        isHovered ? "bg-secondary-600" : "bg-secondary"
                       )}
                       animate={{
                         scale: isHovered ? 1.05 : 1,
-                        backgroundColor: isHovered ? "#66BB6A" : "#0088CC"
+                        backgroundColor: isHovered ? "#52A655" : "#66BB6A"
                       }}
                       transition={{ duration: 0.3 }}
                     >

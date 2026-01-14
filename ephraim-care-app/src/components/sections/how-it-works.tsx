@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle, Phone } from "lucide-react";
+import { ArrowRight, CheckCircle, Phone, ClipboardList, Users, Star } from "lucide-react";
 import { contactInfo } from "@/data/navigation";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/animations";
 import { motion } from "motion/react";
@@ -10,15 +10,15 @@ import { motion } from "motion/react";
 const steps = [
   {
     number: "01",
-    emoji: "📞",
+    icon: Phone,
     title: "Get in Touch",
     description: "Contact us for a free, no-obligation chat about your needs. We will answer all your questions.",
-    gradient: "from-blue-400 to-indigo-500",
+    gradient: "from-secondary-400 to-secondary-600",
     highlight: "Free consultation",
   },
   {
     number: "02",
-    emoji: "📋",
+    icon: ClipboardList,
     title: "Share Your Goals",
     description: "Tell us about your NDIS plan and what you want to achieve. We will help you understand your options.",
     gradient: "from-green-400 to-emerald-500",
@@ -26,15 +26,15 @@ const steps = [
   },
   {
     number: "03",
-    emoji: "🤝",
+    icon: Users,
     title: "Meet Your Team",
     description: "We will match you with support workers who understand your needs and share your interests.",
-    gradient: "from-purple-400 to-violet-500",
+    gradient: "from-primary-400 to-primary-600",
     highlight: "Matched support",
   },
   {
     number: "04",
-    emoji: "🌟",
+    icon: Star,
     title: "Start Your Journey",
     description: "Begin receiving quality support tailored to help you achieve your goals and live your best life.",
     gradient: "from-yellow-400 to-orange-500",
@@ -89,9 +89,9 @@ export function HowItWorks() {
                       {step.number}
                     </div>
 
-                    {/* Emoji Icon */}
+                    {/* Icon */}
                     <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${step.gradient} flex items-center justify-center mb-4 shadow-lg`}>
-                      <span className="text-2xl" role="img" aria-hidden="true">{step.emoji}</span>
+                      <step.icon className="w-6 h-6 text-white" aria-hidden="true" />
                     </div>
 
                     {/* Content */}

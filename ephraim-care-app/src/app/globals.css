@@ -9,9 +9,10 @@
    ============================================ */
 
 :root {
-  /* Colors - New Palette */
-  --background: #FFFFFF;
-  --background-cream: #FDF2E6;
+  /* Colors - New Palette (Two-tone mint theme) */
+  --background: #F5FAFA;
+  --background-mint: #E8F5F3;
+  --background-mint-light: #F0FAF8;
   --foreground: #000000;
   --surface: #FFFFFF;
 
@@ -70,7 +71,10 @@
   }
 
   body {
-    @apply text-neutral-900 bg-white antialiased font-sans;
+    @apply text-neutral-900 antialiased font-sans;
+    background: linear-gradient(180deg, #E8F5F3 0%, #F5FAFA 40%, #FFFFFF 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
     font-size: 18px;
     line-height: 1.6;
   }
@@ -163,9 +167,16 @@
     @apply py-12 md:py-16;
   }
 
-  /* Cream background section */
+  /* Mint background section (replaces cream) */
+  .section-mint {
+    @apply py-16 md:py-24;
+    background: linear-gradient(180deg, #E8F5F3 0%, #F5FAFA 100%);
+  }
+
+  /* Keep for backwards compatibility, but uses mint */
   .section-cream {
-    @apply bg-cream py-16 md:py-24;
+    @apply py-16 md:py-24;
+    background: linear-gradient(180deg, #E8F5F3 0%, #F5FAFA 100%);
   }
 
   /* Card styles - Updated for In4Care */

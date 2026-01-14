@@ -20,6 +20,7 @@ export const mainNavigation: NavItem[] = [
     ],
   },
   { label: "About", href: "/about" },
+  { label: "FAQ", href: "/faq" },
   { label: "Referrals", href: "/referrals" },
   { label: "Contact", href: "/contact" },
 ];
@@ -33,6 +34,7 @@ export const footerNavigation = {
   ],
   company: [
     { label: "About Us", href: "/about" },
+    { label: "FAQ", href: "/faq" },
     { label: "Make a Referral", href: "/referrals" },
     { label: "Contact Us", href: "/contact" },
     { label: "Complaints Process", href: "/complaints" },

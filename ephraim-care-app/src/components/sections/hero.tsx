@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Phone, ArrowRight, MapPin, Search, Heart, Users, Shield } from "lucide-react";
+import { Phone, ArrowRight, MapPin, Search, Heart } from "lucide-react";
 import { contactInfo } from "@/data/navigation";
 import { FadeIn, Floating, StaggerContainer, StaggerItem } from "@/components/animations";
 import { motion } from "motion/react";
@@ -37,10 +37,10 @@ export function Hero() {
             sizes="100vw"
           />
         </motion.div>
-        {/* Gradient overlay - dark left, transparent right */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/30" />
-        {/* Additional teal overlay for brand color */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/40 to-transparent mix-blend-overlay" />
+        {/* Gradient overlay - softer blend with mint theme */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a3d2e]/85 via-[#0a3d2e]/60 to-[#0a3d2e]/30" />
+        {/* Additional green/mint overlay for brand color blend */}
+        <div className="absolute inset-0 bg-gradient-to-br from-secondary/30 via-primary/20 to-transparent" />
       </div>
 
       {/* Main content */}
@@ -50,28 +50,6 @@ export function Hero() {
             {/* Left Column - Text Content */}
             <div>
               <StaggerContainer className="space-y-8" staggerDelay={0.15}>
-                {/* NDIS Badge with pulse */}
-                <StaggerItem>
-                  <motion.div
-                    initial={{ scale: 1 }}
-                    animate={{ scale: [1, 1.02, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                    className="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-white/95 shadow-xl backdrop-blur-sm"
-                  >
-                    <Image
-                      src="/images/ndis/ndis-logo.png"
-                      alt="NDIS"
-                      width={40}
-                      height={24}
-                      className="object-contain"
-                    />
-                    <span className="text-sm font-bold text-neutral-800 tracking-wide">
-                      Registered NDIS Provider
-                    </span>
-                    <Shield className="w-4 h-4 text-primary" />
-                  </motion.div>
-                </StaggerItem>
-
                 {/* Main Heading - Large Impact */}
                 <StaggerItem>
                   <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-[80px] font-extrabold leading-[1.05] tracking-tight">
@@ -147,37 +125,25 @@ export function Hero() {
                   </div>
                 </StaggerItem>
 
-                {/* Trust stats row */}
+                {/* NDIS Registered Provider Badge */}
                 <StaggerItem>
-                  <div className="flex flex-wrap gap-8 pt-4">
-                    <div className="flex items-center gap-2">
-                      <div className="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center">
-                        <Heart className="w-5 h-5 text-secondary" />
-                      </div>
-                      <div>
-                        <p className="text-white font-bold text-lg">100%</p>
-                        <p className="text-white/70 text-sm">Satisfaction</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center">
-                        <Shield className="w-5 h-5 text-secondary" />
-                      </div>
-                      <div>
-                        <p className="text-white font-bold text-lg">NDIS</p>
-                        <p className="text-white/70 text-sm">Registered</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center">
-                        <Users className="w-5 h-5 text-secondary" />
-                      </div>
-                      <div>
-                        <p className="text-white font-bold text-lg">24/7</p>
-                        <p className="text-white/70 text-sm">Support</p>
-                      </div>
-                    </div>
-                  </div>
+                  <motion.div
+                    initial={{ scale: 1 }}
+                    animate={{ scale: [1, 1.03, 1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                    className="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-white/95 shadow-xl backdrop-blur-sm"
+                  >
+                    <Image
+                      src="/images/ndis/ndis-logo.png"
+                      alt="NDIS Registered Provider"
+                      width={50}
+                      height={30}
+                      className="object-contain"
+                    />
+                    <span className="text-sm font-bold text-neutral-800 tracking-wide">
+                      Registered NDIS Provider
+                    </span>
+                  </motion.div>
                 </StaggerItem>
               </StaggerContainer>
             </div>
@@ -252,7 +218,7 @@ export function Hero() {
           preserveAspectRatio="none"
         >
           <path
-            fill="#ffffff"
+            fill="#F5FAFA"
             d="M0,40 C150,80 350,0 500,40 C650,80 750,20 900,40 C1050,60 1200,30 1440,60 L1440,120 L0,120 Z"
           />
         </svg>
