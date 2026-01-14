@@ -85,14 +85,35 @@ Testing from 6 different user perspectives:
 | Missing `sizes` prop on hero images | Low | Warning only |
 | Meta warning for apple-mobile-web-app | Low | Deprecation notice |
 
+### Deployment Status (Updated Jan 14, 2026)
+
+**Production LIVE at:** `www.ephraimcare.com.au` ✅
+
+| Domain | Status |
+|--------|--------|
+| www.ephraimcare.com.au | ✅ LIVE - v2.1.0 |
+| ephraimcare.com.au | ✅ Redirects to www |
+| ephraim-care-app.vercel.app | ✅ Vercel subdomain |
+
+| Feature | Status |
+|---------|--------|
+| v2.1.0 in footer | ✅ |
+| FAQ link in navigation | ✅ |
+| No WhatsApp floating button | ✅ |
+| No accessibility toolbar | ✅ |
+| Lucide icons (no emojis) | ✅ |
+| Mint gradient backgrounds | ✅ |
+| Unique hero images per page | ✅ |
+
 ---
 
 ## Production URLs
 
 | Environment | URL |
 |-------------|-----|
-| Production | https://ephraimcare.com.au |
-| Vercel Preview | Auto-generated per commit |
+| Production | https://www.ephraimcare.com.au |
+| Apex (redirects) | https://ephraimcare.com.au |
+| Vercel Subdomain | https://ephraim-care-app.vercel.app |
 | Local Dev | http://localhost:3000 |
 
 ---
