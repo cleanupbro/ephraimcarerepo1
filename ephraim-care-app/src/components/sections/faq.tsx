@@ -14,7 +14,7 @@ export function FAQ() {
   };
 
   return (
-    <section className="section bg-white relative overflow-hidden">
+    <section className="section bg-gradient-to-b from-neutral-50 to-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0" aria-hidden="true">
         <div className="absolute top-20 left-20 w-64 h-64 bg-primary-100 rounded-full opacity-30 blur-3xl" />

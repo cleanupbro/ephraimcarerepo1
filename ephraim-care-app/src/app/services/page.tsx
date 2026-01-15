@@ -14,7 +14,7 @@ export default function ServicesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-white">
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#E8F5F3] to-[#F5FAFA]">
         <div className="container-wide relative z-10">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[60vh] py-12 md:py-16 lg:py-20">
             {/* Left Column - Text Content */}
@@ -69,13 +69,13 @@ export default function ServicesPage() {
         {/* Wave Divider */}
         <div className="absolute bottom-0 left-0 right-0" aria-hidden="true">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" className="w-full h-auto" preserveAspectRatio="none">
-            <path fill="#FFFFFF" d="M0,40 C150,80 350,0 500,40 C650,80 750,20 900,40 C1050,60 1200,30 1440,60 L1440,120 L0,120 Z" />
+            <path fill="#F5FAFA" d="M0,40 C150,80 350,0 500,40 C650,80 750,20 900,40 C1050,60 1200,30 1440,60 L1440,120 L0,120 Z" />
           </svg>
         </div>
       </section>
 
       {/* Services List */}
-      <section className="section bg-white">
+      <section className="section bg-gradient-to-b from-[#F5FAFA] to-white">
         <div className="container-wide">
           <StaggerContainer staggerDelay={0.1} className="space-y-12">
             {services.map((service, index) => {

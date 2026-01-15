@@ -159,7 +159,7 @@ export function Hero() {
           preserveAspectRatio="none"
         >
           <path
-            fill="#FFFFFF"
+            fill="#F5FAFA"
             d="M0,40 C150,80 350,0 500,40 C650,80 750,20 900,40 C1050,60 1200,30 1440,60 L1440,120 L0,120 Z"
           />
         </svg>

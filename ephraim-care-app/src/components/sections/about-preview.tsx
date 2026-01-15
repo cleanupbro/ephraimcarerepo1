@@ -38,7 +38,7 @@ const highlights = [
 
 export function AboutPreview() {
   return (
-    <section className="section bg-white relative overflow-hidden">
+    <section className="section bg-gradient-to-b from-[#F0FAF8] to-[#F5FAFA] relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-full">
         <div className="absolute top-20 right-20 w-72 h-72 bg-primary-100 rounded-full opacity-40 blur-3xl" />
