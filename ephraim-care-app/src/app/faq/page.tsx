@@ -10,8 +10,8 @@ import { motion } from "motion/react";
 export default function FAQPage() {
   return (
     <>
-      {/* Hero - Two-tone mint background */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#E8F5F3] to-[#F5FAFA]">
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-white">
         <div className="container-wide relative z-10">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[50vh] py-12 md:py-16">
             {/* Left Column - Text Content */}
@@ -90,7 +90,7 @@ export default function FAQPage() {
         {/* Wave Divider */}
         <div className="absolute bottom-0 left-0 right-0" aria-hidden="true">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" className="w-full h-auto" preserveAspectRatio="none">
-            <path fill="#F5FAFA" d="M0,40 C150,80 350,0 500,40 C650,80 750,20 900,40 C1050,60 1200,30 1440,60 L1440,120 L0,120 Z" />
+            <path fill="#FFFFFF" d="M0,40 C150,80 350,0 500,40 C650,80 750,20 900,40 C1050,60 1200,30 1440,60 L1440,120 L0,120 Z" />
           </svg>
         </div>
       </section>

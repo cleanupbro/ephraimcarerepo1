@@ -127,7 +127,7 @@ export default function ReferralsPage() {
     return (
       <>
         {/* Success Hero */}
-        <section className="min-h-[80vh] flex items-center justify-center bg-gradient-to-br from-green-50 via-white to-primary-50">
+        <section className="min-h-[80vh] flex items-center justify-center bg-white">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -251,7 +251,7 @@ export default function ReferralsPage() {
   return (
     <>
       {/* Hero - In4Care Style */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#E8F5F3] to-[#F5FAFA]">
+      <section className="relative overflow-hidden bg-white">
         <div className="container-wide relative z-10">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[50vh] py-12 md:py-16">
             {/* Left Column - Text Content */}
@@ -320,13 +320,13 @@ export default function ReferralsPage() {
         {/* Wave Divider */}
         <div className="absolute bottom-0 left-0 right-0" aria-hidden="true">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" className="w-full h-auto" preserveAspectRatio="none">
-            <path fill="#F5FAFA" d="M0,40 C150,80 350,0 500,40 C650,80 750,20 900,40 C1050,60 1200,30 1440,60 L1440,120 L0,120 Z" />
+            <path fill="#FFFFFF" d="M0,40 C150,80 350,0 500,40 C650,80 750,20 900,40 C1050,60 1200,30 1440,60 L1440,120 L0,120 Z" />
           </svg>
         </div>
       </section>
 
       {/* Steps */}
-      <section className="py-12 bg-gradient-to-b from-[#F5FAFA] to-white border-b border-neutral-200">
+      <section className="py-12 bg-white border-b border-neutral-200">
         <div className="container-wide">
           <div className="grid md:grid-cols-3 gap-8">
             {steps.map((step, index) => {

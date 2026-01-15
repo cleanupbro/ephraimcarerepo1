@@ -6,17 +6,14 @@ import { services } from "@/data/services";
 import { cn } from "@/lib/utils";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/animations";
 import { motion } from "motion/react";
-import { useState } from "react";
 
 export function ServicesGrid() {
-  const [hoveredService, setHoveredService] = useState<string | null>(null);
-
   return (
-    <section className="section bg-gradient-to-b from-[#F5FAFA] to-[#F0FAF8] relative overflow-hidden">
+    <section className="section bg-white relative overflow-hidden">
       <div className="container-wide relative z-10">
-        {/* Section header - In4Care style */}
+        {/* Section header - Clean Professional Style */}
         <FadeIn className="text-center max-w-3xl mx-auto mb-16">
-          <span className="badge-primary mb-6">
+          <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-6">
             Our Services
           </span>
           <h2 className="heading-accent">
@@ -28,79 +25,43 @@ export function ServicesGrid() {
           </p>
         </FadeIn>
 
-        {/* Services grid - 3 columns like In4Care */}
+        {/* Services grid - Clean Card Design */}
         <StaggerContainer
           staggerDelay={0.1}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {services.slice(0, 6).map((service) => {
-            const Icon = service.icon;
-            const isHovered = hoveredService === service.id;
-
             return (
               <StaggerItem key={service.id}>
                 <Link
                   href={`/services/${service.slug}`}
                   className="group block h-full no-underline"
-                  onMouseEnter={() => setHoveredService(service.id)}
-                  onMouseLeave={() => setHoveredService(null)}
                 >
                   <motion.div
                     className={cn(
-                      "relative p-8 rounded-md bg-white border border-neutral-200 h-full",
+                      "relative p-8 rounded-2xl bg-white border border-neutral-200 h-full",
                       "transition-all duration-300",
-                      "hover:shadow-card-hover hover:-translate-y-2"
+                      "hover:shadow-[0_20px_50px_-12px_rgba(0,128,128,0.25)] hover:-translate-y-2 hover:border-primary"
                     )}
-                    whileHover={{ borderColor: "var(--primary)" }}
                   >
-                    {/* Circular Icon - In4Care style */}
-                    <motion.div
-                      className={cn(
-                        "w-[100px] h-[100px] rounded-full mx-auto mb-6",
-                        "flex items-center justify-center",
-                        "transition-colors duration-300",
-                        isHovered ? "bg-secondary-600" : "bg-secondary"
-                      )}
-                      animate={{
-                        scale: isHovered ? 1.05 : 1,
-                        backgroundColor: isHovered ? "#52A655" : "#66BB6A"
-                      }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <Icon
-                        className="h-10 w-10 text-white"
-                        strokeWidth={1.5}
-                        aria-hidden="true"
-                      />
-                    </motion.div>
-
                     {/* Title */}
-                    <h3 className="text-h4 font-bold text-center text-neutral-900 group-hover:text-primary transition-colors mb-4">
+                    <h3 className="text-xl font-bold text-neutral-900 group-hover:text-primary transition-colors mb-4">
                       {service.name}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-body text-neutral-600 text-center line-clamp-3">
+                    <p className="text-neutral-600 leading-relaxed line-clamp-3">
                       {service.description}
                     </p>
 
                     {/* Learn more link */}
-                    <div className="mt-6 flex items-center justify-center text-primary font-semibold group-hover:text-primary-700">
+                    <div className="mt-6 flex items-center text-primary font-semibold group-hover:text-primary-700">
                       <span>Learn More</span>
                       <ArrowRight
                         className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-2"
                         aria-hidden="true"
                       />
                     </div>
-
-                    {/* Bottom accent bar on hover */}
-                    <motion.div
-                      className="absolute bottom-0 left-0 right-0 h-1 bg-primary rounded-b-md"
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: isHovered ? 1 : 0 }}
-                      transition={{ duration: 0.3 }}
-                      style={{ transformOrigin: "left" }}
-                    />
                   </motion.div>
                 </Link>
               </StaggerItem>

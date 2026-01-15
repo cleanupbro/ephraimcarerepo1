@@ -44,7 +44,7 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section className="section bg-gradient-to-b from-white to-neutral-50 relative overflow-hidden">
+    <section className="section bg-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0" aria-hidden="true">
         <svg className="absolute top-0 left-0 w-full h-full opacity-5" viewBox="0 0 100 100" preserveAspectRatio="none">

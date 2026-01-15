@@ -1,56 +1,38 @@
 "use client";
 
-// import Link from "next/link"; // Hidden with Our Story section
 import Image from "next/image";
-// import { Button } from "@/components/ui/button"; // Hidden with Our Story section
 import { CTABanner } from "@/components/sections/cta-banner";
 import { TrustSignals } from "@/components/sections/trust-signals";
-// import { Team } from "@/components/sections/team"; // Hidden until client provides team info
 import { FadeIn } from "@/components/animations";
 import { motion } from "motion/react";
-import {
-  Heart,
-  Shield,
-  Users,
-  Award,
-  CheckCircle,
-  Target,
-  Sparkles,
-} from "lucide-react";
 
 const values = [
   {
-    icon: Heart,
     title: "Compassion",
     description:
       "We approach every individual with genuine care, empathy, and understanding. Your wellbeing is at the heart of everything we do.",
   },
   {
-    icon: Shield,
     title: "Integrity",
     description:
       "We uphold the highest ethical standards and are transparent in all our interactions. Trust is the foundation of our relationships.",
   },
   {
-    icon: Users,
     title: "Inclusion",
     description:
       "We believe everyone deserves to be part of their community. We work to break down barriers and create meaningful connections.",
   },
   {
-    icon: Award,
     title: "Excellence",
     description:
       "We are committed to continuous improvement and delivering the highest quality support to help you achieve your goals.",
   },
   {
-    icon: Target,
     title: "Person-Centred",
     description:
       "Your goals, your choices, your life. We tailor our support to your individual needs and respect your autonomy.",
   },
   {
-    icon: Sparkles,
     title: "Empowerment",
     description:
       "We focus on building your skills and independence, supporting you to live the life you choose.",
@@ -69,19 +51,12 @@ const commitments = [
 export default function AboutPage() {
   return (
     <>
-      {/* Hero - In4Care Style */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#E8F5F3] to-[#F5FAFA]">
+      {/* Hero - Clean Professional Style */}
+      <section className="relative overflow-hidden bg-white">
         <div className="container-wide relative z-10">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[50vh] py-12 md:py-16">
             {/* Left Column - Text Content */}
             <FadeIn className="max-w-xl">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary shadow-lg mb-6">
-                <Heart className="h-5 w-5 text-white" aria-hidden="true" />
-                <span className="text-sm font-semibold text-white">
-                  Registered NDIS Provider
-                </span>
-              </span>
-
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight">
                 <span className="text-neutral-900">About</span>
                 <br />
@@ -129,7 +104,7 @@ export default function AboutPage() {
         {/* Wave Divider */}
         <div className="absolute bottom-0 left-0 right-0" aria-hidden="true">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" className="w-full h-auto" preserveAspectRatio="none">
-            <path fill="#F5FAFA" d="M0,40 C150,80 350,0 500,40 C650,80 750,20 900,40 C1050,60 1200,30 1440,60 L1440,120 L0,120 Z" />
+            <path fill="#FFFFFF" d="M0,40 C150,80 350,0 500,40 C650,80 750,20 900,40 C1050,60 1200,30 1440,60 L1440,120 L0,120 Z" />
           </svg>
         </div>
       </section>
@@ -180,7 +155,7 @@ export default function AboutPage() {
       */}
 
       {/* Our Values */}
-      <section className="section bg-gradient-to-b from-[#F5FAFA] to-[#F0FAF8]">
+      <section className="section bg-white">
         <div className="container-wide">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <h2>Our Values</h2>
@@ -192,15 +167,11 @@ export default function AboutPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {values.map((value) => {
-              const Icon = value.icon;
               return (
                 <div
                   key={value.title}
-                  className="bg-white rounded-2xl p-6 border border-neutral-200"
+                  className="bg-white rounded-2xl p-6 border border-neutral-200 hover:shadow-[0_10px_40px_-10px_rgba(0,128,128,0.2)] hover:border-primary/30 transition-all duration-300"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center mb-4">
-                    <Icon className="h-6 w-6 text-primary" aria-hidden="true" />
-                  </div>
                   <h3 className="text-xl font-semibold text-neutral-900">
                     {value.title}
                   </h3>
@@ -217,7 +188,7 @@ export default function AboutPage() {
       */}
 
       {/* Our Commitment */}
-      <section className="section bg-gradient-to-b from-[#F0FAF8] to-white">
+      <section className="section bg-white">
         <div className="container-wide">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -230,10 +201,7 @@ export default function AboutPage() {
               <ul className="mt-6 space-y-4">
                 {commitments.map((commitment, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <CheckCircle
-                      className="h-6 w-6 text-primary flex-shrink-0 mt-0.5"
-                      aria-hidden="true"
-                    />
+                    <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0 mt-2" />
                     <span className="text-neutral-700">{commitment}</span>
                   </li>
                 ))}

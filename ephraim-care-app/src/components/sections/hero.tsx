@@ -3,9 +3,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Phone, ArrowRight, MapPin, Search, Heart } from "lucide-react";
+import { Phone, ArrowRight } from "lucide-react";
 import { contactInfo } from "@/data/navigation";
-import { FadeIn, Floating, StaggerContainer, StaggerItem } from "@/components/animations";
+import { StaggerContainer, StaggerItem } from "@/components/animations";
 import { motion } from "motion/react";
 import { useState } from "react";
 
@@ -70,12 +70,11 @@ export function Hero() {
                   </p>
                 </StaggerItem>
 
-                {/* Service Location Finder - LiveBetter style */}
+                {/* Service Location Finder - Clean Professional Style */}
                 <StaggerItem>
                   <form onSubmit={handleSearch} className="max-w-md">
                     <div className="flex gap-2 p-2 bg-white rounded-full shadow-2xl">
-                      <div className="flex-1 flex items-center gap-3 pl-4">
-                        <MapPin className="w-5 h-5 text-primary flex-shrink-0" />
+                      <div className="flex-1 flex items-center pl-5">
                         <input
                           type="text"
                           placeholder="Enter your suburb or postcode"
@@ -88,8 +87,7 @@ export function Hero() {
                         type="submit"
                         className="flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary-700 text-white font-semibold rounded-full transition-all duration-300 shadow-button hover:shadow-xl"
                       >
-                        <Search className="w-4 h-4" />
-                        <span className="hidden sm:inline">Find Services</span>
+                        <span>Find Services</span>
                       </button>
                     </div>
                     <p className="text-white/70 text-sm mt-3 pl-2">
@@ -148,63 +146,6 @@ export function Hero() {
               </StaggerContainer>
             </div>
 
-            {/* Right Column - Floating feature card */}
-            <div className="hidden lg:flex justify-end">
-              <FadeIn direction="right" delay={0.5}>
-                <Floating duration={6} distance={15}>
-                  <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-8 shadow-2xl max-w-sm">
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className="w-14 h-14 rounded-full bg-primary flex items-center justify-center">
-                        <Heart className="w-7 h-7 text-white" />
-                      </div>
-                      <div>
-                        <h3 className="text-xl font-bold text-neutral-900">Your Family</h3>
-                        <p className="text-primary font-semibold">Our Care</p>
-                      </div>
-                    </div>
-                    <p className="text-neutral-600 mb-6">
-                      We treat every participant like family. Our dedicated support workers
-                      are committed to helping you achieve your goals.
-                    </p>
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-3 text-neutral-700">
-                        <div className="w-6 h-6 rounded-full bg-secondary/20 flex items-center justify-center">
-                          <svg className="w-3 h-3 text-secondary" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                          </svg>
-                        </div>
-                        <span className="text-sm font-medium">Personalized Care Plans</span>
-                      </div>
-                      <div className="flex items-center gap-3 text-neutral-700">
-                        <div className="w-6 h-6 rounded-full bg-secondary/20 flex items-center justify-center">
-                          <svg className="w-3 h-3 text-secondary" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                          </svg>
-                        </div>
-                        <span className="text-sm font-medium">Trained NDIS Workers</span>
-                      </div>
-                      <div className="flex items-center gap-3 text-neutral-700">
-                        <div className="w-6 h-6 rounded-full bg-secondary/20 flex items-center justify-center">
-                          <svg className="w-3 h-3 text-secondary" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                          </svg>
-                        </div>
-                        <span className="text-sm font-medium">Local Sydney Team</span>
-                      </div>
-                    </div>
-                    <div className="mt-6 pt-6 border-t border-neutral-200">
-                      <Link
-                        href="/about"
-                        className="flex items-center justify-center gap-2 w-full py-3 bg-primary hover:bg-primary-700 text-white font-semibold rounded-full transition-colors no-underline"
-                      >
-                        Learn About Us
-                        <ArrowRight className="w-4 h-4" />
-                      </Link>
-                    </div>
-                  </div>
-                </Floating>
-              </FadeIn>
-            </div>
           </div>
         </div>
       </div>
@@ -218,7 +159,7 @@ export function Hero() {
           preserveAspectRatio="none"
         >
           <path
-            fill="#F5FAFA"
+            fill="#FFFFFF"
             d="M0,40 C150,80 350,0 500,40 C650,80 750,20 900,40 C1050,60 1200,30 1440,60 L1440,120 L0,120 Z"
           />
         </svg>
