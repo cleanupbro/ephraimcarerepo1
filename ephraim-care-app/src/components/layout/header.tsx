@@ -79,7 +79,7 @@ export function Header() {
                   isScrolled ? "text-xs" : "text-sm"
                 )}
               >
-                embracing differences
+                Embracing Differences
               </span>
             </div>
           </Link>
