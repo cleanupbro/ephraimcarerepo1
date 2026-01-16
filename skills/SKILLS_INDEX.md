@@ -19,6 +19,7 @@ User does NOT need to name the skill explicitly.
 | `done-for-day.md` | "done for the day", "done for today", "end session", "save everything" | 🔴 Critical |
 | `sync.md` | After ANY action, before closing | 🔴 Critical |
 | `deploy.md` | "deploy", "push", "go live", "ship it" | 🔴 High |
+| `github-release.md` | "create release", "publish release", "tag release" | 🟡 Medium |
 | `client-change.md` | "client wants", "client asked", "change request", screenshots | 🔴 High |
 | `bug-fix.md` | "error", "bug", "not working", "broken", "fix" | 🔴 High |
 | `code-review.md` | Before ANY git commit (implicit) | 🔴 High |
@@ -86,6 +87,7 @@ Each skill follows this structure:
 | Task | Skill to Use |
 |------|--------------|
 | End session & backup | done-for-day.md |
+| Create GitHub release | github-release.md |
 | Push to production | deploy.md |
 | Client feedback/screenshots | client-change.md |
 | Something broken | bug-fix.md |
