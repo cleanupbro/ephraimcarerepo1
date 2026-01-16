@@ -1,27 +1,30 @@
 # HANDOFF — Ephraim Care
 > Session state for AI continuity
 > Last Updated: January 16, 2026
-> Session: #25
+> Session: #26
 
 ---
 
-## LAST SESSION SUMMARY (#24 - January 16, 2026)
+## LAST SESSION SUMMARY (#25 - January 16, 2026)
 
 ### What Was Done
-- [x] v2.3.1 deployed - Capitalized slogan "Embracing Differences"
-- [x] Fixed Vercel deployment (auto-deploy was stuck, triggered via API)
-- [x] Complete workspace restructuring for AI-agnostic operation
-- [x] Created AI_CONFIG/ directory (UNIVERSAL.md, CLAUDE.md, GEMINI.md)
-- [x] Created skills/ directory with 11 auto-invoke skill files
-- [x] Created .secrets/ directory for API keys (gitignored)
-- [x] Created MEMORY.md and CLIENT_SUMMARY.md
-- [x] Updated .gitignore to exclude .secrets/
+- [x] Implemented GitHub as Version Control "Brain" system
+- [x] Synced version to 2.3.1 (package.json, footer, CHANGELOG)
+- [x] Made footer version dynamic (imports from package.json)
+- [x] Created git tags: v2.1.0, v2.2.2, v2.3.0, v2.3.1
+- [x] Pushed all tags to GitHub
+- [x] Created GitHub Releases via API for all 4 versions
+- [x] Created root README.md for GitHub repository
+- [x] Created done-for-day.md skill (end-of-session backup)
+- [x] Created github-release.md skill (API-based releases)
+- [x] Updated SKILLS_INDEX.md with new skills
+- [x] Removed CHANGELOG.md from .gitignore (now tracked)
 
-### Workspace Now 100% Self-Contained
-- No external _CENTRAL/ references
-- Works with Claude OR Gemini
-- All API keys in local .secrets/
-- Auto-sync skill for session continuity
+### GitHub Now Complete Version Control Brain
+- All versions tagged and released
+- One-click rollback: `git checkout v2.x.x`
+- Dynamic footer version from package.json
+- Full release history on GitHub Releases page
 
 ---
 
@@ -90,7 +93,7 @@ ephraim-care/
 
 ---
 
-## SESSION #25 — START HERE
+## SESSION #26 — START HERE
 
 ### Read Order for AI
 1. MEMORY.md (workspace memory)
@@ -107,6 +110,8 @@ npm run dev
 
 ### Auto-Invoke Skills
 The AI should auto-invoke skills based on trigger patterns:
+- "done for the day" → skills/done-for-day.md
+- "create release" → skills/github-release.md
 - "deploy" → skills/deploy.md
 - "client wants" → skills/client-change.md
 - "error/bug" → skills/bug-fix.md
@@ -117,12 +122,14 @@ The AI should auto-invoke skills based on trigger patterns:
 ## CONTEXT FOR NEXT AI
 
 - **v2.3.1 is current** - slogan "Embracing Differences"
-- **Workspace restructured** - 100% self-contained
-- **No external references** - everything is LOCAL
+- **GitHub is version control brain** - tags, releases, README all set up
+- **Footer version is dynamic** - reads from package.json
+- **Git tags exist:** v2.1.0, v2.2.2, v2.3.0, v2.3.1
+- **GitHub Releases:** All 4 versions have releases with notes
 - Domain configured: www.ephraimcare.com.au ✅
 - Git repo at ephraim-care/ level (not ephraim-care-app/)
-- Vercel API deployment works when auto-deploy fails
 - Build passes, production is live
+- New skills: done-for-day.md, github-release.md
 
 ---
 
