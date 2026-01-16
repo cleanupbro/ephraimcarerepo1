@@ -45,7 +45,7 @@ export function NDISCalculator() {
   };
 
   return (
-    <section className="section bg-gradient-to-b from-[#F0FAF8] to-[#E8F5F3] relative overflow-hidden">
+    <section className="section bg-gradient-to-b from-[#E8F5F3] to-[#F5FAFA] relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0" aria-hidden="true">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary-100 rounded-full opacity-30 blur-3xl" />

@@ -52,7 +52,7 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero - Clean Professional Style */}
-      <section className="relative overflow-hidden bg-white">
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#E8F5F3] to-[#F5FAFA]">
         <div className="container-wide relative z-10">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[50vh] py-12 md:py-16">
             {/* Left Column - Text Content */}
@@ -155,7 +155,7 @@ export default function AboutPage() {
       */}
 
       {/* Our Values */}
-      <section className="section bg-white">
+      <section className="section bg-gradient-to-b from-[#F5FAFA] to-white">
         <div className="container-wide">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <h2>Our Values</h2>
@@ -188,7 +188,7 @@ export default function AboutPage() {
       */}
 
       {/* Our Commitment */}
-      <section className="section bg-white">
+      <section className="section bg-gradient-to-b from-white to-[#F5FAFA]">
         <div className="container-wide">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>

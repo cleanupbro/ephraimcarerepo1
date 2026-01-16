@@ -9,7 +9,7 @@ import { motion } from "motion/react";
 
 export function ServicesGrid() {
   return (
-    <section className="section bg-white relative overflow-hidden">
+    <section className="section bg-gradient-to-b from-[#F5FAFA] to-white relative overflow-hidden">
       <div className="container-wide relative z-10">
         {/* Section header - Clean Professional Style */}
         <FadeIn className="text-center max-w-3xl mx-auto mb-16">

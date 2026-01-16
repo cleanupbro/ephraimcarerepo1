@@ -11,9 +11,6 @@ import { FadeIn } from "@/components/animations";
 import {
   CheckCircle,
   Phone,
-  FileText,
-  UserCheck,
-  Shield,
   Loader2,
   PartyPopper,
   Send,
@@ -25,17 +22,14 @@ const WEBHOOK_URL = process.env.NEXT_PUBLIC_WEBHOOK_REFERRAL || "";
 
 const steps = [
   {
-    icon: FileText,
     title: "Complete the Form",
     description: "Fill out the referral form with participant details",
   },
   {
-    icon: UserCheck,
     title: "We'll Make Contact",
     description: "Our team will reach out within 24-48 hours",
   },
   {
-    icon: Shield,
     title: "Consultation",
     description: "We'll discuss needs and create a support plan",
   },
@@ -329,27 +323,30 @@ export default function ReferralsPage() {
       <section className="py-12 bg-white border-b border-neutral-200">
         <div className="container-wide">
           <div className="grid md:grid-cols-3 gap-8">
-            {steps.map((step, index) => {
-              const Icon = step.icon;
-              return (
-                <div key={step.title} className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center">
-                    <Icon className="h-6 w-6 text-primary" aria-hidden="true" />
-                  </div>
-                  <div>
-                    <div className="text-sm font-medium text-primary mb-1">
-                      Step {index + 1}
-                    </div>
-                    <h3 className="font-semibold text-neutral-900">
-                      {step.title}
-                    </h3>
-                    <p className="text-sm text-neutral-600 mt-1">
-                      {step.description}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
+            {steps.map((step, index) => (
+              <motion.div
+                key={step.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                whileHover={{ y: -4, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 400,
+                  damping: 25,
+                  delay: index * 0.1
+                }}
+                className="bg-gradient-to-br from-primary-50 to-white p-6 rounded-2xl border border-primary-100 shadow-sm hover:shadow-md transition-shadow cursor-default"
+              >
+                <h3 className="font-semibold text-neutral-900 text-lg mb-2">
+                  {step.title}
+                </h3>
+                <p className="text-neutral-600">
+                  {step.description}
+                </p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

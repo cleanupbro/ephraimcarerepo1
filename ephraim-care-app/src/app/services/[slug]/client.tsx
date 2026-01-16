@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { images } from "@/data/images";
 import { getServiceBySlug, getRelatedServices } from "@/data/services";
 import { CTABanner } from "@/components/sections/cta-banner";
-import { cn } from "@/lib/utils";
 import { FadeIn, StaggerContainer, StaggerItem, ScaleOnHover } from "@/components/animations";
 import { motion } from "motion/react";
 import { contactInfo } from "@/data/navigation";
@@ -52,7 +51,6 @@ export function ServicePageClient({ slug }: ServicePageClientProps) {
     notFound();
   }
 
-  const Icon = service.icon;
   const relatedServices = getRelatedServices(slug, 3);
   const serviceImage = images.services[slug as keyof typeof images.services];
 
@@ -72,7 +70,7 @@ export function ServicePageClient({ slug }: ServicePageClientProps) {
       </div>
 
       {/* Hero */}
-      <section className="section bg-gradient-to-br from-primary-50 via-white to-secondary-50 relative overflow-hidden">
+      <section className="section bg-gradient-to-b from-[#E8F5F3] to-[#F5FAFA] relative overflow-hidden">
         {/* Background decoration */}
         <div className="absolute inset-0" aria-hidden="true">
           <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary-100 rounded-full opacity-50 blur-3xl" />
@@ -83,17 +81,6 @@ export function ServicePageClient({ slug }: ServicePageClientProps) {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Content */}
             <FadeIn direction="left">
-              <div
-                className={cn(
-                  "w-20 h-20 rounded-2xl flex items-center justify-center mb-6 shadow-lg",
-                  service.color === "primary"
-                    ? "bg-primary text-white"
-                    : "bg-secondary text-white"
-                )}
-              >
-                <Icon className="h-10 w-10" aria-hidden="true" />
-              </div>
-
               <h1 className="text-balance">{service.name}</h1>
 
               <p className="mt-6 text-xl text-neutral-600">
@@ -135,7 +122,7 @@ export function ServicePageClient({ slug }: ServicePageClientProps) {
       </section>
 
       {/* What We Offer */}
-      <section className="section bg-white">
+      <section className="section bg-gradient-to-b from-[#F5FAFA] to-white">
         <div className="container-wide">
           <div className="grid lg:grid-cols-2 gap-12">
             <FadeIn>
@@ -219,7 +206,7 @@ export function ServicePageClient({ slug }: ServicePageClientProps) {
       )}
 
       {/* Related Services */}
-      <section className="section bg-neutral-50">
+      <section className="section bg-gradient-to-b from-white to-[#F5FAFA]">
         <div className="container-wide">
           <FadeIn className="text-center mb-12">
             <h2>Related Services</h2>
@@ -230,7 +217,6 @@ export function ServicePageClient({ slug }: ServicePageClientProps) {
 
           <StaggerContainer staggerDelay={0.1} className="grid md:grid-cols-3 gap-6">
             {relatedServices.map((related) => {
-              const RelatedIcon = related.icon;
               const relatedImage = images.services[related.slug as keyof typeof images.services];
 
               return (
@@ -249,16 +235,6 @@ export function ServicePageClient({ slug }: ServicePageClientProps) {
                           className="object-cover transition-transform duration-500 group-hover:scale-110"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                        <div
-                          className={cn(
-                            "absolute bottom-3 left-3 w-10 h-10 rounded-lg flex items-center justify-center",
-                            related.color === "primary"
-                              ? "bg-primary text-white"
-                              : "bg-secondary text-white"
-                          )}
-                        >
-                          <RelatedIcon className="h-5 w-5" aria-hidden="true" />
-                        </div>
                       </div>
 
                       <div className="p-5">

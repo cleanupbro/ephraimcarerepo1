@@ -2,49 +2,37 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle, Phone, ClipboardList, Users, Star } from "lucide-react";
+import { ArrowRight, CheckCircle, Phone } from "lucide-react";
 import { contactInfo } from "@/data/navigation";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/animations";
 import { motion } from "motion/react";
 
 const steps = [
   {
-    number: "01",
-    icon: Phone,
     title: "Get in Touch",
     description: "Contact us for a free, no-obligation chat about your needs. We will answer all your questions.",
-    gradient: "from-secondary-400 to-secondary-600",
     highlight: "Free consultation",
   },
   {
-    number: "02",
-    icon: ClipboardList,
     title: "Share Your Goals",
     description: "Tell us about your NDIS plan and what you want to achieve. We will help you understand your options.",
-    gradient: "from-green-400 to-emerald-500",
     highlight: "Personalized plan",
   },
   {
-    number: "03",
-    icon: Users,
     title: "Meet Your Team",
     description: "We will match you with support workers who understand your needs and share your interests.",
-    gradient: "from-primary-400 to-primary-600",
     highlight: "Matched support",
   },
   {
-    number: "04",
-    icon: Star,
     title: "Start Your Journey",
     description: "Begin receiving quality support tailored to help you achieve your goals and live your best life.",
-    gradient: "from-yellow-400 to-orange-500",
     highlight: "Ongoing support",
   },
 ];
 
 export function HowItWorks() {
   return (
-    <section className="section bg-gradient-to-b from-white to-neutral-50 relative overflow-hidden">
+    <section className="section bg-gradient-to-b from-[#F5FAFA] to-[#E8F5F3] relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0" aria-hidden="true">
         <svg className="absolute top-0 left-0 w-full h-full opacity-5" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -73,53 +61,45 @@ export function HowItWorks() {
         {/* Steps */}
         <div className="relative">
           {/* Connection line */}
-          <div className="hidden lg:block absolute top-24 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-primary-200 to-transparent" />
+          <div className="hidden lg:block absolute top-16 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-primary-200 to-transparent" />
 
           <StaggerContainer staggerDelay={0.15} className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {steps.map((step, index) => {
-              return (
-                <StaggerItem key={step.number}>
-                  <motion.div
-                    whileHover={{ y: -8 }}
-                    transition={{ type: "spring", stiffness: 400 }}
-                    className="relative bg-white rounded-2xl p-6 border border-neutral-200 shadow-sm hover:shadow-xl hover:border-primary-200 transition-all h-full"
-                  >
-                    {/* Step number */}
-                    <div className="absolute -top-4 -left-4 w-10 h-10 rounded-full bg-primary text-white font-bold flex items-center justify-center text-sm shadow-lg">
-                      {step.number}
-                    </div>
+            {steps.map((step, index) => (
+              <StaggerItem key={step.title}>
+                <motion.div
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                  className="relative bg-white rounded-2xl p-6 border border-neutral-200 shadow-sm hover:shadow-xl hover:border-primary-200 transition-all h-full cursor-default"
+                >
+                  {/* Content */}
+                  <h3 className="text-xl font-semibold text-neutral-900 mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-neutral-600 text-sm mb-4">
+                    {step.description}
+                  </p>
 
-                    {/* Icon */}
-                    <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${step.gradient} flex items-center justify-center mb-4 shadow-lg`}>
-                      <step.icon className="w-6 h-6 text-white" aria-hidden="true" />
-                    </div>
+                  {/* Highlight tag */}
+                  <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-primary-50 text-primary text-xs font-medium">
+                    <CheckCircle className="w-3 h-3" />
+                    {step.highlight}
+                  </div>
 
-                    {/* Content */}
-                    <h3 className="text-xl font-semibold text-neutral-900 mb-2">
-                      {step.title}
-                    </h3>
-                    <p className="text-neutral-600 text-sm mb-4">
-                      {step.description}
-                    </p>
-
-                    {/* Highlight tag */}
-                    <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-primary-50 text-primary text-xs font-medium">
-                      <CheckCircle className="w-3 h-3" />
-                      {step.highlight}
-                    </div>
-
-                    {/* Arrow connector for desktop */}
-                    {index < steps.length - 1 && (
-                      <div className="hidden lg:block absolute -right-4 top-1/2 -translate-y-1/2 z-10">
-                        <div className="w-8 h-8 rounded-full bg-white border border-neutral-200 flex items-center justify-center">
-                          <ArrowRight className="w-4 h-4 text-primary" />
-                        </div>
+                  {/* Arrow connector for desktop */}
+                  {index < steps.length - 1 && (
+                    <div className="hidden lg:block absolute -right-4 top-1/2 -translate-y-1/2 z-10">
+                      <div className="w-8 h-8 rounded-full bg-white border border-neutral-200 flex items-center justify-center">
+                        <ArrowRight className="w-4 h-4 text-primary" />
                       </div>
-                    )}
-                  </motion.div>
-                </StaggerItem>
-              );
-            })}
+                    </div>
+                  )}
+                </motion.div>
+              </StaggerItem>
+            ))}
           </StaggerContainer>
         </div>
 

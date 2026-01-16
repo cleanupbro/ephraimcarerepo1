@@ -14,7 +14,7 @@ export function FAQ() {
   };
 
   return (
-    <section className="section bg-gradient-to-b from-neutral-50 to-white relative overflow-hidden">
+    <section className="section bg-gradient-to-b from-[#F5FAFA] to-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0" aria-hidden="true">
         <div className="absolute top-20 left-20 w-64 h-64 bg-primary-100 rounded-full opacity-30 blur-3xl" />
@@ -40,10 +40,13 @@ export function FAQ() {
           <StaggerContainer staggerDelay={0.1} className="space-y-4">
             {faqItems.map((item, index) => (
               <StaggerItem key={index}>
-                <div
-                  className={`bg-white rounded-2xl border transition-all duration-300 ${
+                <motion.div
+                  whileTap={{ scale: 0.98 }}
+                  whileHover={{ scale: 1.01 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                  className={`bg-white rounded-2xl border transition-all duration-300 cursor-pointer ${
                     openIndex === index
-                      ? "border-primary-300 shadow-lg"
+                      ? "border-primary-300 shadow-lg ring-2 ring-primary-100"
                       : "border-neutral-200 hover:border-primary-200 hover:shadow-md"
                   }`}
                 >
@@ -52,14 +55,9 @@ export function FAQ() {
                     className="w-full flex items-center justify-between p-5 md:p-6 text-left"
                     aria-expanded={openIndex === index}
                   >
-                    <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 rounded-lg bg-primary-100 flex items-center justify-center flex-shrink-0">
-                        <item.icon className="w-5 h-5 text-primary" aria-hidden="true" />
-                      </div>
-                      <span className="font-semibold text-neutral-900 text-base md:text-lg pr-4">
-                        {item.question}
-                      </span>
-                    </div>
+                    <span className="font-semibold text-neutral-900 text-base md:text-lg pr-4">
+                      {item.question}
+                    </span>
                     <div
                       className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
                         openIndex === index
@@ -85,7 +83,7 @@ export function FAQ() {
                         className="overflow-hidden"
                       >
                         <div className="px-5 md:px-6 pb-5 md:pb-6 pt-0">
-                          <div className="pl-12 border-l-2 border-primary-200">
+                          <div className="border-l-2 border-primary-200 pl-4">
                             <p className="text-neutral-600 leading-relaxed">
                               {item.answer}
                             </p>
@@ -94,7 +92,7 @@ export function FAQ() {
                       </motion.div>
                     )}
                   </AnimatePresence>
-                </div>
+                </motion.div>
               </StaggerItem>
             ))}
           </StaggerContainer>

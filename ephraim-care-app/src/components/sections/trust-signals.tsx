@@ -5,7 +5,7 @@ import { FadeIn } from "@/components/animations";
 
 export function TrustSignals() {
   return (
-    <section className="py-16 bg-white relative overflow-hidden">
+    <section className="py-16 bg-gradient-to-b from-[#F5FAFA] to-white relative overflow-hidden">
       <div className="container-wide relative z-10">
         {/* Section Header */}
         <FadeIn className="text-center mb-10">

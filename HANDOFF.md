@@ -1,22 +1,24 @@
 # HANDOFF — Ephraim Care
 > Session state for AI continuity
-> Last Updated: January 12, 2026
-> Session: #20
+> Last Updated: January 16, 2026
+> Session: #24
 
 ---
 
-## LAST SESSION SUMMARY
+## LAST SESSION SUMMARY (#23 - January 16, 2026)
 
 ### What Was Done
-- [x] Reviewed AI.md and HANDOFF.md (session orientation)
-- [x] Learned about Ralph Loop plugin for iterative AI development
-- [x] Updated Claude Code CLI (refreshed to latest 2.1.4)
+- [x] v2.2.2 deployed - Restored two-toned mint green backgrounds
+- [x] Fixed background colors (corrected mistaken all-white from previous session)
+- [x] 11 files updated with proper mint gradient scheme
 
-### What's In Progress
-- [ ] None
-
-### What's Blocked
-- [ ] Nothing
+### Background Color Scheme
+| Section Type | Background |
+|-------------|------------|
+| Hero sections | Dark overlay on image |
+| Wave dividers | Fill `#F5FAFA` |
+| Card sections | `bg-white` for contrast |
+| Feature sections | Mint gradients (`#E8F5F3` → `#F5FAFA`) |
 
 ---
 
@@ -25,6 +27,7 @@
 ### Build Status
 ```
 Last Build: PASSED
+Version: v2.2.2
 Pages: 44
 API Routes: 12
 Errors: 0
@@ -33,15 +36,14 @@ Errors: 0
 ### Git Status
 ```
 Branch: main
-Commit: 827ddda
-Message: refactor: Professional workspace restructure
-Backup: backup-restructure-20260112-052136
-Files Changed: 251
+Latest Commit: 77f5392
+Message: fix(v2.2.2): restore two-toned mint green backgrounds
 ```
 
 ### Deployment
 ```
 Production: https://www.ephraimcare.com.au
+Vercel URL: https://ephraim-care-app.vercel.app
 Status: LIVE (auto-deploying)
 Vercel: Auto-deploys from main
 GitHub: github.com/cleanupbro/ephraimcarerepo1
@@ -49,7 +51,7 @@ GitHub: github.com/cleanupbro/ephraimcarerepo1
 
 ---
 
-## NEW STRUCTURE
+## PROJECT STRUCTURE
 
 ```
 ephraim-care/
@@ -69,56 +71,58 @@ ephraim-care/
 ├── executors/ ........... 5 scripts
 ├── logs/ ................ 3 log files
 └── ephraim-care-app/ .... Next.js application
-    └── src/, public/, configs (UNCHANGED)
+    └── src/, public/, configs
 ```
 
 ---
 
-## NEXT SESSION — START HERE
+## SESSION #24 — START HERE
 
-### Priority 1: Verify
-1. Check Vercel deployment succeeded
-2. Test production site works
-3. Run `npm run build` to confirm
+### Priority 1: Local Development
+```bash
+cd ~/Desktop/ephraim-care/ephraim-care-app
+npm run dev
+# Server at http://localhost:3000
+```
 
-### Priority 2: Client Work
-1. Check TASKS.md for pending work
-2. Mobile-optimize admin pages
-3. Implement any client feedback
+### Priority 2: Client Changes
+1. Review current state at localhost:3000
+2. Implement client-requested changes (from screenshots)
+3. Test each change locally
 
-### Priority 3: Integrations
-1. SmartSuite CRM integration
-2. Secured Signing workflow
-3. Connecteam staff rostering
+### Priority 3: Deploy
+1. Run `npm run build` - must pass
+2. Commit and push to main
+3. Verify at https://www.ephraimcare.com.au
 
 ---
 
-## FILES MODIFIED THIS SESSION
+## FILES MODIFIED IN SESSION #23
 
-| Location | Action |
-|----------|--------|
-| AI.md | Created + autonomous agent section |
-| HANDOFF.md | Updated |
-| TASKS.md | Created |
-| docs/* | Created 19 files |
-| directives/* | Created 9 files |
-| executors/* | Created 6 files |
-| logs/* | Created 3 files |
-| .gitignore | Created at root |
-| ephraim-care-app/* | Moved all app files |
+| Component | Change |
+|-----------|--------|
+| `hero.tsx` | Wave fill `#F5FAFA` |
+| `service-map.tsx` | `from-[#F5FAFA] to-[#E8F5F3]` |
+| `about-preview.tsx` | `from-[#F0FAF8] to-[#F5FAFA]` |
+| `ndis-calculator.tsx` | `from-[#F0FAF8] to-[#E8F5F3]` |
+| `how-it-works.tsx` | `from-white to-neutral-50` |
+| `faq.tsx` | `from-neutral-50 to-white` |
+| `services/page.tsx` | Hero + list section gradients + wave |
+| `about/page.tsx` | Wave fill |
+| `contact/page.tsx` | Hero + content gradients + wave |
+| `referrals/page.tsx` | Hero gradient + wave |
+| `faq/page.tsx` | Hero gradient + wave |
 
 ---
 
 ## CONTEXT FOR NEXT AI
 
-- **Major restructure completed (Session #19)** — read AI.md first
-- Git repo now at ephraim-care/ level (not ephraim-care-app/)
-- All old skills/, _LOGS/, scripts/ have been deleted
+- **v2.2.2 is current** - two-toned mint green backgrounds
+- Domain configured: www.ephraimcare.com.au ✅
+- Git repo at ephraim-care/ level (not ephraim-care-app/)
+- All documentation in docs/ folder
 - Directives replace skill files (8 SOPs)
-- Executors replace scripts (5 shell scripts)
-- ephraim-care-app/src/ is UNCHANGED
 - Build passes, production is live
-- Claude Code CLI at version 2.1.4
 
 ---
 
@@ -129,8 +133,7 @@ ephraim-care/
 - Supabase for database
 - n8n for automation at nioctibinu.online
 - Telegram notifications working
-- Build passes with 0 errors
-- Backup branch exists: backup-restructure-20260112-052136
+- Vercel auto-deploys from main branch
 
 ---
 

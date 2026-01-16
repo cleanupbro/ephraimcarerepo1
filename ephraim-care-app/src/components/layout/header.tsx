@@ -79,7 +79,7 @@ export function Header() {
                   isScrolled ? "text-xs" : "text-sm"
                 )}
               >
-                Your Family Our Care
+                embracing differences
               </span>
             </div>
           </Link>

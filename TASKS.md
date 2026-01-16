@@ -1,6 +1,18 @@
 # TASKS — Ephraim Care
 > Current work queue with priorities
-> Last Updated: January 12, 2026
+> Last Updated: January 16, 2026
+> Session: #24
+
+---
+
+## SESSION #24: CLIENT CHANGES
+
+### Awaiting Screenshots
+| # | Change Description | File(s) Affected | Status |
+|---|-------------------|------------------|--------|
+| 1 | (Awaiting screenshot) | TBD | ⏳ Pending |
+| 2 | (Awaiting screenshot) | TBD | ⏳ Pending |
+| 3 | (Awaiting screenshot) | TBD | ⏳ Pending |
 
 ---
 
@@ -8,7 +20,9 @@
 
 - [x] Complete workspace restructure
 - [x] Verify build passes after restructure
-- [ ] Any critical client feedback
+- [x] Restore mint green backgrounds (v2.2.2)
+- [x] Configure domain (www.ephraimcare.com.au)
+- [ ] Implement Session #24 client changes
 
 ---
 
@@ -16,7 +30,7 @@
 
 - [ ] Mobile-optimize admin dashboard pages
 - [ ] Add welcome video to homepage (when client provides)
-- [ ] [Add client feedback here as received]
+- [ ] FAQ accordion - add image (user mentioned)
 
 ---
 
@@ -64,6 +78,7 @@
 - [ ] PWA manifest and service worker
 - [ ] Admin user guide PDF export
 - [ ] Video walkthrough for client
+- [ ] Run multi-perspective testing (6 agents configured)
 
 ---
 
@@ -76,6 +91,8 @@
 - [x] Telegram notifications active
 - [x] Website live at ephraimcare.com.au
 - [x] Workspace restructured (Jan 12, 2026)
+- [x] Domain configuration (Jan 14, 2026)
+- [x] v2.2.2 - Mint backgrounds restored (Jan 16, 2026)
 
 ---
 
