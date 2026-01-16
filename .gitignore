@@ -28,3 +28,6 @@ npm-debug.log*
 
 # Claude
 .claude/
+
+# Secrets (API keys, tokens)
+.secrets/

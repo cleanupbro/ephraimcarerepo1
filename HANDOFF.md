@@ -1,24 +1,27 @@
 # HANDOFF — Ephraim Care
 > Session state for AI continuity
 > Last Updated: January 16, 2026
-> Session: #24
+> Session: #25
 
 ---
 
-## LAST SESSION SUMMARY (#23 - January 16, 2026)
+## LAST SESSION SUMMARY (#24 - January 16, 2026)
 
 ### What Was Done
-- [x] v2.2.2 deployed - Restored two-toned mint green backgrounds
-- [x] Fixed background colors (corrected mistaken all-white from previous session)
-- [x] 11 files updated with proper mint gradient scheme
+- [x] v2.3.1 deployed - Capitalized slogan "Embracing Differences"
+- [x] Fixed Vercel deployment (auto-deploy was stuck, triggered via API)
+- [x] Complete workspace restructuring for AI-agnostic operation
+- [x] Created AI_CONFIG/ directory (UNIVERSAL.md, CLAUDE.md, GEMINI.md)
+- [x] Created skills/ directory with 11 auto-invoke skill files
+- [x] Created .secrets/ directory for API keys (gitignored)
+- [x] Created MEMORY.md and CLIENT_SUMMARY.md
+- [x] Updated .gitignore to exclude .secrets/
 
-### Background Color Scheme
-| Section Type | Background |
-|-------------|------------|
-| Hero sections | Dark overlay on image |
-| Wave dividers | Fill `#F5FAFA` |
-| Card sections | `bg-white` for contrast |
-| Feature sections | Mint gradients (`#E8F5F3` → `#F5FAFA`) |
+### Workspace Now 100% Self-Contained
+- No external _CENTRAL/ references
+- Works with Claude OR Gemini
+- All API keys in local .secrets/
+- Auto-sync skill for session continuity
 
 ---
 
@@ -27,7 +30,7 @@
 ### Build Status
 ```
 Last Build: PASSED
-Version: v2.2.2
+Version: v2.3.1
 Pages: 44
 API Routes: 12
 Errors: 0
@@ -36,92 +39,89 @@ Errors: 0
 ### Git Status
 ```
 Branch: main
-Latest Commit: 77f5392
-Message: fix(v2.2.2): restore two-toned mint green backgrounds
+Latest Commit: [pending commit of restructuring]
+Slogan: "Embracing Differences" (capitalized)
 ```
 
 ### Deployment
 ```
 Production: https://www.ephraimcare.com.au
 Vercel URL: https://ephraim-care-app.vercel.app
-Status: LIVE (auto-deploying)
-Vercel: Auto-deploys from main
+Status: LIVE - v2.3.1 deployed via API
+Vercel: Auto-deploys from main (API fallback available)
 GitHub: github.com/cleanupbro/ephraimcarerepo1
 ```
 
 ---
 
-## PROJECT STRUCTURE
+## NEW PROJECT STRUCTURE
 
 ```
 ephraim-care/
-├── AI.md ................ Universal AI config
-├── HANDOFF.md ........... This file
-├── TASKS.md ............. Work queue
-├── docs/
-│   ├── PROJECT.md
-│   ├── ARCHITECTURE.md
-│   ├── ROADMAP.md
-│   ├── phases/ .......... 4 phase docs
-│   ├── client/ .......... 3 client docs
-│   ├── guides/ .......... 4 guides
-│   ├── integrations/ .... 4 integration docs
-│   └── technical/ ....... 4 technical refs
-├── directives/ .......... 8 SOPs
-├── executors/ ........... 5 scripts
-├── logs/ ................ 3 log files
-└── ephraim-care-app/ .... Next.js application
-    └── src/, public/, configs
+├── MEMORY.md ................ Standalone workspace memory
+├── CLIENT_SUMMARY.md ........ Client handoff document
+├── HANDOFF.md ............... This file
+├── TASKS.md ................. Work queue
+├── AI_CONFIG/
+│   ├── UNIVERSAL.md ......... Shared AI context
+│   ├── CLAUDE.md ............ Claude-specific config
+│   └── GEMINI.md ............ Gemini-specific config
+├── .secrets/ ................ API keys (gitignored)
+│   ├── KEYS.md .............. Dev/personal keys
+│   └── CLIENT_KEYS.md ....... Client keys (GoDaddy)
+├── skills/ .................. Auto-invoke skill system
+│   ├── SKILLS_INDEX.md ...... Master registry with triggers
+│   ├── sync.md .............. Auto-sync (runs after every action)
+│   ├── deploy.md ............ Deploy to production
+│   ├── client-change.md ..... Handle client requests
+│   ├── bug-fix.md ........... Debug issues
+│   ├── code-review.md ....... Review before commits
+│   ├── database.md .......... Supabase operations
+│   ├── new-feature.md ....... Build new features
+│   ├── testing.md ........... Verify functionality
+│   ├── docs.md .............. Documentation updates
+│   ├── domain.md ............ DNS/GoDaddy config
+│   └── backup.md ............ Save workspace state
+├── docs/ .................... Documentation
+├── directives/ .............. Workflow SOPs
+├── executors/ ............... Bash scripts
+└── ephraim-care-app/ ........ Next.js application
 ```
 
 ---
 
-## SESSION #24 — START HERE
+## SESSION #25 — START HERE
 
-### Priority 1: Local Development
+### Read Order for AI
+1. MEMORY.md (workspace memory)
+2. HANDOFF.md (this file)
+3. TASKS.md (if work to do)
+4. skills/SKILLS_INDEX.md (auto-invoke patterns)
+
+### If Working Locally
 ```bash
 cd ~/Desktop/ephraim-care/ephraim-care-app
 npm run dev
 # Server at http://localhost:3000
 ```
 
-### Priority 2: Client Changes
-1. Review current state at localhost:3000
-2. Implement client-requested changes (from screenshots)
-3. Test each change locally
-
-### Priority 3: Deploy
-1. Run `npm run build` - must pass
-2. Commit and push to main
-3. Verify at https://www.ephraimcare.com.au
-
----
-
-## FILES MODIFIED IN SESSION #23
-
-| Component | Change |
-|-----------|--------|
-| `hero.tsx` | Wave fill `#F5FAFA` |
-| `service-map.tsx` | `from-[#F5FAFA] to-[#E8F5F3]` |
-| `about-preview.tsx` | `from-[#F0FAF8] to-[#F5FAFA]` |
-| `ndis-calculator.tsx` | `from-[#F0FAF8] to-[#E8F5F3]` |
-| `how-it-works.tsx` | `from-white to-neutral-50` |
-| `faq.tsx` | `from-neutral-50 to-white` |
-| `services/page.tsx` | Hero + list section gradients + wave |
-| `about/page.tsx` | Wave fill |
-| `contact/page.tsx` | Hero + content gradients + wave |
-| `referrals/page.tsx` | Hero gradient + wave |
-| `faq/page.tsx` | Hero gradient + wave |
+### Auto-Invoke Skills
+The AI should auto-invoke skills based on trigger patterns:
+- "deploy" → skills/deploy.md
+- "client wants" → skills/client-change.md
+- "error/bug" → skills/bug-fix.md
+- Before commits → skills/code-review.md (implicit)
 
 ---
 
 ## CONTEXT FOR NEXT AI
 
-- **v2.2.2 is current** - two-toned mint green backgrounds
+- **v2.3.1 is current** - slogan "Embracing Differences"
+- **Workspace restructured** - 100% self-contained
+- **No external references** - everything is LOCAL
 - Domain configured: www.ephraimcare.com.au ✅
 - Git repo at ephraim-care/ level (not ephraim-care-app/)
-- All documentation in docs/ folder
-- Directives replace skill files (8 SOPs)
+- Vercel API deployment works when auto-deploy fails
 - Build passes, production is live
 
 ---
@@ -133,7 +133,7 @@ npm run dev
 - Supabase for database
 - n8n for automation at nioctibinu.online
 - Telegram notifications working
-- Vercel auto-deploys from main branch
+- Vercel API token in .secrets/KEYS.md
 
 ---
 
