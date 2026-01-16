@@ -16,6 +16,7 @@ User does NOT need to name the skill explicitly.
 
 | Skill File | Trigger Patterns | Priority |
 |------------|------------------|----------|
+| `done-for-day.md` | "done for the day", "done for today", "end session", "save everything" | 🔴 Critical |
 | `sync.md` | After ANY action, before closing | 🔴 Critical |
 | `deploy.md` | "deploy", "push", "go live", "ship it" | 🔴 High |
 | `client-change.md` | "client wants", "client asked", "change request", screenshots | 🔴 High |
@@ -84,6 +85,7 @@ Each skill follows this structure:
 
 | Task | Skill to Use |
 |------|--------------|
+| End session & backup | done-for-day.md |
 | Push to production | deploy.md |
 | Client feedback/screenshots | client-change.md |
 | Something broken | bug-fix.md |

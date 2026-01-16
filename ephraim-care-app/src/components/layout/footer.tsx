@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Phone, Mail, MapPin, Facebook, Instagram } from "lucide-react";
 import { contactInfo, companyInfo } from "@/data/navigation";
+import packageJson from "../../../package.json";
 
 const quickLinks = [
   { label: "Home", href: "/" },
@@ -164,7 +165,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-center md:text-left">
             <p className="text-white/40 text-xs">
-              © 2026 Ephraim Care Pty Ltd. ABN: {companyInfo.abn} | v2.1.0
+              © 2026 Ephraim Care Pty Ltd. ABN: {companyInfo.abn} | v{packageJson.version}
             </p>
           </div>
           <div className="flex items-center gap-4">
