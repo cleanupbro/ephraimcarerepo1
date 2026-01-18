@@ -3,6 +3,7 @@ import { Montserrat, Inter } from "next/font/google";
 import "./globals.css";
 import { ConditionalLayout } from "@/components/layout/conditional-layout";
 import { SkipLink } from "@/components/accessibility/skip-link";
+import { ElevenLabsWidget } from "@/components/ElevenLabsWidget";
 
 // Primary font - Montserrat (In4Care style)
 const montserrat = Montserrat({
@@ -190,6 +191,9 @@ export default function RootLayout({
       <body className="font-sans antialiased">
         <SkipLink />
         <ConditionalLayout>{children}</ConditionalLayout>
+
+        {/* ElevenLabs Voice AI Widget */}
+        <ElevenLabsWidget />
       </body>
     </html>
   );
