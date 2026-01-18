@@ -10,7 +10,7 @@ export function ElevenLabsWidget() {
     if (containerRef.current) {
       // Create the ElevenLabs widget element
       const widget = document.createElement('elevenlabs-convai');
-      widget.setAttribute('agent-id', 'agent_01kf6jh8vef8ktnq9bsdgvz1q4');
+      widget.setAttribute('agent-id', 'agent_4601kf6jh8vef8ktnq9bsdgvz1q4');
       containerRef.current.appendChild(widget);
     }
   }, []);
