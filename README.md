@@ -24,6 +24,33 @@ Ephraim Care provides compassionate, person-centred disability and mental health
 
 ---
 
+## Project Structure
+
+```
+./
+├── STATUS.md           # Current state (read first)
+├── PLAN.md             # Project roadmap
+├── LOG.md              # Activity history
+├── CLAUDE.md           # Claude Code protocol
+├── GEMINI.md           # Gemini protocol
+├── README.md           # This file
+│
+├── src/                # Next.js application
+│   ├── app/            # App Router pages
+│   ├── components/     # React components
+│   ├── data/           # Static data & content
+│   ├── lib/            # Utilities & helpers
+│   ├── hooks/          # Custom React hooks
+│   ├── types/          # TypeScript types
+│   └── public/         # Static assets
+│
+├── agents/             # Automation workflows
+├── docs/               # Documentation
+└── ops/                # Operations scripts
+```
+
+---
+
 ## Tech Stack
 
 | Technology | Purpose |
@@ -52,7 +79,7 @@ git clone https://github.com/cleanupbro/ephraimcarerepo1.git
 cd ephraimcarerepo1
 
 # Navigate to app directory
-cd ephraim-care-app
+cd src
 
 # Install dependencies
 npm install
@@ -70,56 +97,11 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 ### Available Scripts
 
 ```bash
+cd src
 npm run dev      # Start development server
 npm run build    # Build for production
 npm run start    # Start production server
 npm run lint     # Run ESLint
-```
-
----
-
-## Project Structure
-
-```
-ephraim-care/
-├── ephraim-care-app/        # Next.js application
-│   ├── src/
-│   │   ├── app/             # App router pages
-│   │   ├── components/      # React components
-│   │   ├── data/            # Static data & content
-│   │   └── lib/             # Utilities & helpers
-│   ├── public/              # Static assets
-│   └── package.json
-├── AI_CONFIG/               # AI assistant configurations
-├── skills/                  # Claude Code skills
-├── docs/                    # Documentation
-└── README.md                # This file
-```
-
----
-
-## Version History
-
-| Version | Date | Highlights |
-|---------|------|------------|
-| [v2.3.1](https://github.com/cleanupbro/ephraimcarerepo1/releases/tag/v2.3.1) | 2026-01-16 | Version sync, capitalized slogan |
-| [v2.3.0](https://github.com/cleanupbro/ephraimcarerepo1/releases/tag/v2.3.0) | 2026-01-15 | Updated slogan, refined backgrounds |
-| [v2.2.2](https://github.com/cleanupbro/ephraimcarerepo1/releases/tag/v2.2.2) | 2026-01-15 | Restored two-toned mint backgrounds |
-| [v2.1.0](https://github.com/cleanupbro/ephraimcarerepo1/releases/tag/v2.1.0) | 2026-01-14 | FAQ page, unique hero images |
-
-See [CHANGELOG.md](ephraim-care-app/CHANGELOG.md) for full history.
-
-### Rolling Back to Previous Versions
-
-```bash
-# View all available versions
-git tag -l
-
-# Checkout a specific version
-git checkout v2.2.2
-
-# Return to latest
-git checkout main
 ```
 
 ---
@@ -129,7 +111,7 @@ git checkout main
 The site is deployed on **Vercel** with automatic deployments on push to `main`.
 
 - **Production:** https://www.ephraimcare.com.au
-- **Preview:** Auto-generated for each PR
+- **Admin:** https://www.ephraimcare.com.au/admin
 
 ---
 
@@ -148,4 +130,4 @@ Private repository. All rights reserved.
 
 ---
 
-*Built by [OpBros.Automation](mailto:theopbros.ai@gmail.com)*
+*Built by [OpBros.AI](mailto:theopbros.ai@gmail.com)*

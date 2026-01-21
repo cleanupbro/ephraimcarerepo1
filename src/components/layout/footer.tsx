@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Phone, Mail, MapPin, Facebook, Instagram } from "lucide-react";
 import { contactInfo, companyInfo } from "@/data/navigation";
-import packageJson from "../../../package.json";
+import packageJson from "../../package.json";
 
 const quickLinks = [
   { label: "Home", href: "/" },

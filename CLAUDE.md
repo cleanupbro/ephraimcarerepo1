@@ -1,62 +1,43 @@
-# CLAUDE.md - EphraimCare
+# CLAUDE PROTOCOL: EphraimCare
+*Senior Engineer for this sealed project.*
 
-**Client:** EphraimCare
-**Type:** NDIS Provider
-**Status:** Active client of OPBROS.AI
+## FIRST COMMANDS (ALWAYS)
+1. `cat STATUS.md` — understand NOW
+2. `cat PLAN.md` — see roadmap
+3. `tail -5 LOG.md` — recent history
 
----
+## PROJECT RULES
+- **Boundary**: This universe is `./`
+- **Product**: `src/` (Next.js app)
+- **Agents**: `agents/` (DO NOT TOUCH unless asked)
+- **Deploy**: Push to `main` → auto-deploy Vercel
 
-## Quick Context
+## WORKFLOW
+1. Read STATUS.md → know ACTIVE FOCUS
+2. Work: `cd src && npm run dev`
+3. Test: `cd src && npm run build`
+4. Log: Append to LOG.md
+5. Update: Rewrite STATUS.md
 
-NDIS (National Disability Insurance Scheme) service provider.
-Client of OPBROS.AI for automation solutions.
+## TECH STACK
+- Next.js 14 (App Router)
+- TypeScript
+- Tailwind CSS
+- Supabase (Database)
+- Vercel (Hosting)
 
----
-
-## Project State
-
-Read `memory/state.md` for current development status.
-
----
-
-## Credentials
-
-Reference: `../../credentials/clients/ephraimcare.env`
-
-**IMPORTANT:** This is a client project. Handle credentials with extra care.
-
----
-
-## Key Integrations
-
+## KEY INTEGRATIONS
 | Service | Purpose |
 |---------|---------|
 | Connectteam | Staff management |
 | NDIS Portal | Service coordination |
 | Supabase | Database |
+| n8n | Automation workflows |
+| ElevenLabs | Voice AI widget |
+| Telegram | Notifications |
 
----
-
-## Before Making Changes
-
-1. Check `memory/state.md` for context
-2. Review `memory/decisions.md` for past choices
-3. Coordinate with client before major changes
-4. Test thoroughly before deploying
-
----
-
-## Client Communication
-
-Document all significant decisions and get client approval for:
-- Major feature changes
-- Data structure changes
-- Third-party integrations
-
----
-
-## Related Files
-
-- Workspace: `../../CLAUDE.md`
-- Credentials: `../../credentials/clients/ephraimcare.env`
-- Shared tools: `../../credentials/owner/shared.env`
+## CLIENT INFO
+- **Client**: EphraimCare
+- **Type**: NDIS Provider
+- **Live URL**: https://www.ephraimcare.com.au
+- **Admin**: https://www.ephraimcare.com.au/admin
