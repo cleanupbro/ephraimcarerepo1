@@ -9,7 +9,14 @@
 - **Framework:** Next.js
 - **Build command:** `cd src && npm run build`
 - **Output directory:** `src/.next`
-- **Root directory:** `src/`
+- **Root directory:** `src/` (Note: Ensure Vercel "Root Directory" setting is `src` or `.` depending on repo setup. Currently treating `.` as root with `cd src` build cmd).
+
+## Environment Variables (Required in Vercel)
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- `SUPABASE_SERVICE_ROLE_KEY`
+- `TELEGRAM_BOT_TOKEN` (Required for notifications)
+- `TELEGRAM_CHAT_ID` (Required for notifications)
 
 ## Domain
 - **Registrar:** GoDaddy

@@ -21,3 +21,18 @@
 **Decision:** Marked front-end design phase as complete (v2.3.1).
 **Reasoning:** All 9 pages verified HTTP 200, responsive design, accessibility, SEO meta tags complete.
 **Impact:** Ready for Phase 5 (Database & Backend Enhancement).
+
+## 2026-02-12 — Prestons SEO Transformation
+**Decision:** Start "Local SEO Domination" strategy with a dedicated `/prestons` landing page and 0.9 sitemap priority.
+**Reasoning:** "NDIS Provider Prestons" is the highest value keyword for the business location. Generic service pages don't rank as well as dedicated location pages for local queries.
+**Impact:** Created `src/app/prestons`, updated global JSON-LD, added footer link.
+
+## 2026-02-12 — Remove n8n from Frontend
+**Decision:** Removed n8n webhook calls from `contact` and `referral` forms.
+**Reasoning:** Dual-submission (API + n8n) was redundant and fragile. API route now handles everything (Supabase + Notification logic).
+**Impact:** Simplified form logic, fixed lint errors, localized failure points to backend only.
+
+## 2026-02-12 — Remove Legacy Admin Portal
+**Decision:** Deleted `src/app/admin`, `middleware.ts`, and internal `api/` routes (staff, appointments, etc.).
+**Reasoning:** User confirmed this repo is strict "Public Marketing / Leads Only". Admin portal exists in a separate application.
+**Impact:** Reduced codebase size, removed auth middleware complexity, eliminated risk of exposing admin logic in public repo.
