@@ -37,6 +37,7 @@ export const footerNavigation = {
     { label: "FAQ", href: "/faq" },
     { label: "Make a Referral", href: "/referrals" },
     { label: "Contact Us", href: "/contact" },
+    { label: "NDIS Prestons 2170", href: "/prestons" },
     { label: "Complaints Process", href: "/complaints" },
   ],
   legal: [
