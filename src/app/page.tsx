@@ -20,6 +20,9 @@ export const metadata: Metadata = {
   description:
     "Quality NDIS support services in Liverpool, Prestons, Fairfield & Western Sydney. Personal care, SIL, community participation, transport & more. Call 0451 918 884 for a free consultation.",
   keywords: [
+    "NDIS provider near me",
+    "disability support near me",
+    "NDIS support worker near me",
     "NDIS provider Liverpool",
     "NDIS services Western Sydney",
     "disability support Liverpool NSW",

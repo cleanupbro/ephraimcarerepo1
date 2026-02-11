@@ -79,7 +79,7 @@ export function ServiceMap() {
             <MapPin className="w-4 h-4" />
             Service Areas
           </span>
-          <h2 className="text-balance">We Serve Western & Southwestern Sydney</h2>
+          <h2 className="text-balance">Local NDIS Provider Near You | Serving Western Sydney</h2>
           <p className="mt-4 text-lg text-neutral-600">
             From our base in Prestons, we provide support services across Western & Southwestern Sydney.
           </p>

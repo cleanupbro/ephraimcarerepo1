@@ -91,7 +91,8 @@ export function Hero() {
                       </button>
                     </div>
                     <p className="text-white/70 text-sm mt-3 pl-2">
-                      Servicing Liverpool, Parramatta, Penrith & Western/Southwestern Sydney
+                      Servicing Liverpool, Parramatta, Penrith & Western/Southwestern Sydney.
+                      <span className="block mt-1 opacity-80">Find an NDIS provider near you today.</span>
                     </p>
                   </form>
                 </StaggerItem>
