@@ -130,7 +130,11 @@ export function Footer() {
               </a>
               <div className="flex items-start justify-center md:justify-start gap-3 text-white/60">
                 <MapPin className="h-4 w-4 text-primary mt-0.5" />
-                <span className="text-sm">Western & SW Sydney, NSW</span>
+                <span className="text-sm">
+                  Factory 1A, 9 Lyn Parade,
+                  <br />
+                  Prestons NSW 2170
+                </span>
               </div>
             </div>
 
@@ -169,13 +173,7 @@ export function Footer() {
             </p>
           </div>
           <div className="flex items-center gap-4">
-            <Link
-              href="/admin/login"
-              className="text-white/30 hover:text-white/50 text-xs no-underline transition-colors duration-200"
-            >
-              Staff Portal
-            </Link>
-            <span className="text-white/20">|</span>
+
             <p className="text-white/30 text-xs">
               Powered by{" "}
               <a
