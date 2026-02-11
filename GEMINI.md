@@ -1,29 +1,21 @@
-# GEMINI PROTOCOL: EphraimCare
-*Strategic Intelligence for this sealed project.*
+# GEMINI PROTOCOL: EphraimCare (OLD REPO — DEPRECATED)
 
-## FIRST COMMANDS (ALWAYS)
-1. `cat STATUS.md` — understand NOW
-2. `cat PLAN.md` — see roadmap
-3. `tail -5 LOG.md` — recent history
+## THIS REPO IS SUPERSEDED
 
-## THINKING RULES
-- **Purpose**: Analyze & strategize. Let Claude execute.
-- **Context**: Use `docs/` for business facts.
-- **Boundary**: This universe is `./`
+The active Ephraim Care project has moved to a new monorepo:
 
-## STRATEGIC LOOP
-1. Diagnose: Check ACTIVE FOCUS
-2. Align: Check PLAN.md phase
-3. Plan: Draft steps
-4. Log: Append decisions to LOG.md
+**New Location:** `/Users/shamalkrishna/Desktop/CLIENT PROJECTS/ephraimcare-portal-2026/`
+**GitHub:** https://github.com/cleanupbro/ephraimcare-NDIS-portal
 
-## KEY CONSIDERATIONS
-- Client data sensitivity (NDIS regulations)
-- Staff management via Connectteam
-- Need client approval for major changes
-- Focus on reliability and compliance
+Read `GEMINI.md` in the new repo for full project context.
+
+## LIVE URLS (Current)
+| Portal | URL |
+|--------|-----|
+| Admin | https://ephraimcare-ndis-portal-admin.vercel.app |
+| Participant | https://ephraimcare-participant-portal.vercel.app |
 
 ## CLIENT INFO
-- **Client**: EphraimCare
-- **Type**: NDIS Provider
-- **Live URL**: https://www.ephraimcare.com.au
+- **Client**: Meshach (Ephraim Care)
+- **Type**: NDIS Provider, Liverpool NSW
+- **Website**: https://ephraimcare.com.au

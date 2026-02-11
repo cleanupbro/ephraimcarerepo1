@@ -1,43 +1,23 @@
-# CLAUDE PROTOCOL: EphraimCare
-*Senior Engineer for this sealed project.*
+# CLAUDE PROTOCOL: EphraimCare (OLD REPO — DEPRECATED)
 
-## FIRST COMMANDS (ALWAYS)
-1. `cat STATUS.md` — understand NOW
-2. `cat PLAN.md` — see roadmap
-3. `tail -5 LOG.md` — recent history
+## THIS REPO IS SUPERSEDED
 
-## PROJECT RULES
-- **Boundary**: This universe is `./`
-- **Product**: `src/` (Next.js app)
-- **Agents**: `agents/` (DO NOT TOUCH unless asked)
-- **Deploy**: Push to `main` → auto-deploy Vercel
+The active Ephraim Care project has moved to a new monorepo:
 
-## WORKFLOW
-1. Read STATUS.md → know ACTIVE FOCUS
-2. Work: `cd src && npm run dev`
-3. Test: `cd src && npm run build`
-4. Log: Append to LOG.md
-5. Update: Rewrite STATUS.md
+**New Location:** `/Users/shamalkrishna/Desktop/CLIENT PROJECTS/ephraimcare-portal-2026/`
+**GitHub:** https://github.com/cleanupbro/ephraimcare-NDIS-portal
 
-## TECH STACK
-- Next.js 14 (App Router)
-- TypeScript
-- Tailwind CSS
-- Supabase (Database)
-- Vercel (Hosting)
+Read `CLAUDE.md` in the new repo for full project context.
 
-## KEY INTEGRATIONS
-| Service | Purpose |
-|---------|---------|
-| Connectteam | Staff management |
-| NDIS Portal | Service coordination |
-| Supabase | Database |
-| n8n | Automation workflows |
-| ElevenLabs | Voice AI widget |
-| Telegram | Notifications |
+## LIVE URLS (Current)
+| Portal | URL |
+|--------|-----|
+| Admin | https://ephraimcare-ndis-portal-admin.vercel.app |
+| Participant | https://ephraimcare-participant-portal.vercel.app |
+| Worker Mobile | Expo Go app |
 
 ## CLIENT INFO
-- **Client**: EphraimCare
-- **Type**: NDIS Provider
-- **Live URL**: https://www.ephraimcare.com.au
-- **Admin**: https://www.ephraimcare.com.au/admin
+- **Client**: Meshach (Ephraim Care)
+- **Type**: NDIS Provider, Liverpool NSW
+- **Website**: https://ephraimcare.com.au
+- **Built by**: OpBros.ai
