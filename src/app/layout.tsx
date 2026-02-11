@@ -30,19 +30,40 @@ export const metadata: Metadata = {
     "Quality NDIS support services in Liverpool, Prestons, Fairfield & Western/Southwestern Sydney. Personal care, SIL, community participation, transport & group activities. Call 0451 918 884.",
   keywords: [
     "NDIS provider Liverpool",
-    "NDIS services Western Southwestern Sydney",
+    "NDIS provider Liverpool NSW",
+    "NDIS services Western Sydney",
+    "NDIS services Southwestern Sydney",
     "disability support Liverpool NSW",
+    "disability support Western Sydney",
     "NDIS support worker Liverpool",
-    "NDIS personal care Western Southwestern Sydney",
+    "NDIS personal care Liverpool",
+    "NDIS personal care Western Sydney",
+    "NDIS personal care Southwestern Sydney",
     "supported independent living Liverpool",
+    "SIL provider Liverpool NSW",
     "NDIS community participation Sydney",
     "NDIS transport assistance Liverpool",
-    "disability services Prestons",
+    "NDIS provider Prestons",
+    "disability services Prestons NSW",
     "NDIS Fairfield",
+    "NDIS Cabramatta",
     "NDIS Lurnea",
+    "NDIS provider Casula",
+    "NDIS Moorebank",
+    "NDIS Bankstown",
+    "NDIS Green Valley",
+    "NDIS Hinchinbrook",
+    "NDIS Cecil Hills",
+    "NDIS Ingleburn",
+    "NDIS Miller",
+    "NDIS provider Campbelltown",
+    "NDIS Wetherill Park",
     "24 hour disability support Liverpool",
-    "NDIS provider near me",
-    "NDIS plan management Western Southwestern Sydney",
+    "NDIS provider near me Liverpool",
+    "NDIS plan management Western Sydney",
+    "psychosocial recovery NDIS Liverpool",
+    "NDIS group activities Western Sydney",
+    "disability respite Liverpool NSW",
   ],
   authors: [{ name: "Ephraim Care" }],
   creator: "Ephraim Care",
@@ -86,9 +107,9 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "your-google-verification-code", // Add when you have it
-  },
+  // verification: {
+  //   google: "ADD_REAL_CODE_BEFORE_ENABLING",
+  // },
 };
 
 // JSON-LD Structured Data for Local Business
@@ -121,7 +142,21 @@ const jsonLd = {
     { "@type": "City", name: "Fairfield" },
     { "@type": "City", name: "Lurnea" },
     { "@type": "City", name: "Cabramatta" },
+    { "@type": "City", name: "Casula" },
+    { "@type": "City", name: "Moorebank" },
+    { "@type": "City", name: "Green Valley" },
+    { "@type": "City", name: "Hinchinbrook" },
+    { "@type": "City", name: "Cecil Hills" },
+    { "@type": "City", name: "Ingleburn" },
+    { "@type": "City", name: "Miller" },
+    { "@type": "City", name: "Bankstown" },
     { "@type": "City", name: "Wetherill Park" },
+    { "@type": "City", name: "Campbelltown" },
+    { "@type": "City", name: "Parramatta" },
+    { "@type": "City", name: "Penrith" },
+    { "@type": "City", name: "Blacktown" },
+    { "@type": "City", name: "Holsworthy" },
+    { "@type": "City", name: "Bossley Park" },
     { "@type": "AdministrativeArea", name: "Western Sydney" },
     { "@type": "AdministrativeArea", name: "Southwestern Sydney" },
   ],
@@ -179,7 +214,7 @@ export default function RootLayout({
       <head>
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/images/logo/ephraim-care-icon.png" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="Ephraim Admin" />
         <meta name="theme-color" content="#2E7D6B" />
