@@ -133,9 +133,10 @@ const jsonLd = {
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: -33.9425,
-    longitude: 150.8633,
+    latitude: -33.9437,
+    longitude: 150.8694,
   },
+  hasMap: "https://maps.google.com/?q=3VCP%2BPV+Prestons+NSW",
   areaServed: [
     { "@type": "City", name: "Liverpool" },
     { "@type": "City", name: "Prestons" },
