@@ -20,7 +20,6 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
-const WEBHOOK_URL = process.env.NEXT_PUBLIC_WEBHOOK_CONTACT || "";
 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -33,40 +32,25 @@ export default function ContactPage() {
     setError(null);
 
     const formData = new FormData(e.currentTarget);
-    const data = {
-      firstName: formData.get("firstName"),
-      lastName: formData.get("lastName"),
-      email: formData.get("email"),
-      phone: formData.get("phone"),
-      subject: formData.get("subject"),
-      message: formData.get("message"),
-      submittedAt: new Date().toISOString(),
-    };
+    const firstName = formData.get("firstName") as string;
+    const lastName = formData.get("lastName") as string;
+    const subject = formData.get("subject") as string;
+    const message = formData.get("message") as string;
 
     try {
-      // Submit to n8n webhook
-      const webhookPromise = fetch(WEBHOOK_URL, {
+      const response = await fetch("/api/contacts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          name: `${firstName} ${lastName}`.trim(),
+          email: formData.get("email"),
+          phone: formData.get("phone"),
+          message: `${subject ? `[${subject}] ` : ""}${message}`,
+        }),
       });
 
-      // Submit to internal API (for admin dashboard)
-      const apiData = {
-        name: `${data.firstName} ${data.lastName}`.trim(),
-        email: data.email,
-        phone: data.phone,
-        message: `${data.subject ? `[${data.subject}] ` : ""}${data.message}`,
-      };
+      if (!response.ok) throw new Error("API request failed");
 
-      const apiPromise = fetch("/api/contacts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(apiData),
-      });
-
-      // Wait for both
-      await Promise.all([webhookPromise, apiPromise]);
 
       setIsSubmitted(true);
     } catch (err) {

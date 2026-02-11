@@ -18,7 +18,6 @@ import {
 import { HowItWorks } from "@/components/sections/how-it-works";
 import { motion, AnimatePresence } from "motion/react";
 
-const WEBHOOK_URL = process.env.NEXT_PUBLIC_WEBHOOK_REFERRAL || "";
 
 const steps = [
   {
@@ -46,66 +45,31 @@ export default function ReferralsPage() {
     setError(null);
 
     const formData = new FormData(e.currentTarget);
-    const data = {
-      participant: {
-        firstName: formData.get("firstName"),
-        lastName: formData.get("lastName"),
-        dob: formData.get("dob"),
-        ndisNumber: formData.get("ndisNumber"),
-        phone: formData.get("phone"),
-        email: formData.get("email"),
-        suburb: formData.get("suburb"),
-      },
-      services: {
-        fundingType: formData.get("fundingType"),
-        selectedServices: formData.getAll("services"),
-        goals: formData.get("goals"),
-      },
-      referrer: {
-        role: formData.get("referrerRole"),
-        name: formData.get("referrerName"),
-        organisation: formData.get("referrerOrg"),
-        phone: formData.get("referrerPhone"),
-        email: formData.get("referrerEmail"),
-      },
-      consent: formData.get("consent") === "on",
-      submittedAt: new Date().toISOString(),
-    };
 
     try {
-      // Submit to n8n webhook
-      const webhookPromise = fetch(WEBHOOK_URL, {
+      const response = await fetch("/api/referrals", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          participantFirstName: formData.get("firstName"),
+          participantLastName: formData.get("lastName"),
+          participantPhone: formData.get("phone"),
+          participantEmail: formData.get("email"),
+          ndisNumber: formData.get("ndisNumber"),
+          suburb: formData.get("suburb"),
+          selectedServices: formData.getAll("services"),
+          goals: formData.get("goals"),
+          referrerName: formData.get("referrerName"),
+          referrerRole: formData.get("referrerRole"),
+          referrerOrganisation: formData.get("referrerOrg"),
+          referrerPhone: formData.get("referrerPhone"),
+          referrerEmail: formData.get("referrerEmail"),
+          submittedAt: new Date().toISOString(),
+        }),
       });
 
-      // Submit to internal API (for admin dashboard)
-      const apiData = {
-        participantFirstName: data.participant.firstName,
-        participantLastName: data.participant.lastName,
-        participantPhone: data.participant.phone,
-        participantEmail: data.participant.email,
-        ndisNumber: data.participant.ndisNumber,
-        suburb: data.participant.suburb,
-        selectedServices: data.services.selectedServices,
-        goals: data.services.goals,
-        referrerName: data.referrer.name,
-        referrerRole: data.referrer.role,
-        referrerOrganisation: data.referrer.organisation,
-        referrerPhone: data.referrer.phone,
-        referrerEmail: data.referrer.email,
-        submittedAt: data.submittedAt,
-      };
+      if (!response.ok) throw new Error("API request failed");
 
-      const apiPromise = fetch("/api/referrals", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(apiData),
-      });
-
-      // Wait for both
-      await Promise.all([webhookPromise, apiPromise]);
 
       setIsSubmitted(true);
     } catch (err) {
