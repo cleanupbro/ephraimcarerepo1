@@ -36,3 +36,18 @@
 **Decision:** Deleted `src/app/admin`, `middleware.ts`, and internal `api/` routes (staff, appointments, etc.).
 **Reasoning:** User confirmed this repo is strict "Public Marketing / Leads Only". Admin portal exists in a separate application.
 **Impact:** Reduced codebase size, removed auth middleware complexity, eliminated risk of exposing admin logic in public repo.
+
+## 2026-02-12 — "NDIS Near Me" Optimization
+**Decision:** Updated Homepage metadata and copy to explicit target "NDIS provider near me" intent.
+**Reasoning:** User request + high intent search query. "Near me" queries require relevant text on the page, not just proximity.
+**Impact:** Added keywords to `page.tsx` and "Find a provider near you" text to Hero and Service Map.
+
+## 2026-02-16 — Client Handover (Public Website Only)
+**Decision:** Created `client-handover/` folder with 4 non-technical documents for client (Meshach).
+**Reasoning:** Client receives handover today. He does not need the codebase — only needs links, how-it-works explanation, and support contact info. Admin/staff portals are separate projects.
+**Impact:** Folder contains WELCOME.md, WEBSITE-LINKS.md, HOW-IT-WORKS.md, SUPPORT.md. No credentials or technical jargon.
+
+## 2026-02-16 — Prestons 404 Root Cause
+**Decision:** Identified that the Prestons 404 is caused by a canceled Vercel deployment, not missing code.
+**Reasoning:** Code exists on GitHub (`origin/main` matches local at `eea3cf3`). The last Vercel deployment (2026-02-11) was canceled from the dashboard. A fresh deploy is needed.
+**Impact:** Need to trigger Vercel redeploy via dashboard or push a new commit.
