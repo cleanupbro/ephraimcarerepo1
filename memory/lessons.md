@@ -25,3 +25,9 @@
 **Problem:** Project was flattened to root, but user expected old subfolder structure.
 **Fix:** Clarified that root-based structure is standard for Vercel.
 **Rule:** Make sure project documentation clearly states the root directory structure.
+
+## 2026-02-16 — Vercel Root Directory Mismatch After Restructure
+**Context:** Prestons page returning 404 on production despite code being on GitHub.
+**Problem:** Workspace restructure moved app from `ephraim-care-app/` to `src/`, but Vercel project still had `rootDirectory: "ephraim-care-app"`. Every auto-deploy failed silently because Vercel couldn't find the old folder.
+**Fix:** Used Vercel API (`PATCH /v9/projects/{id}`) to update `rootDirectory` from `ephraim-care-app` to `src`, then redeployed via CLI.
+**Rule:** ALWAYS update the Vercel project's Root Directory setting after any folder restructure. Check this FIRST when deployments fail silently.

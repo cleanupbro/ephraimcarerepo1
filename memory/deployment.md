@@ -6,10 +6,13 @@
 - **Branch strategy:** main = production
 
 ## Vercel
+- **Project name:** ephraim-care-app (NOT ephraimcarerepo1)
+- **Project ID:** prj_NAdt7XKrxBZ5V5o4r9M98pUPAwBJ
+- **Team:** sams-projects-3dc6d62d
 - **Framework:** Next.js
-- **Build command:** `cd src && npm run build`
-- **Output directory:** `src/.next`
-- **Root directory:** `src/` (Note: Ensure Vercel "Root Directory" setting is `src` or `.` depending on repo setup. Currently treating `.` as root with `cd src` build cmd).
+- **Build command:** `npm run build` (Vercel auto-detects Next.js)
+- **Root directory:** `src` (updated 2026-02-16 from `ephraim-care-app`)
+- **Node.js:** 24.x
 
 ## Environment Variables (Required in Vercel)
 - `NEXT_PUBLIC_SUPABASE_URL`
@@ -27,7 +30,6 @@
 | Environment | URL | Branch |
 |-------------|-----|--------|
 | Production | https://www.ephraimcare.com.au | main |
-| Admin | https://www.ephraimcare.com.au/admin | main |
 | Preview | Auto-generated | any PR |
 
 ## Verify Commands
