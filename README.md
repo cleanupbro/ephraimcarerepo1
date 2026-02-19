@@ -1,3 +1,14 @@
+<!-- CLAWD_REPO_LABEL_START -->
+## Repository Ownership & Purpose
+
+- **Repository:** `cleanupbro/ephraimcarerepo1`
+- **Owner:** **cleanupbro**
+- **Visibility:** **Public**
+- **Purpose:** 🏥 Ephraim Care — NDIS Disability & Mental Health Support | Liverpool & Western Sydney | Next.js 14 + Supabase + n8n
+- **Maintainer Note:** This README is labeled for clear ownership and repository intent.
+
+<!-- CLAWD_REPO_LABEL_END -->
+
 ```text
   ______ _____  _    _ _____           _____ __  __   _____          _____  ______ 
  |  ____|  __ \| |  | |  __ \   /\    |_   _|  \/  | / ____|   /\   |  __ \|  ____|
