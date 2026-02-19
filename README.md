@@ -9,6 +9,20 @@
 
 <!-- CLAWD_REPO_LABEL_END -->
 
+<!-- CLAWD_REPO_STANDARD_START -->
+## Standard Repository Info
+
+- **Owner:** `cleanupbro`
+- **Repository Type:** Client Project
+- **Purpose (Plain):** 🏥 Ephraim Care — NDIS Disability & Mental Health Support | Liverpool & Western Sydney | Next.js 14 + Supabase + n8n
+- **Primary Branch:** `main` (update if different)
+- **Deployment URL:** Set your live URL here
+- **Contact / Responsibility:** Open an issue in this repository or contact the owner account.
+
+<!-- CLAWD_REPO_STANDARD_END -->
+
+
+
 ```text
   ______ _____  _    _ _____           _____ __  __   _____          _____  ______ 
  |  ____|  __ \| |  | |  __ \   /\    |_   _|  \/  | / ____|   /\   |  __ \|  ____|
